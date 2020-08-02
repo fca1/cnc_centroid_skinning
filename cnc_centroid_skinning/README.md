@@ -5,10 +5,10 @@ unofficial cnc_centroid_skinning - A wrapper to the CNC12 API language.
 
 I use for my cnc activities, the products developped by  centroidcnc : https://www.centroidcnc.com/
 
-centroidcnc has developped a  controller card  named ACORN : https://www.centroidcnc.com/centroid_diy/acorn_cnc_controller.html
+centroidcnc has developped a  controller card  named ACORN : 
+https://www.centroidcnc.com/centroid_diy/acorn_cnc_controller.html
 
  and ACORN Mill and Lathe *CNC12* software for use with the Centroid Acorn CNC controller 
- 
  https://www.centroidcnc.com/centroid_diy/centroid_cnc_software_downloads.html
  
  
@@ -43,7 +43,7 @@ The version of  CNC12 used for my unittest is :4.5.
 I hope this wrapper allows enthusiasts like me, to simply develop their applications with CNC12. 
 Python is easy to use and allows rapid prototyping.
 
-#Warning
+# Warning
 
 Be careful when you go to send commands, or update settings. 
 Keep in mind that you can move (see destroy) your material (it's not the worst...). There is no 
@@ -52,7 +52,7 @@ and respond like described in the documentation.
 This interface is not **really tested, don't trust it**. 
 
 
-###I disclaim any responsibility for any accident, injury or damage suffered by anyone would use this wrapper. 
+### I disclaim any responsibility for any accident, injury or damage suffered by anyone would use this wrapper. 
 
 
 
@@ -63,7 +63,7 @@ Please, read the chapter : **'CNC Machine Tool Safety'**  in the documentation o
 
 If you have pip, installation is straightforward
 
-    pip install cnc_centroid_skinning
+    pip install cnc-centroid-skinning
 
 This will automatically install dependencies as well as their dependencies.
 
@@ -75,7 +75,7 @@ reference. There are some differences, however:
 - The methods begin with a lowercase. 
 - The return code is not given, but in case of a value different of 'SUCCESS' , an ErrorCodeException is raised.
   
-    
+[documentation](https://htmlpreview.github.io/?https://github.com/fca1/cnc_centroid_skinning/blob/master/cnc_centroid_skinning/doc/cnc_centroid_skinning/index.html)
 
 
 ## Examples 
@@ -89,7 +89,7 @@ the function **detect_cnc(path_of_cnc12) ** is written for that.
     'cnc_centroid_skinning communicates... OK' 
     >>>
     
-###Ask configuration
+### Ask configuration
  
     >>> from cnc_centroid_skinning import CncSkinning
     >>> sk = CncSkinning("c:\cnct")                     # create the instance 
@@ -108,7 +108,6 @@ the function **detect_cnc(path_of_cnc12) ** is written for that.
 ### Send a string message to the window message:
 
     
-### Run command (more than one way is possible) with a message window given. 
 
     >>> sk.message_window.addMessage('move in 5 seconds...')
     >>> sk.message_window.getMessages()[-1]
@@ -118,6 +117,8 @@ or
     >>> sk.message_window.message = 'move in 5 seconds...'
     >>> sk.message_window.message
     'move in 5 seconds...'
+
+### Run command (more than one way is possible) with a message window given. 
 
 
 **Verify machine is clear to move the following distance: Z0 -> +Z50**
@@ -155,8 +156,8 @@ or
     >>> sk.parameter[9] = 2  
     >>> sk.system.exitSoftware() # Restart is mandatory
 
-*After that, launch one more time the cnc12 software and start an other instance
-with the wrapper.*  
-
-
-
+### todo list
+- Vcp is not tested
+- Improve unittest's behavior
+- It's the first version of docstring, le param values are not described. 
+- ...

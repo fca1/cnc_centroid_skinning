@@ -10,12 +10,12 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="cnc_centroid_skinning",
-    version="0.0.1",
+    version="0.0.2",
     description="wrapper for the CncSkinning API (C#)",
     long_description=open('README.md').read(),
     url="https://github.com/fca1/cnc_centroid_skinning/",
     project_urls={
-        "Documentation": "https://github.com/fca1/cnc_centroid_skinning/tree/master/cnc_centroid_skinning/doc/cnc_centroid_skinning/",
+        "Documentation": "https://htmlpreview.github.io/?https://github.com/fca1/cnc_centroid_skinning/blob/master/cnc_centroid_skinning/doc/cnc_centroid_skinning/index.html",
         "Source Code": "https://github.com/fca1/cnc_centroid_skinning/tree/master/cnc_centroid_skinning/cnc_centroid_skinning/",
     },
     long_description_content_type="text/markdown",
@@ -23,12 +23,12 @@ setup(
     author_email="cnc@epi-rf.fr",
     license="Mit",
     classifiers=[
-        "Development Status :: 1 - Planning",
-        "License :: Mit",
+        "Development Status :: 2 - Pre-Alpha",
+        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.8",
         "Operating System :: Microsoft :: Windows :: Windows 10",
-        "Topic :: cnc cncskinning cnccentroid ",
+        "Topic :: Software Development :: Libraries",
     ],
     packages=find_packages(exclude=("tests","examples")),
     include_package_data=True,
