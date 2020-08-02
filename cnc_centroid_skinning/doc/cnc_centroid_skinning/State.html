@@ -1,0 +1,1213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.4" />
+<title>cnc_centroid_skinning.State API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>cnc_centroid_skinning.State</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from enum import IntEnum, unique
+from typing import List, Tuple
+
+from .cncSkinningInterface import CncSkinningInterface
+
+
+@unique
+class CircularInterpolationPlane(IntEnum):
+    &#34;&#34;&#34;The plane for circular interpolation commands. &#34;&#34;&#34;
+    XY = 0
+
+    &#34;&#34;&#34;G17 is the XY plane&#34;&#34;&#34;
+    ZX = 1
+
+    &#34;&#34;&#34;G18 is the ZX plane&#34;&#34;&#34;
+    YZ = 2
+
+    &#34;&#34;&#34;G19 is the YZ plane&#34;&#34;&#34;
+
+
+class CircularInterpolationDirection(IntEnum):
+    &#34;&#34;&#34;The direction of a circular or helical interpolation. &#34;&#34;&#34;
+    CLOCKWISE = 0
+
+    &#34;&#34;&#34;Clockwise Arc.&#34;&#34;&#34;
+    COUNTERCLOCKWISE = 1
+
+    &#34;&#34;&#34;Counterclockwise Arc.&#34;&#34;&#34;
+
+
+class FeedHoldState(IntEnum):
+    &#34;&#34;&#34;An enumeration of possible feed hold states &#34;&#34;&#34;
+    FEED_HOLD_ON = 0
+    &#34;&#34;&#34;Feed hold button is pressed&#34;&#34;&#34;
+    FEED_HOLD_OFF = 1
+    &#34;&#34;&#34;Feed hold button is not pressed&#34;&#34;&#34;
+    UNKNOWN = 2
+    &#34;&#34;&#34;Feed hold status could not be determined.&#34;&#34;&#34;
+
+
+class MdiState(IntEnum):
+    &#34;&#34;&#34;Are we in MDI or not? &#34;&#34;&#34;
+    IN_MDI = 0
+    &#34;&#34;&#34;We are in Mdi&#34;&#34;&#34;
+    NOT_IN_MDI = 1
+    &#34;&#34;&#34;We are not in Mdi&#34;&#34;&#34;
+    UNKNOWN = 2
+    &#34;&#34;&#34;It is not known if we are in MDI or not.&#34;&#34;&#34;
+
+
+class MoveMode(IntEnum):
+    &#34;&#34;&#34;Enumerates the different move modes, namely, Rapid, Linear, Clockwis e -Arc, and Counterclockwis e -Arc &#34;&#34;&#34;
+    RAPID = 0
+    &#34;&#34;&#34;Rapid Motion (G0)&#34;&#34;&#34;
+    LINEAR = 1
+    &#34;&#34;&#34;Linear Interpolation (G1)&#34;&#34;&#34;
+    CW_ARC = 2
+    &#34;&#34;&#34;Clockwise Arc (G2)&#34;&#34;&#34;
+    CCW_ARC = 3
+    &#34;&#34;&#34;Counterclockwise Arc (G3)&#34;&#34;&#34;
+    UNKNOWN = 4
+    &#34;&#34;&#34;Indicates bad communication with the pipe to CNC12.&#34;&#34;&#34;
+
+
+class PositioningMode(IntEnum):
+    &#34;&#34;&#34;Enumerates the different positioning modes, namely, Absolute and Incremental &#34;&#34;&#34;
+    ABSOLUTE = 0
+    &#34;&#34;&#34;Absolute Positioning Mode (G90)&#34;&#34;&#34;
+    INCREMENTAL = 1
+    &#34;&#34;&#34;Incremental Positioning Mode (G91)&#34;&#34;&#34;
+    UNKNOWN = 2
+    &#34;&#34;&#34;Indicates bad communication with the pipe to CNC12.&#34;&#34;&#34;
+
+
+class UnitsOfMeasure(IntEnum):
+    &#34;&#34;&#34;Enumerates the different units of measure, namely, Imperial and Metric &#34;&#34;&#34;
+    INCH_UNITS = 0
+    &#34;&#34;&#34;Inch Units (G20)&#34;&#34;&#34;
+    METRIC_UNITS = 1
+    &#34;&#34;&#34;Metric Units (G21)&#34;&#34;&#34;
+    UNKNOWN = 2
+    &#34;&#34;&#34;Indicates a failure to communicate with CNC12&#34;&#34;&#34;
+
+
+class Value(IntEnum):
+    &#34;&#34;&#34;Enumerates different values, maximum or minimum &#34;&#34;&#34;
+    MAX = 0
+    &#34;&#34;&#34;Maximum Value&#34;&#34;&#34;
+    MIN = 1
+
+    &#34;&#34;&#34;Minimum Value&#34;&#34;&#34;
+
+
+class HomingType(IntEnum):
+    &#34;&#34;&#34;Enumerates the different homing types: Jog, Home Switch, and Ref Mar k -HS. &#34;&#34;&#34;
+    JOG = 0
+    &#34;&#34;&#34;Jog Homing&#34;&#34;&#34;
+    HOMESWITCH = 1
+    &#34;&#34;&#34;Home Switch Homing&#34;&#34;&#34;
+    REFMARKHS = 2
+    &#34;&#34;&#34;Ref Mark-HS Homing&#34;&#34;&#34;
+    UNKNOWN = 3
+    &#34;&#34;&#34;Unknown homing, usually an error.&#34;&#34;&#34;
+
+
+class State:
+    &#34;&#34;&#34;Holds info relating to system state, e.g. move mode, position mode, feedrate, spindle speed, etc &#34;&#34;&#34;
+    def __init__(self, interface: CncSkinningInterface):
+        self.interface = interface
+
+    def getScreenSize(self) -&gt; tuple:
+        &#34;&#34;&#34;:return: the screen size of the CNC application. &#34;&#34;&#34;
+        return self.interface(&#39;state.GetScreenSize&#39;, 0, 0)
+
+    def getMonitorSize(self) -&gt; tuple:
+        &#34;&#34;&#34;:return: the monitor size of the CNC application. &#34;&#34;&#34;
+        return self.interface(&#39;state.GetMonitorSize&#39;, 0, 0)
+
+    def getScreenPosition(self) -&gt; tuple:
+        &#34;&#34;&#34;:return: the position of the CNC application. &#34;&#34;&#34;
+        return self.interface(&#39;state.GetScreenPosition&#39;, 0, 0)
+
+    def getAcornBoardRevision(self) -&gt; int:
+        &#34;&#34;&#34;:return:  the Acorn Board Revision &#34;&#34;&#34;
+        return self.interface(&#39;state.GetAcornBoardRevision&#39;, 0)
+
+    def getActiveGCodes(self) -&gt; List[str]:
+        &#34;&#34;&#34;:return:  the currently active modal G- and M- codes. &#34;&#34;&#34;
+        return list(map(str, self.interface(&#39;state.GetActiveGCodes&#39;, [])))
+
+    def getFeedHoldState(self) -&gt; FeedHoldState:
+        &#34;&#34;&#34;:return:  the current feed hold state. &#34;&#34;&#34;
+        return FeedHoldState(self.interface(&#39;state.GetFeedHoldState&#39;, 0))
+
+    def getGCodeDisplay(self) -&gt; List[str]:
+        &#34;&#34;&#34;:return:  the list of g-code strings that usually displays on CNC12 when a job is running. &#34;&#34;&#34;
+        return list(map(str, self.interface(&#39;state.GetGCodeDisplay&#39;, [])))
+
+    def getJobNameCurrent(self) -&gt; str:
+        &#34;&#34;&#34;:return:  the name of the currently loaded job. &#34;&#34;&#34;
+        return self.interface(&#39;state.GetJobNameCurrent&#39;, &#39;&#39;)
+
+    def getMdiState(self) -&gt; MdiState:
+        return MdiState(self.interface(&#39;state.GetMdiState&#39;, 0))
+
+    def getMoveMode(self) -&gt; MoveMode:
+        &#34;&#34;&#34;:return:  the current move mode (rapid, linear, clockwise arc, counterclockwise arc) &#34;&#34;&#34;
+        return MoveMode(self.interface(&#39;state.GetMoveMode&#39;, 0))
+
+    def getPositioningMode(self) -&gt; PositioningMode:
+        &#34;&#34;&#34;:return:  the positioning mode of the machine currently. &#34;&#34;&#34;
+        return PositioningMode(self.interface(&#39;state.GetPositioningMode&#39;, 0))
+
+    def getUnitsOfMeasureDefault(self) -&gt; UnitsOfMeasure:
+        &#34;&#34;&#34;:return: s the default units of measure from CNC12 (Imperial or Metric) &#34;&#34;&#34;
+        return UnitsOfMeasure(self.interface(&#39;state.GetUnitsOfMeasureDefault&#39;, 0))
+
+    def setImperialUnits(self):
+        &#34;&#34;&#34;Set the default uniot of measure to inch units. &#34;&#34;&#34;
+        return self.interface(&#39;state.SetImperialUnits&#39;)
+
+    def setMetricUnits(self):
+        &#34;&#34;&#34;Set the default unit of measure to metric units &#34;&#34;&#34;
+        return self.interface(&#39;state.SetMetricUnits&#39;)
+
+    def getUnitsOfMeasureDro(self) -&gt; UnitsOfMeasure:
+        &#34;&#34;&#34;:return: s the dro units of measure from CNC12 (Imperial or Metric) &#34;&#34;&#34;
+        return UnitsOfMeasure(self.interface(&#39;state.GetUnitsOfMeasureDro&#39;, 0))
+
+    def getFeedrate(self) -&gt; float:
+        &#34;&#34;&#34;:return: the measured feedrate (accounts for feedrate override knob). &#34;&#34;&#34;
+        return self.interface(&#39;state.GetFeedrate&#39;, 0.0)
+
+    def getSpindleSpeed(self) -&gt; float:
+        &#34;&#34;&#34;:return:  the current spindle speed. &#34;&#34;&#34;
+        return self.interface(&#39;state.GetSpindleSpeed&#39;, 0.0)
+
+    def getCurrentMachinePosition(self) -&gt; Tuple[float]:
+        &#34;&#34;&#34;:return: s the current machine position. &#34;&#34;&#34;
+        return tuple(map(float, self.interface(&#39;state.GetCurrentMachinePosition&#39;, [])))
+
+    def getFeedrateOverride(self) -&gt; int:
+        &#34;&#34;&#34;:return:  the feedrate override as a percent between 1 and max (usually 120). &#34;&#34;&#34;
+        return self.interface(&#39;state.GetFeedrateOverride&#39;, 0)
+
+    def getCurrentLocalPosition(self) -&gt; Tuple[float]:
+        &#34;&#34;&#34;:return:  the current wcs position. &#34;&#34;&#34;
+        return tuple(map(float, self.interface(&#39;state.GetCurrentLocalPosition&#39;, [])))
+
+    def getHighRangeSpindleSpeed(self, max_or_min: Value) -&gt; float:
+        &#34;&#34;&#34;:return:  the current Spindle Speed High Range maximum or minimum value. &#34;&#34;&#34;
+        return self.interface(&#39;state.GetHighRangeSpindleSpeed&#39;, max_or_min.value, 0.0)
+
+    def setHighRangeSpindleSpeed(self, max_or_min: Value) -&gt; float:
+        &#34;&#34;&#34;Set the current Spindle Speed High Range maximum or minimum value. &#34;&#34;&#34;
+        return self.interface(&#39;state.SetHighRangeSpindleSpeed&#39;, max_or_min.value, 0.0)
+
+    def getMachineHomeAtPowerUp(self) -&gt; HomingType:
+        &#34;&#34;&#34;:return:  the currently set machine homing type at power up. &#34;&#34;&#34;
+        return HomingType(self.interface(&#39;state.GetMachineHomeAtPowerUp&#39;, 0))
+
+    def setMachineHomeAtPowerUp(self, homing_type: HomingType):
+        &#34;&#34;&#34;Set the machine homing type at power up. &#34;&#34;&#34;
+        return self.interface(&#39;state.SetMachineHomeAtPowerUp&#39;, homing_type.value)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="cnc_centroid_skinning.State.CircularInterpolationDirection"><code class="flex name class">
+<span>class <span class="ident">CircularInterpolationDirection</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The direction of a circular or helical interpolation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CircularInterpolationDirection(IntEnum):
+    &#34;&#34;&#34;The direction of a circular or helical interpolation. &#34;&#34;&#34;
+    CLOCKWISE = 0
+
+    &#34;&#34;&#34;Clockwise Arc.&#34;&#34;&#34;
+    COUNTERCLOCKWISE = 1
+
+    &#34;&#34;&#34;Counterclockwise Arc.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="cnc_centroid_skinning.State.CircularInterpolationDirection.CLOCKWISE"><code class="name">var <span class="ident">CLOCKWISE</span></code></dt>
+<dd>
+<div class="desc"><p>Clockwise Arc.</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.CircularInterpolationDirection.COUNTERCLOCKWISE"><code class="name">var <span class="ident">COUNTERCLOCKWISE</span></code></dt>
+<dd>
+<div class="desc"><p>Counterclockwise Arc.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="cnc_centroid_skinning.State.CircularInterpolationPlane"><code class="flex name class">
+<span>class <span class="ident">CircularInterpolationPlane</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>The plane for circular interpolation commands.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CircularInterpolationPlane(IntEnum):
+    &#34;&#34;&#34;The plane for circular interpolation commands. &#34;&#34;&#34;
+    XY = 0
+
+    &#34;&#34;&#34;G17 is the XY plane&#34;&#34;&#34;
+    ZX = 1
+
+    &#34;&#34;&#34;G18 is the ZX plane&#34;&#34;&#34;
+    YZ = 2
+
+    &#34;&#34;&#34;G19 is the YZ plane&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="cnc_centroid_skinning.State.CircularInterpolationPlane.XY"><code class="name">var <span class="ident">XY</span></code></dt>
+<dd>
+<div class="desc"><p>G17 is the XY plane</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.CircularInterpolationPlane.YZ"><code class="name">var <span class="ident">YZ</span></code></dt>
+<dd>
+<div class="desc"><p>G19 is the YZ plane</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.CircularInterpolationPlane.ZX"><code class="name">var <span class="ident">ZX</span></code></dt>
+<dd>
+<div class="desc"><p>G18 is the ZX plane</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="cnc_centroid_skinning.State.FeedHoldState"><code class="flex name class">
+<span>class <span class="ident">FeedHoldState</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumeration of possible feed hold states</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class FeedHoldState(IntEnum):
+    &#34;&#34;&#34;An enumeration of possible feed hold states &#34;&#34;&#34;
+    FEED_HOLD_ON = 0
+    &#34;&#34;&#34;Feed hold button is pressed&#34;&#34;&#34;
+    FEED_HOLD_OFF = 1
+    &#34;&#34;&#34;Feed hold button is not pressed&#34;&#34;&#34;
+    UNKNOWN = 2
+    &#34;&#34;&#34;Feed hold status could not be determined.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="cnc_centroid_skinning.State.FeedHoldState.FEED_HOLD_OFF"><code class="name">var <span class="ident">FEED_HOLD_OFF</span></code></dt>
+<dd>
+<div class="desc"><p>Feed hold button is not pressed</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.FeedHoldState.FEED_HOLD_ON"><code class="name">var <span class="ident">FEED_HOLD_ON</span></code></dt>
+<dd>
+<div class="desc"><p>Feed hold button is pressed</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.FeedHoldState.UNKNOWN"><code class="name">var <span class="ident">UNKNOWN</span></code></dt>
+<dd>
+<div class="desc"><p>Feed hold status could not be determined.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="cnc_centroid_skinning.State.HomingType"><code class="flex name class">
+<span>class <span class="ident">HomingType</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enumerates the different homing types: Jog, Home Switch, and Ref Mar k -HS.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class HomingType(IntEnum):
+    &#34;&#34;&#34;Enumerates the different homing types: Jog, Home Switch, and Ref Mar k -HS. &#34;&#34;&#34;
+    JOG = 0
+    &#34;&#34;&#34;Jog Homing&#34;&#34;&#34;
+    HOMESWITCH = 1
+    &#34;&#34;&#34;Home Switch Homing&#34;&#34;&#34;
+    REFMARKHS = 2
+    &#34;&#34;&#34;Ref Mark-HS Homing&#34;&#34;&#34;
+    UNKNOWN = 3
+    &#34;&#34;&#34;Unknown homing, usually an error.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="cnc_centroid_skinning.State.HomingType.HOMESWITCH"><code class="name">var <span class="ident">HOMESWITCH</span></code></dt>
+<dd>
+<div class="desc"><p>Home Switch Homing</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.HomingType.JOG"><code class="name">var <span class="ident">JOG</span></code></dt>
+<dd>
+<div class="desc"><p>Jog Homing</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.HomingType.REFMARKHS"><code class="name">var <span class="ident">REFMARKHS</span></code></dt>
+<dd>
+<div class="desc"><p>Ref Mark-HS Homing</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.HomingType.UNKNOWN"><code class="name">var <span class="ident">UNKNOWN</span></code></dt>
+<dd>
+<div class="desc"><p>Unknown homing, usually an error.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="cnc_centroid_skinning.State.MdiState"><code class="flex name class">
+<span>class <span class="ident">MdiState</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Are we in MDI or not?</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MdiState(IntEnum):
+    &#34;&#34;&#34;Are we in MDI or not? &#34;&#34;&#34;
+    IN_MDI = 0
+    &#34;&#34;&#34;We are in Mdi&#34;&#34;&#34;
+    NOT_IN_MDI = 1
+    &#34;&#34;&#34;We are not in Mdi&#34;&#34;&#34;
+    UNKNOWN = 2
+    &#34;&#34;&#34;It is not known if we are in MDI or not.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="cnc_centroid_skinning.State.MdiState.IN_MDI"><code class="name">var <span class="ident">IN_MDI</span></code></dt>
+<dd>
+<div class="desc"><p>We are in Mdi</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.MdiState.NOT_IN_MDI"><code class="name">var <span class="ident">NOT_IN_MDI</span></code></dt>
+<dd>
+<div class="desc"><p>We are not in Mdi</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.MdiState.UNKNOWN"><code class="name">var <span class="ident">UNKNOWN</span></code></dt>
+<dd>
+<div class="desc"><p>It is not known if we are in MDI or not.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="cnc_centroid_skinning.State.MoveMode"><code class="flex name class">
+<span>class <span class="ident">MoveMode</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enumerates the different move modes, namely, Rapid, Linear, Clockwis e -Arc, and Counterclockwis e -Arc</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MoveMode(IntEnum):
+    &#34;&#34;&#34;Enumerates the different move modes, namely, Rapid, Linear, Clockwis e -Arc, and Counterclockwis e -Arc &#34;&#34;&#34;
+    RAPID = 0
+    &#34;&#34;&#34;Rapid Motion (G0)&#34;&#34;&#34;
+    LINEAR = 1
+    &#34;&#34;&#34;Linear Interpolation (G1)&#34;&#34;&#34;
+    CW_ARC = 2
+    &#34;&#34;&#34;Clockwise Arc (G2)&#34;&#34;&#34;
+    CCW_ARC = 3
+    &#34;&#34;&#34;Counterclockwise Arc (G3)&#34;&#34;&#34;
+    UNKNOWN = 4
+    &#34;&#34;&#34;Indicates bad communication with the pipe to CNC12.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="cnc_centroid_skinning.State.MoveMode.CCW_ARC"><code class="name">var <span class="ident">CCW_ARC</span></code></dt>
+<dd>
+<div class="desc"><p>Counterclockwise Arc (G3)</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.MoveMode.CW_ARC"><code class="name">var <span class="ident">CW_ARC</span></code></dt>
+<dd>
+<div class="desc"><p>Clockwise Arc (G2)</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.MoveMode.LINEAR"><code class="name">var <span class="ident">LINEAR</span></code></dt>
+<dd>
+<div class="desc"><p>Linear Interpolation (G1)</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.MoveMode.RAPID"><code class="name">var <span class="ident">RAPID</span></code></dt>
+<dd>
+<div class="desc"><p>Rapid Motion (G0)</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.MoveMode.UNKNOWN"><code class="name">var <span class="ident">UNKNOWN</span></code></dt>
+<dd>
+<div class="desc"><p>Indicates bad communication with the pipe to CNC12.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="cnc_centroid_skinning.State.PositioningMode"><code class="flex name class">
+<span>class <span class="ident">PositioningMode</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enumerates the different positioning modes, namely, Absolute and Incremental</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PositioningMode(IntEnum):
+    &#34;&#34;&#34;Enumerates the different positioning modes, namely, Absolute and Incremental &#34;&#34;&#34;
+    ABSOLUTE = 0
+    &#34;&#34;&#34;Absolute Positioning Mode (G90)&#34;&#34;&#34;
+    INCREMENTAL = 1
+    &#34;&#34;&#34;Incremental Positioning Mode (G91)&#34;&#34;&#34;
+    UNKNOWN = 2
+    &#34;&#34;&#34;Indicates bad communication with the pipe to CNC12.&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="cnc_centroid_skinning.State.PositioningMode.ABSOLUTE"><code class="name">var <span class="ident">ABSOLUTE</span></code></dt>
+<dd>
+<div class="desc"><p>Absolute Positioning Mode (G90)</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.PositioningMode.INCREMENTAL"><code class="name">var <span class="ident">INCREMENTAL</span></code></dt>
+<dd>
+<div class="desc"><p>Incremental Positioning Mode (G91)</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.PositioningMode.UNKNOWN"><code class="name">var <span class="ident">UNKNOWN</span></code></dt>
+<dd>
+<div class="desc"><p>Indicates bad communication with the pipe to CNC12.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="cnc_centroid_skinning.State.State"><code class="flex name class">
+<span>class <span class="ident">State</span></span>
+<span>(</span><span>interface: <a title="cnc_centroid_skinning.cncSkinningInterface.CncSkinningInterface" href="cncSkinningInterface.html#cnc_centroid_skinning.cncSkinningInterface.CncSkinningInterface">CncSkinningInterface</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Holds info relating to system state, e.g. move mode, position mode, feedrate, spindle speed, etc</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class State:
+    &#34;&#34;&#34;Holds info relating to system state, e.g. move mode, position mode, feedrate, spindle speed, etc &#34;&#34;&#34;
+    def __init__(self, interface: CncSkinningInterface):
+        self.interface = interface
+
+    def getScreenSize(self) -&gt; tuple:
+        &#34;&#34;&#34;:return: the screen size of the CNC application. &#34;&#34;&#34;
+        return self.interface(&#39;state.GetScreenSize&#39;, 0, 0)
+
+    def getMonitorSize(self) -&gt; tuple:
+        &#34;&#34;&#34;:return: the monitor size of the CNC application. &#34;&#34;&#34;
+        return self.interface(&#39;state.GetMonitorSize&#39;, 0, 0)
+
+    def getScreenPosition(self) -&gt; tuple:
+        &#34;&#34;&#34;:return: the position of the CNC application. &#34;&#34;&#34;
+        return self.interface(&#39;state.GetScreenPosition&#39;, 0, 0)
+
+    def getAcornBoardRevision(self) -&gt; int:
+        &#34;&#34;&#34;:return:  the Acorn Board Revision &#34;&#34;&#34;
+        return self.interface(&#39;state.GetAcornBoardRevision&#39;, 0)
+
+    def getActiveGCodes(self) -&gt; List[str]:
+        &#34;&#34;&#34;:return:  the currently active modal G- and M- codes. &#34;&#34;&#34;
+        return list(map(str, self.interface(&#39;state.GetActiveGCodes&#39;, [])))
+
+    def getFeedHoldState(self) -&gt; FeedHoldState:
+        &#34;&#34;&#34;:return:  the current feed hold state. &#34;&#34;&#34;
+        return FeedHoldState(self.interface(&#39;state.GetFeedHoldState&#39;, 0))
+
+    def getGCodeDisplay(self) -&gt; List[str]:
+        &#34;&#34;&#34;:return:  the list of g-code strings that usually displays on CNC12 when a job is running. &#34;&#34;&#34;
+        return list(map(str, self.interface(&#39;state.GetGCodeDisplay&#39;, [])))
+
+    def getJobNameCurrent(self) -&gt; str:
+        &#34;&#34;&#34;:return:  the name of the currently loaded job. &#34;&#34;&#34;
+        return self.interface(&#39;state.GetJobNameCurrent&#39;, &#39;&#39;)
+
+    def getMdiState(self) -&gt; MdiState:
+        return MdiState(self.interface(&#39;state.GetMdiState&#39;, 0))
+
+    def getMoveMode(self) -&gt; MoveMode:
+        &#34;&#34;&#34;:return:  the current move mode (rapid, linear, clockwise arc, counterclockwise arc) &#34;&#34;&#34;
+        return MoveMode(self.interface(&#39;state.GetMoveMode&#39;, 0))
+
+    def getPositioningMode(self) -&gt; PositioningMode:
+        &#34;&#34;&#34;:return:  the positioning mode of the machine currently. &#34;&#34;&#34;
+        return PositioningMode(self.interface(&#39;state.GetPositioningMode&#39;, 0))
+
+    def getUnitsOfMeasureDefault(self) -&gt; UnitsOfMeasure:
+        &#34;&#34;&#34;:return: s the default units of measure from CNC12 (Imperial or Metric) &#34;&#34;&#34;
+        return UnitsOfMeasure(self.interface(&#39;state.GetUnitsOfMeasureDefault&#39;, 0))
+
+    def setImperialUnits(self):
+        &#34;&#34;&#34;Set the default uniot of measure to inch units. &#34;&#34;&#34;
+        return self.interface(&#39;state.SetImperialUnits&#39;)
+
+    def setMetricUnits(self):
+        &#34;&#34;&#34;Set the default unit of measure to metric units &#34;&#34;&#34;
+        return self.interface(&#39;state.SetMetricUnits&#39;)
+
+    def getUnitsOfMeasureDro(self) -&gt; UnitsOfMeasure:
+        &#34;&#34;&#34;:return: s the dro units of measure from CNC12 (Imperial or Metric) &#34;&#34;&#34;
+        return UnitsOfMeasure(self.interface(&#39;state.GetUnitsOfMeasureDro&#39;, 0))
+
+    def getFeedrate(self) -&gt; float:
+        &#34;&#34;&#34;:return: the measured feedrate (accounts for feedrate override knob). &#34;&#34;&#34;
+        return self.interface(&#39;state.GetFeedrate&#39;, 0.0)
+
+    def getSpindleSpeed(self) -&gt; float:
+        &#34;&#34;&#34;:return:  the current spindle speed. &#34;&#34;&#34;
+        return self.interface(&#39;state.GetSpindleSpeed&#39;, 0.0)
+
+    def getCurrentMachinePosition(self) -&gt; Tuple[float]:
+        &#34;&#34;&#34;:return: s the current machine position. &#34;&#34;&#34;
+        return tuple(map(float, self.interface(&#39;state.GetCurrentMachinePosition&#39;, [])))
+
+    def getFeedrateOverride(self) -&gt; int:
+        &#34;&#34;&#34;:return:  the feedrate override as a percent between 1 and max (usually 120). &#34;&#34;&#34;
+        return self.interface(&#39;state.GetFeedrateOverride&#39;, 0)
+
+    def getCurrentLocalPosition(self) -&gt; Tuple[float]:
+        &#34;&#34;&#34;:return:  the current wcs position. &#34;&#34;&#34;
+        return tuple(map(float, self.interface(&#39;state.GetCurrentLocalPosition&#39;, [])))
+
+    def getHighRangeSpindleSpeed(self, max_or_min: Value) -&gt; float:
+        &#34;&#34;&#34;:return:  the current Spindle Speed High Range maximum or minimum value. &#34;&#34;&#34;
+        return self.interface(&#39;state.GetHighRangeSpindleSpeed&#39;, max_or_min.value, 0.0)
+
+    def setHighRangeSpindleSpeed(self, max_or_min: Value) -&gt; float:
+        &#34;&#34;&#34;Set the current Spindle Speed High Range maximum or minimum value. &#34;&#34;&#34;
+        return self.interface(&#39;state.SetHighRangeSpindleSpeed&#39;, max_or_min.value, 0.0)
+
+    def getMachineHomeAtPowerUp(self) -&gt; HomingType:
+        &#34;&#34;&#34;:return:  the currently set machine homing type at power up. &#34;&#34;&#34;
+        return HomingType(self.interface(&#39;state.GetMachineHomeAtPowerUp&#39;, 0))
+
+    def setMachineHomeAtPowerUp(self, homing_type: HomingType):
+        &#34;&#34;&#34;Set the machine homing type at power up. &#34;&#34;&#34;
+        return self.interface(&#39;state.SetMachineHomeAtPowerUp&#39;, homing_type.value)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="cnc_centroid_skinning.State.State.getAcornBoardRevision"><code class="name flex">
+<span>def <span class="ident">getAcornBoardRevision</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return:
+the Acorn Board Revision</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getAcornBoardRevision(self) -&gt; int:
+    &#34;&#34;&#34;:return:  the Acorn Board Revision &#34;&#34;&#34;
+    return self.interface(&#39;state.GetAcornBoardRevision&#39;, 0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getActiveGCodes"><code class="name flex">
+<span>def <span class="ident">getActiveGCodes</span></span>(<span>self) ‑> List[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return:
+the currently active modal G- and M- codes.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getActiveGCodes(self) -&gt; List[str]:
+    &#34;&#34;&#34;:return:  the currently active modal G- and M- codes. &#34;&#34;&#34;
+    return list(map(str, self.interface(&#39;state.GetActiveGCodes&#39;, [])))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getCurrentLocalPosition"><code class="name flex">
+<span>def <span class="ident">getCurrentLocalPosition</span></span>(<span>self) ‑> Tuple[float]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return:
+the current wcs position.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getCurrentLocalPosition(self) -&gt; Tuple[float]:
+    &#34;&#34;&#34;:return:  the current wcs position. &#34;&#34;&#34;
+    return tuple(map(float, self.interface(&#39;state.GetCurrentLocalPosition&#39;, [])))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getCurrentMachinePosition"><code class="name flex">
+<span>def <span class="ident">getCurrentMachinePosition</span></span>(<span>self) ‑> Tuple[float]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: s the current machine position.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getCurrentMachinePosition(self) -&gt; Tuple[float]:
+    &#34;&#34;&#34;:return: s the current machine position. &#34;&#34;&#34;
+    return tuple(map(float, self.interface(&#39;state.GetCurrentMachinePosition&#39;, [])))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getFeedHoldState"><code class="name flex">
+<span>def <span class="ident">getFeedHoldState</span></span>(<span>self) ‑> <a title="cnc_centroid_skinning.State.FeedHoldState" href="#cnc_centroid_skinning.State.FeedHoldState">FeedHoldState</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return:
+the current feed hold state.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getFeedHoldState(self) -&gt; FeedHoldState:
+    &#34;&#34;&#34;:return:  the current feed hold state. &#34;&#34;&#34;
+    return FeedHoldState(self.interface(&#39;state.GetFeedHoldState&#39;, 0))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getFeedrate"><code class="name flex">
+<span>def <span class="ident">getFeedrate</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: the measured feedrate (accounts for feedrate override knob).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getFeedrate(self) -&gt; float:
+    &#34;&#34;&#34;:return: the measured feedrate (accounts for feedrate override knob). &#34;&#34;&#34;
+    return self.interface(&#39;state.GetFeedrate&#39;, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getFeedrateOverride"><code class="name flex">
+<span>def <span class="ident">getFeedrateOverride</span></span>(<span>self) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return:
+the feedrate override as a percent between 1 and max (usually 120).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getFeedrateOverride(self) -&gt; int:
+    &#34;&#34;&#34;:return:  the feedrate override as a percent between 1 and max (usually 120). &#34;&#34;&#34;
+    return self.interface(&#39;state.GetFeedrateOverride&#39;, 0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getGCodeDisplay"><code class="name flex">
+<span>def <span class="ident">getGCodeDisplay</span></span>(<span>self) ‑> List[str]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return:
+the list of g-code strings that usually displays on CNC12 when a job is running.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getGCodeDisplay(self) -&gt; List[str]:
+    &#34;&#34;&#34;:return:  the list of g-code strings that usually displays on CNC12 when a job is running. &#34;&#34;&#34;
+    return list(map(str, self.interface(&#39;state.GetGCodeDisplay&#39;, [])))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getHighRangeSpindleSpeed"><code class="name flex">
+<span>def <span class="ident">getHighRangeSpindleSpeed</span></span>(<span>self, max_or_min: <a title="cnc_centroid_skinning.State.Value" href="#cnc_centroid_skinning.State.Value">Value</a>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return:
+the current Spindle Speed High Range maximum or minimum value.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getHighRangeSpindleSpeed(self, max_or_min: Value) -&gt; float:
+    &#34;&#34;&#34;:return:  the current Spindle Speed High Range maximum or minimum value. &#34;&#34;&#34;
+    return self.interface(&#39;state.GetHighRangeSpindleSpeed&#39;, max_or_min.value, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getJobNameCurrent"><code class="name flex">
+<span>def <span class="ident">getJobNameCurrent</span></span>(<span>self) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return:
+the name of the currently loaded job.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getJobNameCurrent(self) -&gt; str:
+    &#34;&#34;&#34;:return:  the name of the currently loaded job. &#34;&#34;&#34;
+    return self.interface(&#39;state.GetJobNameCurrent&#39;, &#39;&#39;)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getMachineHomeAtPowerUp"><code class="name flex">
+<span>def <span class="ident">getMachineHomeAtPowerUp</span></span>(<span>self) ‑> <a title="cnc_centroid_skinning.State.HomingType" href="#cnc_centroid_skinning.State.HomingType">HomingType</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return:
+the currently set machine homing type at power up.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getMachineHomeAtPowerUp(self) -&gt; HomingType:
+    &#34;&#34;&#34;:return:  the currently set machine homing type at power up. &#34;&#34;&#34;
+    return HomingType(self.interface(&#39;state.GetMachineHomeAtPowerUp&#39;, 0))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getMdiState"><code class="name flex">
+<span>def <span class="ident">getMdiState</span></span>(<span>self) ‑> <a title="cnc_centroid_skinning.State.MdiState" href="#cnc_centroid_skinning.State.MdiState">MdiState</a></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getMdiState(self) -&gt; MdiState:
+    return MdiState(self.interface(&#39;state.GetMdiState&#39;, 0))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getMonitorSize"><code class="name flex">
+<span>def <span class="ident">getMonitorSize</span></span>(<span>self) ‑> tuple</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: the monitor size of the CNC application.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getMonitorSize(self) -&gt; tuple:
+    &#34;&#34;&#34;:return: the monitor size of the CNC application. &#34;&#34;&#34;
+    return self.interface(&#39;state.GetMonitorSize&#39;, 0, 0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getMoveMode"><code class="name flex">
+<span>def <span class="ident">getMoveMode</span></span>(<span>self) ‑> <a title="cnc_centroid_skinning.State.MoveMode" href="#cnc_centroid_skinning.State.MoveMode">MoveMode</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return:
+the current move mode (rapid, linear, clockwise arc, counterclockwise arc)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getMoveMode(self) -&gt; MoveMode:
+    &#34;&#34;&#34;:return:  the current move mode (rapid, linear, clockwise arc, counterclockwise arc) &#34;&#34;&#34;
+    return MoveMode(self.interface(&#39;state.GetMoveMode&#39;, 0))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getPositioningMode"><code class="name flex">
+<span>def <span class="ident">getPositioningMode</span></span>(<span>self) ‑> <a title="cnc_centroid_skinning.State.PositioningMode" href="#cnc_centroid_skinning.State.PositioningMode">PositioningMode</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return:
+the positioning mode of the machine currently.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getPositioningMode(self) -&gt; PositioningMode:
+    &#34;&#34;&#34;:return:  the positioning mode of the machine currently. &#34;&#34;&#34;
+    return PositioningMode(self.interface(&#39;state.GetPositioningMode&#39;, 0))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getScreenPosition"><code class="name flex">
+<span>def <span class="ident">getScreenPosition</span></span>(<span>self) ‑> tuple</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: the position of the CNC application.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getScreenPosition(self) -&gt; tuple:
+    &#34;&#34;&#34;:return: the position of the CNC application. &#34;&#34;&#34;
+    return self.interface(&#39;state.GetScreenPosition&#39;, 0, 0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getScreenSize"><code class="name flex">
+<span>def <span class="ident">getScreenSize</span></span>(<span>self) ‑> tuple</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: the screen size of the CNC application.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getScreenSize(self) -&gt; tuple:
+    &#34;&#34;&#34;:return: the screen size of the CNC application. &#34;&#34;&#34;
+    return self.interface(&#39;state.GetScreenSize&#39;, 0, 0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getSpindleSpeed"><code class="name flex">
+<span>def <span class="ident">getSpindleSpeed</span></span>(<span>self) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return:
+the current spindle speed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getSpindleSpeed(self) -&gt; float:
+    &#34;&#34;&#34;:return:  the current spindle speed. &#34;&#34;&#34;
+    return self.interface(&#39;state.GetSpindleSpeed&#39;, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getUnitsOfMeasureDefault"><code class="name flex">
+<span>def <span class="ident">getUnitsOfMeasureDefault</span></span>(<span>self) ‑> <a title="cnc_centroid_skinning.State.UnitsOfMeasure" href="#cnc_centroid_skinning.State.UnitsOfMeasure">UnitsOfMeasure</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: s the default units of measure from CNC12 (Imperial or Metric)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getUnitsOfMeasureDefault(self) -&gt; UnitsOfMeasure:
+    &#34;&#34;&#34;:return: s the default units of measure from CNC12 (Imperial or Metric) &#34;&#34;&#34;
+    return UnitsOfMeasure(self.interface(&#39;state.GetUnitsOfMeasureDefault&#39;, 0))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.getUnitsOfMeasureDro"><code class="name flex">
+<span>def <span class="ident">getUnitsOfMeasureDro</span></span>(<span>self) ‑> <a title="cnc_centroid_skinning.State.UnitsOfMeasure" href="#cnc_centroid_skinning.State.UnitsOfMeasure">UnitsOfMeasure</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: s the dro units of measure from CNC12 (Imperial or Metric)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getUnitsOfMeasureDro(self) -&gt; UnitsOfMeasure:
+    &#34;&#34;&#34;:return: s the dro units of measure from CNC12 (Imperial or Metric) &#34;&#34;&#34;
+    return UnitsOfMeasure(self.interface(&#39;state.GetUnitsOfMeasureDro&#39;, 0))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.setHighRangeSpindleSpeed"><code class="name flex">
+<span>def <span class="ident">setHighRangeSpindleSpeed</span></span>(<span>self, max_or_min: <a title="cnc_centroid_skinning.State.Value" href="#cnc_centroid_skinning.State.Value">Value</a>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the current Spindle Speed High Range maximum or minimum value.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setHighRangeSpindleSpeed(self, max_or_min: Value) -&gt; float:
+    &#34;&#34;&#34;Set the current Spindle Speed High Range maximum or minimum value. &#34;&#34;&#34;
+    return self.interface(&#39;state.SetHighRangeSpindleSpeed&#39;, max_or_min.value, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.setImperialUnits"><code class="name flex">
+<span>def <span class="ident">setImperialUnits</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the default uniot of measure to inch units.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setImperialUnits(self):
+    &#34;&#34;&#34;Set the default uniot of measure to inch units. &#34;&#34;&#34;
+    return self.interface(&#39;state.SetImperialUnits&#39;)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.setMachineHomeAtPowerUp"><code class="name flex">
+<span>def <span class="ident">setMachineHomeAtPowerUp</span></span>(<span>self, homing_type: <a title="cnc_centroid_skinning.State.HomingType" href="#cnc_centroid_skinning.State.HomingType">HomingType</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the machine homing type at power up.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setMachineHomeAtPowerUp(self, homing_type: HomingType):
+    &#34;&#34;&#34;Set the machine homing type at power up. &#34;&#34;&#34;
+    return self.interface(&#39;state.SetMachineHomeAtPowerUp&#39;, homing_type.value)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.State.State.setMetricUnits"><code class="name flex">
+<span>def <span class="ident">setMetricUnits</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the default unit of measure to metric units</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setMetricUnits(self):
+    &#34;&#34;&#34;Set the default unit of measure to metric units &#34;&#34;&#34;
+    return self.interface(&#39;state.SetMetricUnits&#39;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="cnc_centroid_skinning.State.UnitsOfMeasure"><code class="flex name class">
+<span>class <span class="ident">UnitsOfMeasure</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enumerates the different units of measure, namely, Imperial and Metric</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UnitsOfMeasure(IntEnum):
+    &#34;&#34;&#34;Enumerates the different units of measure, namely, Imperial and Metric &#34;&#34;&#34;
+    INCH_UNITS = 0
+    &#34;&#34;&#34;Inch Units (G20)&#34;&#34;&#34;
+    METRIC_UNITS = 1
+    &#34;&#34;&#34;Metric Units (G21)&#34;&#34;&#34;
+    UNKNOWN = 2
+    &#34;&#34;&#34;Indicates a failure to communicate with CNC12&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="cnc_centroid_skinning.State.UnitsOfMeasure.INCH_UNITS"><code class="name">var <span class="ident">INCH_UNITS</span></code></dt>
+<dd>
+<div class="desc"><p>Inch Units (G20)</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.UnitsOfMeasure.METRIC_UNITS"><code class="name">var <span class="ident">METRIC_UNITS</span></code></dt>
+<dd>
+<div class="desc"><p>Metric Units (G21)</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.UnitsOfMeasure.UNKNOWN"><code class="name">var <span class="ident">UNKNOWN</span></code></dt>
+<dd>
+<div class="desc"><p>Indicates a failure to communicate with CNC12</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="cnc_centroid_skinning.State.Value"><code class="flex name class">
+<span>class <span class="ident">Value</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enumerates different values, maximum or minimum</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Value(IntEnum):
+    &#34;&#34;&#34;Enumerates different values, maximum or minimum &#34;&#34;&#34;
+    MAX = 0
+    &#34;&#34;&#34;Maximum Value&#34;&#34;&#34;
+    MIN = 1
+
+    &#34;&#34;&#34;Minimum Value&#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="cnc_centroid_skinning.State.Value.MAX"><code class="name">var <span class="ident">MAX</span></code></dt>
+<dd>
+<div class="desc"><p>Maximum Value</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.State.Value.MIN"><code class="name">var <span class="ident">MIN</span></code></dt>
+<dd>
+<div class="desc"><p>Minimum Value</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="cnc_centroid_skinning" href="index.html">cnc_centroid_skinning</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="cnc_centroid_skinning.State.CircularInterpolationDirection" href="#cnc_centroid_skinning.State.CircularInterpolationDirection">CircularInterpolationDirection</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.State.CircularInterpolationDirection.CLOCKWISE" href="#cnc_centroid_skinning.State.CircularInterpolationDirection.CLOCKWISE">CLOCKWISE</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.CircularInterpolationDirection.COUNTERCLOCKWISE" href="#cnc_centroid_skinning.State.CircularInterpolationDirection.COUNTERCLOCKWISE">COUNTERCLOCKWISE</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cnc_centroid_skinning.State.CircularInterpolationPlane" href="#cnc_centroid_skinning.State.CircularInterpolationPlane">CircularInterpolationPlane</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.State.CircularInterpolationPlane.XY" href="#cnc_centroid_skinning.State.CircularInterpolationPlane.XY">XY</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.CircularInterpolationPlane.YZ" href="#cnc_centroid_skinning.State.CircularInterpolationPlane.YZ">YZ</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.CircularInterpolationPlane.ZX" href="#cnc_centroid_skinning.State.CircularInterpolationPlane.ZX">ZX</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cnc_centroid_skinning.State.FeedHoldState" href="#cnc_centroid_skinning.State.FeedHoldState">FeedHoldState</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.State.FeedHoldState.FEED_HOLD_OFF" href="#cnc_centroid_skinning.State.FeedHoldState.FEED_HOLD_OFF">FEED_HOLD_OFF</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.FeedHoldState.FEED_HOLD_ON" href="#cnc_centroid_skinning.State.FeedHoldState.FEED_HOLD_ON">FEED_HOLD_ON</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.FeedHoldState.UNKNOWN" href="#cnc_centroid_skinning.State.FeedHoldState.UNKNOWN">UNKNOWN</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cnc_centroid_skinning.State.HomingType" href="#cnc_centroid_skinning.State.HomingType">HomingType</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.State.HomingType.HOMESWITCH" href="#cnc_centroid_skinning.State.HomingType.HOMESWITCH">HOMESWITCH</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.HomingType.JOG" href="#cnc_centroid_skinning.State.HomingType.JOG">JOG</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.HomingType.REFMARKHS" href="#cnc_centroid_skinning.State.HomingType.REFMARKHS">REFMARKHS</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.HomingType.UNKNOWN" href="#cnc_centroid_skinning.State.HomingType.UNKNOWN">UNKNOWN</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cnc_centroid_skinning.State.MdiState" href="#cnc_centroid_skinning.State.MdiState">MdiState</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.State.MdiState.IN_MDI" href="#cnc_centroid_skinning.State.MdiState.IN_MDI">IN_MDI</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.MdiState.NOT_IN_MDI" href="#cnc_centroid_skinning.State.MdiState.NOT_IN_MDI">NOT_IN_MDI</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.MdiState.UNKNOWN" href="#cnc_centroid_skinning.State.MdiState.UNKNOWN">UNKNOWN</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cnc_centroid_skinning.State.MoveMode" href="#cnc_centroid_skinning.State.MoveMode">MoveMode</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.State.MoveMode.CCW_ARC" href="#cnc_centroid_skinning.State.MoveMode.CCW_ARC">CCW_ARC</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.MoveMode.CW_ARC" href="#cnc_centroid_skinning.State.MoveMode.CW_ARC">CW_ARC</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.MoveMode.LINEAR" href="#cnc_centroid_skinning.State.MoveMode.LINEAR">LINEAR</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.MoveMode.RAPID" href="#cnc_centroid_skinning.State.MoveMode.RAPID">RAPID</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.MoveMode.UNKNOWN" href="#cnc_centroid_skinning.State.MoveMode.UNKNOWN">UNKNOWN</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cnc_centroid_skinning.State.PositioningMode" href="#cnc_centroid_skinning.State.PositioningMode">PositioningMode</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.State.PositioningMode.ABSOLUTE" href="#cnc_centroid_skinning.State.PositioningMode.ABSOLUTE">ABSOLUTE</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.PositioningMode.INCREMENTAL" href="#cnc_centroid_skinning.State.PositioningMode.INCREMENTAL">INCREMENTAL</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.PositioningMode.UNKNOWN" href="#cnc_centroid_skinning.State.PositioningMode.UNKNOWN">UNKNOWN</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cnc_centroid_skinning.State.State" href="#cnc_centroid_skinning.State.State">State</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.State.State.getAcornBoardRevision" href="#cnc_centroid_skinning.State.State.getAcornBoardRevision">getAcornBoardRevision</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getActiveGCodes" href="#cnc_centroid_skinning.State.State.getActiveGCodes">getActiveGCodes</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getCurrentLocalPosition" href="#cnc_centroid_skinning.State.State.getCurrentLocalPosition">getCurrentLocalPosition</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getCurrentMachinePosition" href="#cnc_centroid_skinning.State.State.getCurrentMachinePosition">getCurrentMachinePosition</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getFeedHoldState" href="#cnc_centroid_skinning.State.State.getFeedHoldState">getFeedHoldState</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getFeedrate" href="#cnc_centroid_skinning.State.State.getFeedrate">getFeedrate</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getFeedrateOverride" href="#cnc_centroid_skinning.State.State.getFeedrateOverride">getFeedrateOverride</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getGCodeDisplay" href="#cnc_centroid_skinning.State.State.getGCodeDisplay">getGCodeDisplay</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getHighRangeSpindleSpeed" href="#cnc_centroid_skinning.State.State.getHighRangeSpindleSpeed">getHighRangeSpindleSpeed</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getJobNameCurrent" href="#cnc_centroid_skinning.State.State.getJobNameCurrent">getJobNameCurrent</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getMachineHomeAtPowerUp" href="#cnc_centroid_skinning.State.State.getMachineHomeAtPowerUp">getMachineHomeAtPowerUp</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getMdiState" href="#cnc_centroid_skinning.State.State.getMdiState">getMdiState</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getMonitorSize" href="#cnc_centroid_skinning.State.State.getMonitorSize">getMonitorSize</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getMoveMode" href="#cnc_centroid_skinning.State.State.getMoveMode">getMoveMode</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getPositioningMode" href="#cnc_centroid_skinning.State.State.getPositioningMode">getPositioningMode</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getScreenPosition" href="#cnc_centroid_skinning.State.State.getScreenPosition">getScreenPosition</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getScreenSize" href="#cnc_centroid_skinning.State.State.getScreenSize">getScreenSize</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getSpindleSpeed" href="#cnc_centroid_skinning.State.State.getSpindleSpeed">getSpindleSpeed</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getUnitsOfMeasureDefault" href="#cnc_centroid_skinning.State.State.getUnitsOfMeasureDefault">getUnitsOfMeasureDefault</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.getUnitsOfMeasureDro" href="#cnc_centroid_skinning.State.State.getUnitsOfMeasureDro">getUnitsOfMeasureDro</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.setHighRangeSpindleSpeed" href="#cnc_centroid_skinning.State.State.setHighRangeSpindleSpeed">setHighRangeSpindleSpeed</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.setImperialUnits" href="#cnc_centroid_skinning.State.State.setImperialUnits">setImperialUnits</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.setMachineHomeAtPowerUp" href="#cnc_centroid_skinning.State.State.setMachineHomeAtPowerUp">setMachineHomeAtPowerUp</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.State.setMetricUnits" href="#cnc_centroid_skinning.State.State.setMetricUnits">setMetricUnits</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cnc_centroid_skinning.State.UnitsOfMeasure" href="#cnc_centroid_skinning.State.UnitsOfMeasure">UnitsOfMeasure</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.State.UnitsOfMeasure.INCH_UNITS" href="#cnc_centroid_skinning.State.UnitsOfMeasure.INCH_UNITS">INCH_UNITS</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.UnitsOfMeasure.METRIC_UNITS" href="#cnc_centroid_skinning.State.UnitsOfMeasure.METRIC_UNITS">METRIC_UNITS</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.UnitsOfMeasure.UNKNOWN" href="#cnc_centroid_skinning.State.UnitsOfMeasure.UNKNOWN">UNKNOWN</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cnc_centroid_skinning.State.Value" href="#cnc_centroid_skinning.State.Value">Value</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.State.Value.MAX" href="#cnc_centroid_skinning.State.Value.MAX">MAX</a></code></li>
+<li><code><a title="cnc_centroid_skinning.State.Value.MIN" href="#cnc_centroid_skinning.State.Value.MIN">MIN</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.4</a>.</p>
+</footer>
+</body>
+</html>

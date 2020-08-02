@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.4" />
+<title>cnc_centroid_skinning.Axis API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>cnc_centroid_skinning.Axis</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from builtins import float
+from enum import IntEnum, unique
+
+from .cncSkinningInterface import CncSkinningInterface
+# noinspection PyUnresolvedReferences
+from System import String, Char, Int32, Double
+
+
+
+@unique
+class Axes(IntEnum):
+    &#34;&#34;&#34;
+    A list of axes
+    &#34;&#34;&#34;
+    AXIS_1 = 0
+    AXIS_2 = 1
+    AXIS_3 = 2
+    AXIS_4 = 3
+    AXIS_5 = 4
+    AXIS_6 = 5
+    AXIS_7 = 6
+    AXIS_8 = 7
+
+@unique
+class Rate(IntEnum):
+    MAX = 0
+    &#34;&#34;&#34;
+    Max rate
+    &#34;&#34;&#34;
+    SLOW_JOG = 1
+    &#34;&#34;&#34;
+    Slow Jog Rate
+    &#34;&#34;&#34;
+    FAST_JOG = 2
+    &#34;&#34;&#34;
+    ACORN ONLY Fast Jog Rate.
+    &#34;&#34;&#34;
+    FAST_JOG_MINUS = 3
+    &#34;&#34;&#34;
+    Fast Jog the negative direction
+    &#34;&#34;&#34;
+    FAST_JOG_PLUS = 4
+    &#34;&#34;&#34;
+    Fast jog the positive direction
+    &#34;&#34;&#34;
+
+
+@unique
+class Direction(IntEnum):
+    PLUS = 0
+    &#34;&#34;&#34;
+    Plus(positive)      direction.
+    &#34;&#34;&#34;
+    MINUS = 1
+    &#34;&#34;&#34;
+    Minus(negative)     direction.
+    &#34;&#34;&#34;
+
+
+class Axis:
+    &#34;&#34;&#34;Class for setting and getting axis info. &#34;&#34;&#34;
+    def __init__(self, interface: CncSkinningInterface):
+        self.interface = interface
+
+    def getAccelTime(self, axis: Axes) -&gt; float:
+        &#34;&#34;&#34;
+        Get the accel time for a given axis.
+        :param axis: given axis
+        :return: a time
+        &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetAccelTime&#39;, axis.value, 0.0)[1]
+
+    def setAccelTime(self, axis: Axes, time: float):
+        &#34;&#34;&#34;Set the acceleration time for the given axis. &#34;&#34;&#34;
+        assert time &gt; 0
+        return self.interface(&#39;axis.SetAccelTime&#39;, axis.value, time)
+
+    def getDeadstartVelocity(self, axis: Axes) -&gt; float:
+        &#34;&#34;&#34;:return: Get the deadstart velocity for a given axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetDeadstartVelocity&#39;, axis.value, 0.0)
+
+    def setDeadstartVelocity(self, axis: Axes, velocity: float):
+        &#34;&#34;&#34;Set the deadstart velocity for the given axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetDeadstartVelocity&#39;, axis.value, float(velocity))
+
+    def getDeltaVMax(self, axis: Axes) -&gt; float:
+        &#34;&#34;&#34;:return: Get the delta vmax for the specified axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetDeltaVMax&#39;, axis.value, 0.0)
+
+    def setDeltaVMax(self, axis: Axes, delta_v_max: float):
+        &#34;&#34;&#34;Set the delta vmax for the specified axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetDeltaVMax&#39;, axis.value, float(delta_v_max))
+
+    def getRate(self, axis: Axes, jog_rate: Rate) -&gt; float:
+        &#34;&#34;&#34;:return: Get rate for a given axis &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetRate&#39;, axis.value, jog_rate.value, 0.0)
+
+    def getLabel(self, axis: Axes) -&gt; str:
+        &#34;&#34;&#34;Get the label for the given axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetLabel&#39;, axis.value, 0)
+
+    def getLashComp(self, axis: Axes) -&gt; float:
+        &#34;&#34;&#34;:return: Get the lash comp for an axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetLashComp&#39;, axis.value, 0.0)
+
+    def getScrewPitch(self, axis: Axes) -&gt; float:
+        &#34;&#34;&#34;:return: Get the screw pitch for an axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetScrewPitch&#39;, axis.value, 0.0)
+
+    def setLabel(self, axis: Axes, label: str):
+        &#34;&#34;&#34;Set the label for a given axis. &#34;&#34;&#34;
+        assert len(label) == 1
+        return self.interface(&#39;axis.SetLabel&#39;, axis.value, label[0])
+
+    def setLashComp(self, axis: Axes, value: float):
+        &#34;&#34;&#34;Set the lash comp for a given axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetLashComp&#39;, axis.value, float(value))
+
+    def setRate(self, axis: Axes, rate_type: Rate, rate: float):
+        &#34;&#34;&#34;Set the desired rate for the given axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetRate&#39;, axis.value, rate_type.value, float(rate))
+
+    def SetScrewPitch(self, axis: Axes, value: float):
+        &#34;&#34;&#34;Set the screw pitch for a given axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetScrewPitch&#39;, axis.value, float(value))
+
+    def getLimit(self, axis: Axes, direction: Direction) -&gt; float:
+        &#34;&#34;&#34;:return: Gets the axis limits for a specified axis and direction. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetLimit&#39;, axis.value, direction.value, 0.0)
+
+    def setLimit(self, axis: Axes, direction: Direction, value: float):
+        &#34;&#34;&#34;Set the axis limit for a specified axis and direction. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetLimit&#39;, axis.value, direction.value, float(value))
+
+    def getHomeLimit(self, axis: Axes, direction: Direction) -&gt; float:
+        &#34;&#34;&#34;:return: Get the axis home limit for a specified axis and direction. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetHomeLimit&#39;, axis.value, direction.value, 0.0)
+
+    def setHomeLimit(self, axis: Axes, direction: Direction, value: float):
+        &#34;&#34;&#34;Set the axis home limit for a specified axis and direction. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetHomeLimit&#39;, axis.value, direction.value, float(value))
+
+    def getAxisReversal(self, axis: Axes) -&gt; bool:
+        &#34;&#34;&#34;:return: Get whether the axis is reversed or not. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetAxisReversal&#39;, axis.value, False)
+
+    def setAxisReversal(self, axis: Axes, is_axis_reversed: bool):
+        &#34;&#34;&#34;Set whether the axis is reversed or not. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetAxisReversal&#39;, axis.value, bool(is_axis_reversed))
+
+    def getCountsPerTurn(self, axis: Axes) -&gt; float:
+        &#34;&#34;&#34;:return: Get motor counts per turn (i.e. steps per rev) &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetCountsPerTurn&#39;, axis.value, 0.0)
+
+    def setCountsPerTurn(self, axis: Axes, value: float):
+        &#34;&#34;&#34;Set motor counts per turn (i.e. steps per rev) &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetCountsPerTurn&#39;, axis.value, float(value))
+
+    def getTravelLimit(self, axis: Axes, direction: Direction) -&gt; float:
+        &#34;&#34;&#34;:return: Get the travel limit for a specified axis a specified direction. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetTravelLimit&#39;, axis.value, direction.value, 0.0)
+
+    def setTravelLimit(self, axis: Axes, direction: Direction, value: float):
+        &#34;&#34;&#34;Set a travel limit for a specified axis a specified direction. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetTravelLimit&#39;, axis.value, direction.value, float(value))</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="cnc_centroid_skinning.Axis.Axes"><code class="flex name class">
+<span>class <span class="ident">Axes</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A list of axes</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Axes(IntEnum):
+    &#34;&#34;&#34;
+    A list of axes
+    &#34;&#34;&#34;
+    AXIS_1 = 0
+    AXIS_2 = 1
+    AXIS_3 = 2
+    AXIS_4 = 3
+    AXIS_5 = 4
+    AXIS_6 = 5
+    AXIS_7 = 6
+    AXIS_8 = 7</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="cnc_centroid_skinning.Axis.Axes.AXIS_1"><code class="name">var <span class="ident">AXIS_1</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axes.AXIS_2"><code class="name">var <span class="ident">AXIS_2</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axes.AXIS_3"><code class="name">var <span class="ident">AXIS_3</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axes.AXIS_4"><code class="name">var <span class="ident">AXIS_4</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axes.AXIS_5"><code class="name">var <span class="ident">AXIS_5</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axes.AXIS_6"><code class="name">var <span class="ident">AXIS_6</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axes.AXIS_7"><code class="name">var <span class="ident">AXIS_7</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axes.AXIS_8"><code class="name">var <span class="ident">AXIS_8</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis"><code class="flex name class">
+<span>class <span class="ident">Axis</span></span>
+<span>(</span><span>interface: <a title="cnc_centroid_skinning.cncSkinningInterface.CncSkinningInterface" href="cncSkinningInterface.html#cnc_centroid_skinning.cncSkinningInterface.CncSkinningInterface">CncSkinningInterface</a>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class for setting and getting axis info.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Axis:
+    &#34;&#34;&#34;Class for setting and getting axis info. &#34;&#34;&#34;
+    def __init__(self, interface: CncSkinningInterface):
+        self.interface = interface
+
+    def getAccelTime(self, axis: Axes) -&gt; float:
+        &#34;&#34;&#34;
+        Get the accel time for a given axis.
+        :param axis: given axis
+        :return: a time
+        &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetAccelTime&#39;, axis.value, 0.0)[1]
+
+    def setAccelTime(self, axis: Axes, time: float):
+        &#34;&#34;&#34;Set the acceleration time for the given axis. &#34;&#34;&#34;
+        assert time &gt; 0
+        return self.interface(&#39;axis.SetAccelTime&#39;, axis.value, time)
+
+    def getDeadstartVelocity(self, axis: Axes) -&gt; float:
+        &#34;&#34;&#34;:return: Get the deadstart velocity for a given axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetDeadstartVelocity&#39;, axis.value, 0.0)
+
+    def setDeadstartVelocity(self, axis: Axes, velocity: float):
+        &#34;&#34;&#34;Set the deadstart velocity for the given axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetDeadstartVelocity&#39;, axis.value, float(velocity))
+
+    def getDeltaVMax(self, axis: Axes) -&gt; float:
+        &#34;&#34;&#34;:return: Get the delta vmax for the specified axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetDeltaVMax&#39;, axis.value, 0.0)
+
+    def setDeltaVMax(self, axis: Axes, delta_v_max: float):
+        &#34;&#34;&#34;Set the delta vmax for the specified axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetDeltaVMax&#39;, axis.value, float(delta_v_max))
+
+    def getRate(self, axis: Axes, jog_rate: Rate) -&gt; float:
+        &#34;&#34;&#34;:return: Get rate for a given axis &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetRate&#39;, axis.value, jog_rate.value, 0.0)
+
+    def getLabel(self, axis: Axes) -&gt; str:
+        &#34;&#34;&#34;Get the label for the given axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetLabel&#39;, axis.value, 0)
+
+    def getLashComp(self, axis: Axes) -&gt; float:
+        &#34;&#34;&#34;:return: Get the lash comp for an axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetLashComp&#39;, axis.value, 0.0)
+
+    def getScrewPitch(self, axis: Axes) -&gt; float:
+        &#34;&#34;&#34;:return: Get the screw pitch for an axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetScrewPitch&#39;, axis.value, 0.0)
+
+    def setLabel(self, axis: Axes, label: str):
+        &#34;&#34;&#34;Set the label for a given axis. &#34;&#34;&#34;
+        assert len(label) == 1
+        return self.interface(&#39;axis.SetLabel&#39;, axis.value, label[0])
+
+    def setLashComp(self, axis: Axes, value: float):
+        &#34;&#34;&#34;Set the lash comp for a given axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetLashComp&#39;, axis.value, float(value))
+
+    def setRate(self, axis: Axes, rate_type: Rate, rate: float):
+        &#34;&#34;&#34;Set the desired rate for the given axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetRate&#39;, axis.value, rate_type.value, float(rate))
+
+    def SetScrewPitch(self, axis: Axes, value: float):
+        &#34;&#34;&#34;Set the screw pitch for a given axis. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetScrewPitch&#39;, axis.value, float(value))
+
+    def getLimit(self, axis: Axes, direction: Direction) -&gt; float:
+        &#34;&#34;&#34;:return: Gets the axis limits for a specified axis and direction. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetLimit&#39;, axis.value, direction.value, 0.0)
+
+    def setLimit(self, axis: Axes, direction: Direction, value: float):
+        &#34;&#34;&#34;Set the axis limit for a specified axis and direction. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetLimit&#39;, axis.value, direction.value, float(value))
+
+    def getHomeLimit(self, axis: Axes, direction: Direction) -&gt; float:
+        &#34;&#34;&#34;:return: Get the axis home limit for a specified axis and direction. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetHomeLimit&#39;, axis.value, direction.value, 0.0)
+
+    def setHomeLimit(self, axis: Axes, direction: Direction, value: float):
+        &#34;&#34;&#34;Set the axis home limit for a specified axis and direction. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetHomeLimit&#39;, axis.value, direction.value, float(value))
+
+    def getAxisReversal(self, axis: Axes) -&gt; bool:
+        &#34;&#34;&#34;:return: Get whether the axis is reversed or not. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetAxisReversal&#39;, axis.value, False)
+
+    def setAxisReversal(self, axis: Axes, is_axis_reversed: bool):
+        &#34;&#34;&#34;Set whether the axis is reversed or not. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetAxisReversal&#39;, axis.value, bool(is_axis_reversed))
+
+    def getCountsPerTurn(self, axis: Axes) -&gt; float:
+        &#34;&#34;&#34;:return: Get motor counts per turn (i.e. steps per rev) &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetCountsPerTurn&#39;, axis.value, 0.0)
+
+    def setCountsPerTurn(self, axis: Axes, value: float):
+        &#34;&#34;&#34;Set motor counts per turn (i.e. steps per rev) &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetCountsPerTurn&#39;, axis.value, float(value))
+
+    def getTravelLimit(self, axis: Axes, direction: Direction) -&gt; float:
+        &#34;&#34;&#34;:return: Get the travel limit for a specified axis a specified direction. &#34;&#34;&#34;
+        return self.interface(&#39;axis.GetTravelLimit&#39;, axis.value, direction.value, 0.0)
+
+    def setTravelLimit(self, axis: Axes, direction: Direction, value: float):
+        &#34;&#34;&#34;Set a travel limit for a specified axis a specified direction. &#34;&#34;&#34;
+        return self.interface(&#39;axis.SetTravelLimit&#39;, axis.value, direction.value, float(value))</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="cnc_centroid_skinning.Axis.Axis.SetScrewPitch"><code class="name flex">
+<span>def <span class="ident">SetScrewPitch</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, value: float)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the screw pitch for a given axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def SetScrewPitch(self, axis: Axes, value: float):
+    &#34;&#34;&#34;Set the screw pitch for a given axis. &#34;&#34;&#34;
+    return self.interface(&#39;axis.SetScrewPitch&#39;, axis.value, float(value))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.getAccelTime"><code class="name flex">
+<span>def <span class="ident">getAccelTime</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the accel time for a given axis.
+:param axis: given axis
+:return: a time</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getAccelTime(self, axis: Axes) -&gt; float:
+    &#34;&#34;&#34;
+    Get the accel time for a given axis.
+    :param axis: given axis
+    :return: a time
+    &#34;&#34;&#34;
+    return self.interface(&#39;axis.GetAccelTime&#39;, axis.value, 0.0)[1]</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.getAxisReversal"><code class="name flex">
+<span>def <span class="ident">getAxisReversal</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>) ‑> bool</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: Get whether the axis is reversed or not.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getAxisReversal(self, axis: Axes) -&gt; bool:
+    &#34;&#34;&#34;:return: Get whether the axis is reversed or not. &#34;&#34;&#34;
+    return self.interface(&#39;axis.GetAxisReversal&#39;, axis.value, False)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.getCountsPerTurn"><code class="name flex">
+<span>def <span class="ident">getCountsPerTurn</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: Get motor counts per turn (i.e. steps per rev)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getCountsPerTurn(self, axis: Axes) -&gt; float:
+    &#34;&#34;&#34;:return: Get motor counts per turn (i.e. steps per rev) &#34;&#34;&#34;
+    return self.interface(&#39;axis.GetCountsPerTurn&#39;, axis.value, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.getDeadstartVelocity"><code class="name flex">
+<span>def <span class="ident">getDeadstartVelocity</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: Get the deadstart velocity for a given axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDeadstartVelocity(self, axis: Axes) -&gt; float:
+    &#34;&#34;&#34;:return: Get the deadstart velocity for a given axis. &#34;&#34;&#34;
+    return self.interface(&#39;axis.GetDeadstartVelocity&#39;, axis.value, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.getDeltaVMax"><code class="name flex">
+<span>def <span class="ident">getDeltaVMax</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: Get the delta vmax for the specified axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDeltaVMax(self, axis: Axes) -&gt; float:
+    &#34;&#34;&#34;:return: Get the delta vmax for the specified axis. &#34;&#34;&#34;
+    return self.interface(&#39;axis.GetDeltaVMax&#39;, axis.value, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.getHomeLimit"><code class="name flex">
+<span>def <span class="ident">getHomeLimit</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, direction: <a title="cnc_centroid_skinning.Axis.Direction" href="#cnc_centroid_skinning.Axis.Direction">Direction</a>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: Get the axis home limit for a specified axis and direction.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getHomeLimit(self, axis: Axes, direction: Direction) -&gt; float:
+    &#34;&#34;&#34;:return: Get the axis home limit for a specified axis and direction. &#34;&#34;&#34;
+    return self.interface(&#39;axis.GetHomeLimit&#39;, axis.value, direction.value, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.getLabel"><code class="name flex">
+<span>def <span class="ident">getLabel</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>) ‑> str</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the label for the given axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getLabel(self, axis: Axes) -&gt; str:
+    &#34;&#34;&#34;Get the label for the given axis. &#34;&#34;&#34;
+    return self.interface(&#39;axis.GetLabel&#39;, axis.value, 0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.getLashComp"><code class="name flex">
+<span>def <span class="ident">getLashComp</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: Get the lash comp for an axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getLashComp(self, axis: Axes) -&gt; float:
+    &#34;&#34;&#34;:return: Get the lash comp for an axis. &#34;&#34;&#34;
+    return self.interface(&#39;axis.GetLashComp&#39;, axis.value, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.getLimit"><code class="name flex">
+<span>def <span class="ident">getLimit</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, direction: <a title="cnc_centroid_skinning.Axis.Direction" href="#cnc_centroid_skinning.Axis.Direction">Direction</a>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: Gets the axis limits for a specified axis and direction.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getLimit(self, axis: Axes, direction: Direction) -&gt; float:
+    &#34;&#34;&#34;:return: Gets the axis limits for a specified axis and direction. &#34;&#34;&#34;
+    return self.interface(&#39;axis.GetLimit&#39;, axis.value, direction.value, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.getRate"><code class="name flex">
+<span>def <span class="ident">getRate</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, jog_rate: <a title="cnc_centroid_skinning.Axis.Rate" href="#cnc_centroid_skinning.Axis.Rate">Rate</a>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: Get rate for a given axis</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getRate(self, axis: Axes, jog_rate: Rate) -&gt; float:
+    &#34;&#34;&#34;:return: Get rate for a given axis &#34;&#34;&#34;
+    return self.interface(&#39;axis.GetRate&#39;, axis.value, jog_rate.value, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.getScrewPitch"><code class="name flex">
+<span>def <span class="ident">getScrewPitch</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: Get the screw pitch for an axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getScrewPitch(self, axis: Axes) -&gt; float:
+    &#34;&#34;&#34;:return: Get the screw pitch for an axis. &#34;&#34;&#34;
+    return self.interface(&#39;axis.GetScrewPitch&#39;, axis.value, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.getTravelLimit"><code class="name flex">
+<span>def <span class="ident">getTravelLimit</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, direction: <a title="cnc_centroid_skinning.Axis.Direction" href="#cnc_centroid_skinning.Axis.Direction">Direction</a>) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>:return: Get the travel limit for a specified axis a specified direction.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getTravelLimit(self, axis: Axes, direction: Direction) -&gt; float:
+    &#34;&#34;&#34;:return: Get the travel limit for a specified axis a specified direction. &#34;&#34;&#34;
+    return self.interface(&#39;axis.GetTravelLimit&#39;, axis.value, direction.value, 0.0)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.setAccelTime"><code class="name flex">
+<span>def <span class="ident">setAccelTime</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, time: float)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the acceleration time for the given axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setAccelTime(self, axis: Axes, time: float):
+    &#34;&#34;&#34;Set the acceleration time for the given axis. &#34;&#34;&#34;
+    assert time &gt; 0
+    return self.interface(&#39;axis.SetAccelTime&#39;, axis.value, time)</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.setAxisReversal"><code class="name flex">
+<span>def <span class="ident">setAxisReversal</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, is_axis_reversed: bool)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set whether the axis is reversed or not.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setAxisReversal(self, axis: Axes, is_axis_reversed: bool):
+    &#34;&#34;&#34;Set whether the axis is reversed or not. &#34;&#34;&#34;
+    return self.interface(&#39;axis.SetAxisReversal&#39;, axis.value, bool(is_axis_reversed))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.setCountsPerTurn"><code class="name flex">
+<span>def <span class="ident">setCountsPerTurn</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, value: float)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set motor counts per turn (i.e. steps per rev)</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setCountsPerTurn(self, axis: Axes, value: float):
+    &#34;&#34;&#34;Set motor counts per turn (i.e. steps per rev) &#34;&#34;&#34;
+    return self.interface(&#39;axis.SetCountsPerTurn&#39;, axis.value, float(value))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.setDeadstartVelocity"><code class="name flex">
+<span>def <span class="ident">setDeadstartVelocity</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, velocity: float)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the deadstart velocity for the given axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setDeadstartVelocity(self, axis: Axes, velocity: float):
+    &#34;&#34;&#34;Set the deadstart velocity for the given axis. &#34;&#34;&#34;
+    return self.interface(&#39;axis.SetDeadstartVelocity&#39;, axis.value, float(velocity))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.setDeltaVMax"><code class="name flex">
+<span>def <span class="ident">setDeltaVMax</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, delta_v_max: float)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the delta vmax for the specified axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setDeltaVMax(self, axis: Axes, delta_v_max: float):
+    &#34;&#34;&#34;Set the delta vmax for the specified axis. &#34;&#34;&#34;
+    return self.interface(&#39;axis.SetDeltaVMax&#39;, axis.value, float(delta_v_max))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.setHomeLimit"><code class="name flex">
+<span>def <span class="ident">setHomeLimit</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, direction: <a title="cnc_centroid_skinning.Axis.Direction" href="#cnc_centroid_skinning.Axis.Direction">Direction</a>, value: float)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the axis home limit for a specified axis and direction.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setHomeLimit(self, axis: Axes, direction: Direction, value: float):
+    &#34;&#34;&#34;Set the axis home limit for a specified axis and direction. &#34;&#34;&#34;
+    return self.interface(&#39;axis.SetHomeLimit&#39;, axis.value, direction.value, float(value))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.setLabel"><code class="name flex">
+<span>def <span class="ident">setLabel</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, label: str)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the label for a given axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setLabel(self, axis: Axes, label: str):
+    &#34;&#34;&#34;Set the label for a given axis. &#34;&#34;&#34;
+    assert len(label) == 1
+    return self.interface(&#39;axis.SetLabel&#39;, axis.value, label[0])</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.setLashComp"><code class="name flex">
+<span>def <span class="ident">setLashComp</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, value: float)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the lash comp for a given axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setLashComp(self, axis: Axes, value: float):
+    &#34;&#34;&#34;Set the lash comp for a given axis. &#34;&#34;&#34;
+    return self.interface(&#39;axis.SetLashComp&#39;, axis.value, float(value))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.setLimit"><code class="name flex">
+<span>def <span class="ident">setLimit</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, direction: <a title="cnc_centroid_skinning.Axis.Direction" href="#cnc_centroid_skinning.Axis.Direction">Direction</a>, value: float)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the axis limit for a specified axis and direction.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setLimit(self, axis: Axes, direction: Direction, value: float):
+    &#34;&#34;&#34;Set the axis limit for a specified axis and direction. &#34;&#34;&#34;
+    return self.interface(&#39;axis.SetLimit&#39;, axis.value, direction.value, float(value))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.setRate"><code class="name flex">
+<span>def <span class="ident">setRate</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, rate_type: <a title="cnc_centroid_skinning.Axis.Rate" href="#cnc_centroid_skinning.Axis.Rate">Rate</a>, rate: float)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set the desired rate for the given axis.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setRate(self, axis: Axes, rate_type: Rate, rate: float):
+    &#34;&#34;&#34;Set the desired rate for the given axis. &#34;&#34;&#34;
+    return self.interface(&#39;axis.SetRate&#39;, axis.value, rate_type.value, float(rate))</code></pre>
+</details>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Axis.setTravelLimit"><code class="name flex">
+<span>def <span class="ident">setTravelLimit</span></span>(<span>self, axis: <a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a>, direction: <a title="cnc_centroid_skinning.Axis.Direction" href="#cnc_centroid_skinning.Axis.Direction">Direction</a>, value: float)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set a travel limit for a specified axis a specified direction.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def setTravelLimit(self, axis: Axes, direction: Direction, value: float):
+    &#34;&#34;&#34;Set a travel limit for a specified axis a specified direction. &#34;&#34;&#34;
+    return self.interface(&#39;axis.SetTravelLimit&#39;, axis.value, direction.value, float(value))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Direction"><code class="flex name class">
+<span>class <span class="ident">Direction</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumeration.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Direction(IntEnum):
+    PLUS = 0
+    &#34;&#34;&#34;
+    Plus(positive)      direction.
+    &#34;&#34;&#34;
+    MINUS = 1
+    &#34;&#34;&#34;
+    Minus(negative)     direction.
+    &#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="cnc_centroid_skinning.Axis.Direction.MINUS"><code class="name">var <span class="ident">MINUS</span></code></dt>
+<dd>
+<div class="desc"><p>Minus(negative)
+direction.</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Direction.PLUS"><code class="name">var <span class="ident">PLUS</span></code></dt>
+<dd>
+<div class="desc"><p>Plus(positive)
+direction.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Rate"><code class="flex name class">
+<span>class <span class="ident">Rate</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>An enumeration.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Rate(IntEnum):
+    MAX = 0
+    &#34;&#34;&#34;
+    Max rate
+    &#34;&#34;&#34;
+    SLOW_JOG = 1
+    &#34;&#34;&#34;
+    Slow Jog Rate
+    &#34;&#34;&#34;
+    FAST_JOG = 2
+    &#34;&#34;&#34;
+    ACORN ONLY Fast Jog Rate.
+    &#34;&#34;&#34;
+    FAST_JOG_MINUS = 3
+    &#34;&#34;&#34;
+    Fast Jog the negative direction
+    &#34;&#34;&#34;
+    FAST_JOG_PLUS = 4
+    &#34;&#34;&#34;
+    Fast jog the positive direction
+    &#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.IntEnum</li>
+<li>builtins.int</li>
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="cnc_centroid_skinning.Axis.Rate.FAST_JOG"><code class="name">var <span class="ident">FAST_JOG</span></code></dt>
+<dd>
+<div class="desc"><p>ACORN ONLY Fast Jog Rate.</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Rate.FAST_JOG_MINUS"><code class="name">var <span class="ident">FAST_JOG_MINUS</span></code></dt>
+<dd>
+<div class="desc"><p>Fast Jog the negative direction</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Rate.FAST_JOG_PLUS"><code class="name">var <span class="ident">FAST_JOG_PLUS</span></code></dt>
+<dd>
+<div class="desc"><p>Fast jog the positive direction</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Rate.MAX"><code class="name">var <span class="ident">MAX</span></code></dt>
+<dd>
+<div class="desc"><p>Max rate</p></div>
+</dd>
+<dt id="cnc_centroid_skinning.Axis.Rate.SLOW_JOG"><code class="name">var <span class="ident">SLOW_JOG</span></code></dt>
+<dd>
+<div class="desc"><p>Slow Jog Rate</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="cnc_centroid_skinning" href="index.html">cnc_centroid_skinning</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="cnc_centroid_skinning.Axis.Axes" href="#cnc_centroid_skinning.Axis.Axes">Axes</a></code></h4>
+<ul class="two-column">
+<li><code><a title="cnc_centroid_skinning.Axis.Axes.AXIS_1" href="#cnc_centroid_skinning.Axis.Axes.AXIS_1">AXIS_1</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axes.AXIS_2" href="#cnc_centroid_skinning.Axis.Axes.AXIS_2">AXIS_2</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axes.AXIS_3" href="#cnc_centroid_skinning.Axis.Axes.AXIS_3">AXIS_3</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axes.AXIS_4" href="#cnc_centroid_skinning.Axis.Axes.AXIS_4">AXIS_4</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axes.AXIS_5" href="#cnc_centroid_skinning.Axis.Axes.AXIS_5">AXIS_5</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axes.AXIS_6" href="#cnc_centroid_skinning.Axis.Axes.AXIS_6">AXIS_6</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axes.AXIS_7" href="#cnc_centroid_skinning.Axis.Axes.AXIS_7">AXIS_7</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axes.AXIS_8" href="#cnc_centroid_skinning.Axis.Axes.AXIS_8">AXIS_8</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cnc_centroid_skinning.Axis.Axis" href="#cnc_centroid_skinning.Axis.Axis">Axis</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.SetScrewPitch" href="#cnc_centroid_skinning.Axis.Axis.SetScrewPitch">SetScrewPitch</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.getAccelTime" href="#cnc_centroid_skinning.Axis.Axis.getAccelTime">getAccelTime</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.getAxisReversal" href="#cnc_centroid_skinning.Axis.Axis.getAxisReversal">getAxisReversal</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.getCountsPerTurn" href="#cnc_centroid_skinning.Axis.Axis.getCountsPerTurn">getCountsPerTurn</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.getDeadstartVelocity" href="#cnc_centroid_skinning.Axis.Axis.getDeadstartVelocity">getDeadstartVelocity</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.getDeltaVMax" href="#cnc_centroid_skinning.Axis.Axis.getDeltaVMax">getDeltaVMax</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.getHomeLimit" href="#cnc_centroid_skinning.Axis.Axis.getHomeLimit">getHomeLimit</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.getLabel" href="#cnc_centroid_skinning.Axis.Axis.getLabel">getLabel</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.getLashComp" href="#cnc_centroid_skinning.Axis.Axis.getLashComp">getLashComp</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.getLimit" href="#cnc_centroid_skinning.Axis.Axis.getLimit">getLimit</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.getRate" href="#cnc_centroid_skinning.Axis.Axis.getRate">getRate</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.getScrewPitch" href="#cnc_centroid_skinning.Axis.Axis.getScrewPitch">getScrewPitch</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.getTravelLimit" href="#cnc_centroid_skinning.Axis.Axis.getTravelLimit">getTravelLimit</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.setAccelTime" href="#cnc_centroid_skinning.Axis.Axis.setAccelTime">setAccelTime</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.setAxisReversal" href="#cnc_centroid_skinning.Axis.Axis.setAxisReversal">setAxisReversal</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.setCountsPerTurn" href="#cnc_centroid_skinning.Axis.Axis.setCountsPerTurn">setCountsPerTurn</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.setDeadstartVelocity" href="#cnc_centroid_skinning.Axis.Axis.setDeadstartVelocity">setDeadstartVelocity</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.setDeltaVMax" href="#cnc_centroid_skinning.Axis.Axis.setDeltaVMax">setDeltaVMax</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.setHomeLimit" href="#cnc_centroid_skinning.Axis.Axis.setHomeLimit">setHomeLimit</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.setLabel" href="#cnc_centroid_skinning.Axis.Axis.setLabel">setLabel</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.setLashComp" href="#cnc_centroid_skinning.Axis.Axis.setLashComp">setLashComp</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.setLimit" href="#cnc_centroid_skinning.Axis.Axis.setLimit">setLimit</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.setRate" href="#cnc_centroid_skinning.Axis.Axis.setRate">setRate</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Axis.setTravelLimit" href="#cnc_centroid_skinning.Axis.Axis.setTravelLimit">setTravelLimit</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cnc_centroid_skinning.Axis.Direction" href="#cnc_centroid_skinning.Axis.Direction">Direction</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.Axis.Direction.MINUS" href="#cnc_centroid_skinning.Axis.Direction.MINUS">MINUS</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Direction.PLUS" href="#cnc_centroid_skinning.Axis.Direction.PLUS">PLUS</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="cnc_centroid_skinning.Axis.Rate" href="#cnc_centroid_skinning.Axis.Rate">Rate</a></code></h4>
+<ul class="">
+<li><code><a title="cnc_centroid_skinning.Axis.Rate.FAST_JOG" href="#cnc_centroid_skinning.Axis.Rate.FAST_JOG">FAST_JOG</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Rate.FAST_JOG_MINUS" href="#cnc_centroid_skinning.Axis.Rate.FAST_JOG_MINUS">FAST_JOG_MINUS</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Rate.FAST_JOG_PLUS" href="#cnc_centroid_skinning.Axis.Rate.FAST_JOG_PLUS">FAST_JOG_PLUS</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Rate.MAX" href="#cnc_centroid_skinning.Axis.Rate.MAX">MAX</a></code></li>
+<li><code><a title="cnc_centroid_skinning.Axis.Rate.SLOW_JOG" href="#cnc_centroid_skinning.Axis.Rate.SLOW_JOG">SLOW_JOG</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.4</a>.</p>
+</footer>
+</body>
+</html>

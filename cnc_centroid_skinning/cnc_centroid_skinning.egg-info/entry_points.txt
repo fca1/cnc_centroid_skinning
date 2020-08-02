@@ -1,0 +1,3 @@
+[console_scripts]
+realpython = cnc_centroid_skinning.detect_cnc
+
