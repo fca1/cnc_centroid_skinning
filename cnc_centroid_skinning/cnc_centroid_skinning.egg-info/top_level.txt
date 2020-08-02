@@ -1,1 +1,0 @@
-cnc_centroid_skinning
