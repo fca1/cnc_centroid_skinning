@@ -29,3 +29,10 @@ Ether1616Device = CNCPipe.Sys.Ether1616Device
 Coolant = CNCPipe.Tool.Coolant
 SpindleDirection = CNCPipe.Tool.SpindleDirection
 ToolWearAdjustmentType = CNCPipe.Tool.ToolWearAdjustmentType
+
+MachineTypes = CNCPipe.Sys.MachineTypes
+UnlockVersions = CNCPipe.Sys.UnlockVersions
+
+MotorPower = CNCPipe.Axis.MotorPower
+
+ConsoleTypes = CNCPipe.Axis.State.ConsoleTypes
