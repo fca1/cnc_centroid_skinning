@@ -60,8 +60,11 @@ and respond like described in the documentation.
 This interface is not **really tested, don't trust it**. 
 
 
-### I disclaim any responsibility for any accident, injury or damage suffered by anyone would use this wrapper. 
+# Wrappers methods with a problem:
 
+* Tool : GetToolLibrary()
+* State : GetCurrentMachinePosition()
+* State: GetCurrentLocalPosition()
 
 
 

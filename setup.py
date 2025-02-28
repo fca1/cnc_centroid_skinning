@@ -1,4 +1,5 @@
 import pathlib
+
 from setuptools import setup, find_packages
 
 # The directory containing this file
@@ -20,13 +21,13 @@ setup(
     },
     long_description_content_type="text/markdown",
     author="Frantz Capiez",
-    author_email="cnc@epi-rf.fr",
+    author_email="frantz.capiez@epi-rf.fr",
     license="Mit",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Operating System :: Microsoft :: Windows :: Windows 11",
         "Topic :: Software Development :: Libraries",
     ],

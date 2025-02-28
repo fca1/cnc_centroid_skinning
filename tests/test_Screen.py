@@ -1,9 +1,8 @@
 from unittest import TestCase
 
 from centroidAPI import CentroidAPI
-from enums import Viewport
 from cnc_centroid_skinning import PATH_CNC12
-
+from enums import Viewport
 
 
 class TestScreen(TestCase):

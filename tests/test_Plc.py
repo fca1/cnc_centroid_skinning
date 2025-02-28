@@ -1,9 +1,7 @@
 from unittest import TestCase
 
-
-from cnc_centroid_skinning import PATH_CNC12
-
 from centroidAPI import CentroidAPI
+from cnc_centroid_skinning import PATH_CNC12
 from enums import IOMBit, BitType, ForceState, InversionState
 
 

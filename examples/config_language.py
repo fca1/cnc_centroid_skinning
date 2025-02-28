@@ -2,8 +2,8 @@ import ctypes
 import locale
 import sys
 
-from cnc_centroid_skinning.centroidAPI import CentroidAPI
 from cnc_centroid_skinning import PATH_CNC12
+from cnc_centroid_skinning.centroidAPI import CentroidAPI
 
 """
 Ask to windows os, the locale language, and if referenced, set the language of CNC12 in accordance

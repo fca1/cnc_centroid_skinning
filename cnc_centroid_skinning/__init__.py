@@ -3,10 +3,10 @@
 
 """
     Api wrapper for cnc centroid API written is c#
-    Name of dll has changed (V5.10 acorn)
+    Name of dll has changed (V5.24 acorn)
 """
 
-__version__ = "0.0.5"
+__version__ = "1.0.0"
 
 PATH_CNC12 = r"c:\cncm"
 
@@ -53,11 +53,11 @@ from centroidAPI import detect_cnc, CentroidAPI
 
 
 __all__ = [ 'CNCPipe','CentroidAPI', 'DroCoordinates', 'ProbeBossOrientation', 'BitType', 'ForceState', 'InversionState',
-           'IOState', 'Rate', 'Direction',
+           'IOState', 'Rate', 'Direction', 'CncPipe',
            'IOMBit', 'ReturnCode', 'Viewport', 'CircularInterpolationPlane', 'CircularInterpolationDirection',
            'FeedHoldState',
            'MdiState', 'MoveMode', 'PositioningMode', 'UnitsOfMeasure', 'Value', 'HomingType', 'Ether1616Device',
            'Coolant', 'SpindleDirection', 'ToolWearAdjustmentaType', 'Tinfo', 'WCS',
            'Axis', 'Csr', 'Dro', 'Job', 'MessageWindow', 'Parameter', 'Plc', 'Screen', 'State', 'Sys', 'Tool', 'Wcs',
-           'detect_cnc']
+           'detect_cnc','MachineTypes','UnlockVersions','MotorPower','ConsoleTypes']
 """

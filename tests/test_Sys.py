@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from centroidAPI import CentroidAPI
 from cnc_centroid_skinning import PATH_CNC12
+from centroidAPI import CentroidAPI
 
 
 class TestSys(TestCase):
@@ -17,3 +17,6 @@ class TestSys(TestCase):
 
     def test_get_ether1616device_info(self):
         self.sys.getEther1616DeviceInfo()
+
+    def test_getMachineType(self):
+        self.sys.getMachineType()

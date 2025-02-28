@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from centroidAPI import CentroidAPI
 from cnc_centroid_skinning import PATH_CNC12
+from centroidAPI import CentroidAPI
 from enums import ToolWearAdjustmentType, SpindleDirection, Coolant
 
 
@@ -72,3 +72,11 @@ class TestTool(TestCase):
 
     def test_get_wear_adjustment(self):
         self.tool.getWearAdjustment(1,ToolWearAdjustmentType.TOOL_WEAR_ADJUSTMENT_Z )
+
+
+    def test_getToolDescription (self) -> str:
+        """ Get the description for the  tool i. """
+        self.tool.getToolDescription()
+
+    def  test_getToolLibrary (self) -> list:
+        self.tool.getToolLibrary()

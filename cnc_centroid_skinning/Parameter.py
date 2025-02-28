@@ -1,19 +1,21 @@
+from CncPipe import CncPipe
 from centroidAPIInterface import CentroidAPIInterface
 
 
-class Parameter:
+class Parameter(CncPipe):
     """Handles getting and setting of machine parameters"""
 
     def __init__(self, interface: CentroidAPIInterface):
-        self.interface = interface
+        super().__init__("parameter",interface)
+
 
     def getMachineParameterValue(self, parameter_num: int) -> int:
         """:return:  the value of a machine parameter. """
-        return self.interface('parameter.GetMachineParameterValue', int(parameter_num), 0)
-
+        return self._call_interface('GetMachineParameterValue', int(parameter_num), 0)
+    
     def setMachineParameter(self, addr: int, value: float):
         """Sets machine parameter to a given value. """
-        return self.interface('parameter.SetMachineParameter', int(addr), float(value))
+        return self._call_interface('SetMachineParameter', int(addr), float(value))
 
     def __getitem__(self, item):
         return self.getMachineParameterValue(item)

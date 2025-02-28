@@ -2,7 +2,7 @@ from typing import List, Tuple
 
 from CncPipe import CncPipe
 from centroidAPIInterface import CentroidAPIInterface
-from enums import MdiState, MoveMode, FeedHoldState, PositioningMode, UnitsOfMeasure, HomingType, Value
+from enums import MdiState, MoveMode, FeedHoldState, PositioningMode, UnitsOfMeasure, HomingType, Value, ConsoleTypes
 
 
 class State(CncPipe):
@@ -113,3 +113,61 @@ class State(CncPipe):
     def setMachineHomeAtPowerUp(self, homing_type: HomingType):
         """Set the machine homing type at power up. """
         return self._call_interface('SetMachineHomeAtPowerUp', homing_type)
+
+
+
+
+
+    def getConsoleType(self) -> ConsoleTypes:
+        """Get the current console type."""
+        return self._call_interface('getConsoleType')
+
+    def getCurrentLineInfo(self) -> (int,int,int):
+        """Get the current line number of the executing job"""
+        return self._call_interface('GetCurrentLineInfo')
+
+
+    def getCurrentStackLevelZeroLineInfo(self) -> (int,int):
+        """Get the current line number of the orginal executing job excludes calls to marcos"""
+        return self._call_interface('GetCurrentStackLevelZeroLineInfo')
+
+    def getFullPathJobNameCurrent(self) -> str:
+        """Get the full pathname of the currently loaded job"""
+        return self._call_interface('GetFullPathJobNameCurrent')
+
+    def getJogState(self) -> bool:
+        """Get if the user is jogging the machine or not."""
+        return self._call_interface('GetJogState')
+
+    def getUsbInputInversions(self) -> str:
+        """Get the current USB-BOB input inversion bits."""
+        return self._call_interface('GetUsbInputInversions')
+
+    def isAPIRestricted(self)->bool:
+        """Checks if all API calls are restricted in any way (CNC12 Running a job, in a menu that doesn't accept calls,
+        etc.) Note that not every API call is restricted by the state of CNC12"""
+        return self._call_interface('IsAPIRestricted')
+
+    def isPCPoweringOff(self)->bool:
+        """Checks if CNC12 triggered a shutdown of the computer."""
+        return self._call_interface('IsPCPoweringOff')
+
+    def setConsoleType(self,tpe: ConsoleTypes):
+        return self._call_interface('SetConsoleType',tpe)
+
+
+    def setDroImperialUnits(self):
+        return self._call_interface('SetDroImperialUnits')
+
+    def setDroMetricUnits(self):
+        return self._call_interface('SetDroMetricUnits')
+
+    def setPlasmaInterruptPoint(self,interrupt_x:float,interrupt_y:float):
+        return self._call_interface('SetPlasmaInterruptPoint',float(interrupt_x),float(interrupt_y))
+
+    def setUsbInputInversions(self,inversion:str):
+        return self._call_interface('SetUsbInputInversions',inversion)
+
+    def toggleUsbInputInversionBit(self,inversion:int):
+        return self._call_interface('ToggleUsbInputInversionBit',inversion)
+

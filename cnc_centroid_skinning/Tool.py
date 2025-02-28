@@ -155,6 +155,8 @@ class Tool(CncPipe):
         """Gets tool info for all tools with in the tool library."""
         return self._call_interface('GetToolLibrary')
 
+    def setToolDescription(self,tool_number, description:str):
+        return self._call_interface('SetToolDescription',int(tool_number),description)
 
 
 
