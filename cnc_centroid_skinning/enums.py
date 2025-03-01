@@ -35,4 +35,4 @@ UnlockVersions = CNCPipe.Sys.UnlockVersions
 
 MotorPower = CNCPipe.Axis.MotorPower
 
-ConsoleTypes = CNCPipe.Axis.State.ConsoleTypes
+ConsoleTypes = CNCPipe.State.ConsoleTypes

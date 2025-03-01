@@ -89,4 +89,3 @@ class Job(CncPipe):
         """(#1 - #299, #400 - #31999)"""
         return self._call_interface('SetSystemVariable',int(variable_number),value)
 
-

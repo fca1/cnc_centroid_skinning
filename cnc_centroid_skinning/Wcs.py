@@ -44,10 +44,15 @@ class Wcs(CncPipe):
             else:
                 return self._call_interface('SetWorkpieceOrigin')
 
-    def GetWorkpieceReference(self,ret:int,axis:int) ->float:
+    def getWorkpieceReference(self,ret:int,axis:int) ->float:
         """Get reference point from the return menu in the work coordinate settings."""
         return self._call_interface('GetWorkpieceReference', int(ret), int(axis))
 
-    def SetWorkpieceReference(self,ret:int,axis:int,point:float):
+    def setWorkpieceReference(self,ret:int,axis:int,point:float):
         """Set reference point from the return menu in the work coordinate settings"""
         return self._call_interface('SetWorkpieceReference',int(ret),int(axis),float(point))
+
+
+    def    setWorkpieceLocation(self,axis:int,location:float):
+        """Attempt to set the Part Location for a specified axis for the ACTIVE WCS."""
+        return self._call_interface('SetWorkpieceReference',int(axis),float(location))

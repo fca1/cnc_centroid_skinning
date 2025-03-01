@@ -159,4 +159,11 @@ class Tool(CncPipe):
         return self._call_interface('SetToolDescription',int(tool_number),description)
 
 
+    def setToolLibrary(self,lsttool:[]):
+        """Specifies the information for the tool library"""
+        return self._call_interface('SetToolLibrary',lsttool)
+
+    def setToolDiameterOffsetAmout(self,t:int,value:float):
+        '''Set the tool diameter offset Amount.'''
+        return self._call_interface('SetToolDiameterOffsetAmout',int(t),float(value))
 
