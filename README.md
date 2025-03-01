@@ -33,19 +33,15 @@ Write this kind of application is quite simply in python language with help of l
 
 # First release  
   
-This is the very first release of this wrapper, I couldn't test everything, but the main features **seem** to work. 
-The goal is to make it easy for everyone to use python to send and receive data for the CNC12 program. 
 
 
-The version of  CNC12 used for my unittest is :4.5.
 
 
 I hope this wrapper allows enthusiasts like me, to simply develop their applications with CNC12. 
 Python is easy to use and allows rapid prototyping.
 
-# Second release ( 4 years later....)  
 
-The software version of CNC12 is V5.20, pythonnet has changed with net3.0, the python engine must be
+The software version of CNC12 is V5.24, pythonnet has changed with net3.0, the python engine must be
 with 64 bits platform. The DLL given by CNC CENTROID has changed of name and the platform is also to 64 bits. 
 
 This new version seems ok, many functions are not inplemented, but the enhancement is easy. 
@@ -170,5 +166,5 @@ or
 ### todo list
 - Vcp is not tested
 - Improve unittest's behavior
-- It's the first version of docstring, le param values are not described. 
+- Complete the unitTest
 - ...

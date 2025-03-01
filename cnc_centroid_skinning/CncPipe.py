@@ -32,5 +32,6 @@ class CncPipe:
 
     def _call_interface(self,nameMethod:str,*params) -> tuple:
         """:return: the screen size of the CNC application. """
-        return self.interface(f'{self.name_class}.{nameMethod}', *params)
+        rest_lst = self.interface(f'{self.name_class}.{nameMethod}', *params)
+        return rest_lst
 
