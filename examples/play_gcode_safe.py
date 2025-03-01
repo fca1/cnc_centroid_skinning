@@ -15,7 +15,9 @@ def initializeApi(file_path_of_prg: str):
 
 def send_active_code(sk):
     # play gcode immediatly (if single block is not set)
+    result = sk.state.getMdiState()
     sk.job.runCommand("G4 P5.0", require_cycle_start=False)  # Wait until 5 sec.
+    result = sk.state.getMdiState()
     pass
 
 

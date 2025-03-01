@@ -83,7 +83,7 @@ class State(CncPipe):
 
     def getCurrentMachinePosition(self) -> Tuple[float]:
         """:return: s the current machine position. """
-        return tuple(map(float, self._call_interface('GetCurrentMachinePosition', [])))
+        return tuple(map(float, self._call_interface('GetCurrentMachinePosition')))
 
     def getFeedrateOverride(self) -> int:
         """:return:  the feedrate override as a percent between 1 and max (usually 120). """
@@ -95,8 +95,7 @@ class State(CncPipe):
 
     def getCurrentLocalPosition(self) -> Tuple[float]:
         """:return:  the current wcs position. """
-        x = self._call_interface('GetCurrentLocalPosition',[])
-        return tuple(map(float, self._call_interface('GetCurrentLocalPosition', [])))
+        return tuple(map(float, self._call_interface('GetCurrentLocalPosition')))
 
     def getHighRangeSpindleSpeed(self, max_or_min: Value) -> float:
         """:return:  the current Spindle Speed High Range maximum or minimum value. """

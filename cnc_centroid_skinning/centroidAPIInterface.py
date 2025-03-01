@@ -41,7 +41,7 @@ class CentroidAPIInterface:
         try:
             ret_lst = leef(*params)
         except Exception as e:
-            raise ReturnCodeException("bad call parameters",0)
+            raise ReturnCodeException("bad call parameters",ReturnCode.ERROR_UNKNOWN)
         if not kwargs.get('wo_rc', False):  # this option is used when return code is no waited
             # first item of list is a ReturnCode value. If No success raise an Exception
             rvc = ret_lst[0] if isinstance(ret_lst, tuple) else ret_lst

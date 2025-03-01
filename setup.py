@@ -31,7 +31,7 @@ setup(
         "Operating System :: Microsoft :: Windows :: Windows 11",
         "Topic :: Software Development :: Libraries",
     ],
-    packages=find_packages(exclude=("tests","examples")),
+    packages=find_packages(exclude=("tests",)),
     include_package_data=True,
     install_requires=["pythonnet", "pycparser"],
     entry_points={
