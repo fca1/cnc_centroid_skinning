@@ -24,11 +24,8 @@ class Csr(CncPipe):
 
     def setAngle(self, angle: float, wcs: WCS = None):
         """Attempt to set the CSR angle for the specified WCS. """
-        if wcs is not None:
-            # TODO strange, why a int for the parameter wcs ?
-            return self._call_interface('SetAngle', 1 + int(wcs), float(angle))
-        else:
-            return self._call_interface('SetAngle', float(angle))
+        # TODO strange, why a int for the parameter wcs ?
+        return self._call_interface('SetAngle', *(1 + int(wcs), float(angle)) if wcs is not None else (float(angle),))
 
     def __getitem__(self, item):
         """

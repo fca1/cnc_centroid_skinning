@@ -15,9 +15,7 @@ import sys
 # load Python.NET
 import clr
 # noinspection PyUnresolvedReferences,PyPackageRequirements
-from System import Array
-# noinspection PyUnresolvedReferences,PyPackageRequirements
-from System import String, Char, Int32, Double
+import  System
 
 if sys.maxsize <= 2 ** 32:
     sys.stderr.write("Fatal : Python 32 bits détected")

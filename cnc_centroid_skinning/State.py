@@ -5,6 +5,12 @@ from centroidAPIInterface import CentroidAPIInterface
 from enums import MdiState, MoveMode, FeedHoldState, PositioningMode, UnitsOfMeasure, HomingType, Value, ConsoleTypes
 
 
+# load Python.NET
+# noinspection PyUnresolvedReferences
+import System
+
+
+
 class State(CncPipe):
     """Holds info relating to system state, e.g. move mode, position mode, feedrate, spindle speed, etc """
 
@@ -80,7 +86,8 @@ class State(CncPipe):
 
     def getCurrentMachinePosition(self) -> tuple[float]:
         """:return: s the current machine position. """
-        return tuple(map(float, self._call_interface('GetCurrentMachinePosition')))
+        x = System.Array[System.Double](6)
+        return tuple(map(float, self._call_interface('GetCurrentMachinePosition',x )))
 
     def getFeedrateOverride(self) -> int:
         """:return:  the feedrate override as a percent between 1 and max (usually 120). """

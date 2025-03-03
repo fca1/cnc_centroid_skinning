@@ -28,7 +28,7 @@ class CncPipe:
     def childs() -> set:
         return CncPipe._list_cncPipe
 
-    def _call_interface(self, nameMethod: str, *params,wo_rc=False) -> [tuple,float,int]:
+    def _call_interface(self, nameMethod: str, *params,**kwargs) -> [tuple,float,int]:
         """:return: the screen size of the CNC application. """
-        rest_lst = self.interface(f'{self.name_class}.{nameMethod}',wo_rc, *params)
+        rest_lst = self.interface(f'{self.name_class}.{nameMethod}',*params,**kwargs)
         return rest_lst

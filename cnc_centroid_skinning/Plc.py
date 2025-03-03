@@ -1,7 +1,7 @@
 import typing
 
 # noinspection PyUnresolvedReferences
-from System import Array, String, Char, Int32, Double, Int64, UInt64, UInt32
+import System
 # noinspection PyUnresolvedReferences
 from System.Collections.Generic import List
 

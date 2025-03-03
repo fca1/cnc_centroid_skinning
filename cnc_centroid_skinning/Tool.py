@@ -1,6 +1,8 @@
 from centroidAPIInterface import CentroidAPIInterface
 from enums import Coolant, SpindleDirection, ToolWearAdjustmentType
 from CncPipe import CncPipe
+# noinspection PyUnresolvedReferences
+import System
 
 
 class Tinfo:
@@ -150,7 +152,7 @@ class Tool(CncPipe):
 
     def getToolLibrary(self) -> list:
         """Gets tool info for all tools with in the tool library."""
-        return self._call_interface('GetToolLibrary')
+        return self._call_interface('GetToolLibrary',System.Array)
 
     def setToolDescription(self, tool_number, description: str):
         return self._call_interface('SetToolDescription', int(tool_number), description)
