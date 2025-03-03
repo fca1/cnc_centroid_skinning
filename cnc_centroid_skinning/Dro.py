@@ -9,7 +9,7 @@ class Dro(CncPipe):
     """Class to get DRO information from CNC12. """
 
     def __init__(self, interface: CentroidAPIInterface):
-        super().__init__("dro",interface)
+        super().__init__("dro", interface)
 
     """Class to get DRO information from CNC12."""
 

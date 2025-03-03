@@ -9,10 +9,7 @@ class State(CncPipe):
     """Holds info relating to system state, e.g. move mode, position mode, feedrate, spindle speed, etc """
 
     def __init__(self, interface: CentroidAPIInterface):
-        super().__init__("state",interface)
-
-
-
+        super().__init__("state", interface)
 
     def getScreenSize(self) -> tuple:
         """:return: the screen size of the CNC application. """
@@ -81,7 +78,7 @@ class State(CncPipe):
         """:return:  the current spindle speed. """
         return self._call_interface('GetSpindleSpeed')
 
-    def getCurrentMachinePosition(self) -> Tuple[float]:
+    def getCurrentMachinePosition(self) -> tuple[float]:
         """:return: s the current machine position. """
         return tuple(map(float, self._call_interface('GetCurrentMachinePosition')))
 
@@ -90,10 +87,9 @@ class State(CncPipe):
         return self._call_interface('GetFeedrateOverride')
 
     def getUsbOnlineBits(self) -> Tuple[bool]:
-        x = self._call_interface('GetUsbOnlineBits',[])
+        return self._call_interface('GetUsbOnlineBits', [])
 
-
-    def getCurrentLocalPosition(self) -> Tuple[float]:
+    def getCurrentLocalPosition(self) -> tuple[float]:
         """:return:  the current wcs position. """
         return tuple(map(float, self._call_interface('GetCurrentLocalPosition')))
 
@@ -113,20 +109,15 @@ class State(CncPipe):
         """Set the machine homing type at power up. """
         return self._call_interface('SetMachineHomeAtPowerUp', homing_type)
 
-
-
-
-
     def getConsoleType(self) -> ConsoleTypes:
         """Get the current console type."""
         return self._call_interface('getConsoleType')
 
-    def getCurrentLineInfo(self) -> (int,int,int):
+    def getCurrentLineInfo(self) -> (int, int, int):
         """Get the current line number of the executing job"""
         return self._call_interface('GetCurrentLineInfo')
 
-
-    def getCurrentStackLevelZeroLineInfo(self) -> (int,int):
+    def getCurrentStackLevelZeroLineInfo(self) -> (int, int):
         """Get the current line number of the orginal executing job excludes calls to marcos"""
         return self._call_interface('GetCurrentStackLevelZeroLineInfo')
 
@@ -142,18 +133,17 @@ class State(CncPipe):
         """Get the current USB-BOB input inversion bits."""
         return self._call_interface('GetUsbInputInversions')
 
-    def isAPIRestricted(self)->bool:
+    def isAPIRestricted(self) -> bool:
         """Checks if all API calls are restricted in any way (CNC12 Running a job, in a menu that doesn't accept calls,
         etc.) Note that not every API call is restricted by the state of CNC12"""
         return self._call_interface('IsAPIRestricted')
 
-    def isPCPoweringOff(self)->bool:
+    def isPCPoweringOff(self) -> bool:
         """Checks if CNC12 triggered a shutdown of the computer."""
         return self._call_interface('IsPCPoweringOff')
 
-    def setConsoleType(self,tpe: ConsoleTypes):
-        return self._call_interface('SetConsoleType',tpe)
-
+    def setConsoleType(self, tpe: ConsoleTypes):
+        return self._call_interface('SetConsoleType', tpe)
 
     def setDroImperialUnits(self):
         return self._call_interface('SetDroImperialUnits')
@@ -161,12 +151,11 @@ class State(CncPipe):
     def setDroMetricUnits(self):
         return self._call_interface('SetDroMetricUnits')
 
-    def setPlasmaInterruptPoint(self,interrupt_x:float,interrupt_y:float):
-        return self._call_interface('SetPlasmaInterruptPoint',float(interrupt_x),float(interrupt_y))
+    def setPlasmaInterruptPoint(self, interrupt_x: float, interrupt_y: float):
+        return self._call_interface('SetPlasmaInterruptPoint', float(interrupt_x), float(interrupt_y))
 
-    def setUsbInputInversions(self,inversion:str):
-        return self._call_interface('SetUsbInputInversions',inversion)
+    def setUsbInputInversions(self, inversion: str):
+        return self._call_interface('SetUsbInputInversions', inversion)
 
-    def toggleUsbInputInversionBit(self,inversion:int):
-        return self._call_interface('ToggleUsbInputInversionBit',inversion)
-
+    def toggleUsbInputInversionBit(self, inversion: int):
+        return self._call_interface('ToggleUsbInputInversionBit', inversion)

@@ -7,8 +7,7 @@ class Csr(CncPipe):
     """	Contains methods for getting and setting CSR angles"""
 
     def __init__(self, interface: CentroidAPIInterface):
-        super().__init__("csr",interface)
-
+        super().__init__("csr", interface)
 
     def disableCSR(self):
         return self._call_interface('DisableCSR')
@@ -19,7 +18,7 @@ class Csr(CncPipe):
     def getAngle(self, wcs: WCS = None) -> float:
         """Get the CSR angle for the CURRENTLY ACTIVE WCS. """
         if wcs is not None:
-            return self._call_interface('GetAngle', 1+int(wcs))
+            return self._call_interface('GetAngle', 1 + int(wcs))
         else:
             return self._call_interface('GetAngle')
 
@@ -27,7 +26,7 @@ class Csr(CncPipe):
         """Attempt to set the CSR angle for the specified WCS. """
         if wcs is not None:
             # TODO strange, why a int for the parameter wcs ?
-            return self._call_interface('SetAngle', 1+int(wcs), float(angle))
+            return self._call_interface('SetAngle', 1 + int(wcs), float(angle))
         else:
             return self._call_interface('SetAngle', float(angle))
 

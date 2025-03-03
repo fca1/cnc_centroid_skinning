@@ -41,25 +41,25 @@ class TestTool(TestCase):
         self.tool.setToolInfo()
 
     def test_set_bin_number(self):
-        self.tool.setBinNumber(0,0)
+        self.tool.setBinNumber(0, 0)
 
     def test_set_coolant(self):
-        self.tool.setCoolant(0,Coolant.OFF)
+        self.tool.setCoolant(0, Coolant.OFF)
 
     def test_set_tool_height_offset_amout(self):
-        self.tool.setToolHeightOffsetAmout(0,5)
+        self.tool.setToolHeightOffsetAmout(0, 5)
 
     def test_set_spindle_direction(self):
-        self.tool.setSpindleDirection(0,SpindleDirection.OFF )
+        self.tool.setSpindleDirection(0, SpindleDirection.OFF)
 
     def test_set_spindle_speed(self):
-        self.tool.setSpindleSpeed(0,800)
+        self.tool.setSpindleSpeed(0, 800)
 
     def test_set_tool_dnumber(self):
-        self.tool.setToolDNumber(0,12)
+        self.tool.setToolDNumber(0, 12)
 
     def test_set_tool_hnumber(self):
-        self.tool.setToolHNumber(0,5)
+        self.tool.setToolHNumber(0, 5)
 
     def test_get_tool_hnumber(self):
         self.tool.getToolHNumber()
@@ -68,15 +68,14 @@ class TestTool(TestCase):
         self.tool.getToolDNumber()
 
     def test_set_wear_adjustment(self):
-        self.tool.setWearAdjustment(0,ToolWearAdjustmentType.TOOL_WEAR_ADJUSTMENT_Z,1.2)
+        self.tool.setWearAdjustment(0, ToolWearAdjustmentType.TOOL_WEAR_ADJUSTMENT_Z, 1.2)
 
     def test_get_wear_adjustment(self):
-        self.tool.getWearAdjustment(1,ToolWearAdjustmentType.TOOL_WEAR_ADJUSTMENT_Z )
+        self.tool.getWearAdjustment(1, ToolWearAdjustmentType.TOOL_WEAR_ADJUSTMENT_Z)
 
-
-    def test_getToolDescription (self) -> str:
+    def test_getToolDescription(self) -> str:
         """ Get the description for the  tool i. """
         self.tool.getToolDescription()
 
-    def  test_getToolLibrary (self) -> list:
+    def test_getToolLibrary(self) -> list:
         self.tool.getToolLibrary()

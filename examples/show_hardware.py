@@ -19,7 +19,6 @@ def initializeApi(file_path_of_prg: str):
     return _sk
 
 
-
 def hardware(sk):
     """
     Write inside the message window of CNC12, identification and misc.
@@ -31,6 +30,7 @@ def hardware(sk):
     sk.message_window.message = f"Board revision    :\t{sk.state.getAcornBoardRevision()}"
     sk.message_window.message = f"Nber of Ether1616 :\t{len(sk.system.getEther1616DeviceInfo())}"
     pass
+
 
 # Check if PATH_CNC12 is correct or change with a new path folder ( r"c:\cncm" or r"c:\cnct")
 sk = initializeApi(PATH_CNC12)  # Path file of CNC12 software.

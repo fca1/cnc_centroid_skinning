@@ -7,8 +7,7 @@ class Wcs(CncPipe):
     """	Class for getting and setting values involving work coordinate system"""
 
     def __init__(self, interface: CentroidAPIInterface):
-        super().__init__("wcs",interface)
-
+        super().__init__("wcs", interface)
 
     def getActiveWcs(self) -> int:
         """:return:  the active wcs. """
@@ -44,15 +43,14 @@ class Wcs(CncPipe):
             else:
                 return self._call_interface('SetWorkpieceOrigin')
 
-    def getWorkpieceReference(self,ret:int,axis:int) ->float:
+    def getWorkpieceReference(self, ret: int, axis: int) -> float:
         """Get reference point from the return menu in the work coordinate settings."""
         return self._call_interface('GetWorkpieceReference', int(ret), int(axis))
 
-    def setWorkpieceReference(self,ret:int,axis:int,point:float):
+    def setWorkpieceReference(self, ret: int, axis: int, point: float):
         """Set reference point from the return menu in the work coordinate settings"""
-        return self._call_interface('SetWorkpieceReference',int(ret),int(axis),float(point))
+        return self._call_interface('SetWorkpieceReference', int(ret), int(axis), float(point))
 
-
-    def    setWorkpieceLocation(self,axis:int,location:float):
+    def setWorkpieceLocation(self, axis: int, location: float):
         """Attempt to set the Part Location for a specified axis for the ACTIVE WCS."""
-        return self._call_interface('SetWorkpieceReference',int(axis),float(location))
+        return self._call_interface('SetWorkpieceReference', int(axis), float(location))

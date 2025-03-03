@@ -6,7 +6,6 @@ from CncPipe import CncPipe
 class Tinfo:
 
     def __init__(self, obj=None):
-
         self.coolant = None
         """This field specifies a default coolant aType to use with each tool. Possible values are FLOOD, MIST, or OFF. Intercon uses this information to automatically insert M7 or M8 after a tool change. """
         self.bin = None
@@ -31,13 +30,11 @@ class Tinfo:
             self.spindle_direction = obj.spindle_direction
 
 
-
-
 class Tool(CncPipe):
     """Class to handle Mill Tool Info"""
 
     def __init__(self, interface: CentroidAPIInterface):
-        super().__init__("tool",interface)
+        super().__init__("tool", interface)
 
     def getToolNumber(self) -> int:
         """:return: s the current tool number. """
@@ -68,7 +65,7 @@ class Tool(CncPipe):
     def getToolSpindleSpeed(self, t: int = None):
         """:return: s the spindle speed for the current tool or the specified tool number. """
         if t is not None:
-            return self._call_interface('GetToolSpindleSpeed', t )
+            return self._call_interface('GetToolSpindleSpeed', t)
         else:
             return self._call_interface('GetToolSpindleSpeed', )
 
@@ -147,23 +144,21 @@ class Tool(CncPipe):
         """:return:  the tool wear adjustment for a lathe tool. """
         return self._call_interface('GetWearAdjustment', tool, aType)
 
-    def getToolDescription (self,i:int=None) -> str:
+    def getToolDescription(self, i: int = None) -> str:
         """ Get the description for the  tool i. """
-        return self._call_interface('GetToolDescription',i)
+        return self._call_interface('GetToolDescription', i)
 
-    def  getToolLibrary (self) -> list:
+    def getToolLibrary(self) -> list:
         """Gets tool info for all tools with in the tool library."""
         return self._call_interface('GetToolLibrary')
 
-    def setToolDescription(self,tool_number, description:str):
-        return self._call_interface('SetToolDescription',int(tool_number),description)
+    def setToolDescription(self, tool_number, description: str):
+        return self._call_interface('SetToolDescription', int(tool_number), description)
 
-
-    def setToolLibrary(self,lsttool:[]):
+    def setToolLibrary(self, lsttool: []):
         """Specifies the information for the tool library"""
-        return self._call_interface('SetToolLibrary',lsttool)
+        return self._call_interface('SetToolLibrary', lsttool)
 
-    def setToolDiameterOffsetAmout(self,t:int,value:float):
-        '''Set the tool diameter offset Amount.'''
-        return self._call_interface('SetToolDiameterOffsetAmout',int(t),float(value))
-
+    def setToolDiameterOffsetAmout(self, t: int, value: float):
+        """Set the tool diameter offset Amount."""
+        return self._call_interface('SetToolDiameterOffsetAmout', int(t), float(value))

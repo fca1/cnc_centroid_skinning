@@ -8,7 +8,7 @@ class MessageWindow(CncPipe):
     """Class for getting status window information"""
 
     def __init__(self, interface: CentroidAPIInterface):
-        super().__init__("message_window",interface)
+        super().__init__("message_window", interface)
 
     def getMessages(self) -> List[str]:
         """:return: the messages from the Message Window in CNC12."""

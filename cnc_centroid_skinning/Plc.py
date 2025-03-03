@@ -25,7 +25,7 @@ class PLc(CncPipe):
     """	A class with functions related to PLC programming and state information"""
 
     def __init__(self, interface: CentroidAPIInterface):
-        super().__init__("plc",interface)
+        super().__init__("plc", interface)
 
     def getWatchList(self, bitList: typing.List[IOMBit]) -> [typing.List[IOMBit], None]:
         """:return:  the states of watched bits previosuly set by SetPlcWatchList """
@@ -143,35 +143,35 @@ class PLc(CncPipe):
         """:return: the state of output LEDs for the VCP all at once. """
         return self._call_interface('GetVcpLedStates', wo_rc=True)
 
-    def getDoubleFloatWordValue(self,index:int)->float:
+    def getDoubleFloatWordValue(self, index: int) -> float:
         """Gets the value of the given PLC 64-bit double floating point DFW value"""
         return self._call_interface('GetDoubleFloatWordValue', int(index))
 
-    def getSkinEventState(self,index:int)->int:
-        '''Get the state of a "PLC" skin event bit.
+    def getSkinEventState(self, index: int) -> int:
+        """Get the state of a "PLC" skin event bit.
         A "PLC" skin event bit is, in most cases, set by a PC program running on the MPU
-        hardware and used to communicate status to the CNC software.'''
+        hardware and used to communicate status to the CNC software."""
         return self._call_interface('GetSkinEventState', int(index))
 
-    def getSkinningDataFloatWord(self,index:int)->float:
-        '''Return the value of a skinning float word'''
+    def getSkinningDataFloatWord(self, index: int) -> float:
+        """Return the value of a skinning float word"""
         return self._call_interface('GetSkinningDataFloatWord', int(index))
 
-    def getUsbWatchList(self,bitList:[]):
+    def getUsbWatchList(self, bitList: []):
         return self._call_interface('GetUsbWatchList', bitList)
 
-    def setInputInversionState(self,inputbit:int,state:InversionState):
+    def setInputInversionState(self, inputbit: int, state: InversionState):
         """Set whether or not a PLC input bit is inverted"""
-        return self._call_interface('SetInputInversionState',int(inputbit),state)
+        return self._call_interface('SetInputInversionState', int(inputbit), state)
 
-    def setSkinningDataFloatWord(self,index:int,value:float,sendImmmediatly:bool=True):
+    def setSkinningDataFloatWord(self, index: int, value: float, sendImmmediatly: bool = True):
         """Set a skinning data float word. A skinning data float word is a general purpose 32-bit floating point
          value used to communicate with a PLC program. A PLC program can reference this value using the
          SV_SKINNING_DATA_FW_1 - SV_SKINNING_DATA_FW_11 system variables."""
-        return self._call_interface('SetSkinningDataFloatWord',int(index),float(value),bool(sendImmmediatly))
+        return self._call_interface('SetSkinningDataFloatWord', int(index), float(value), bool(sendImmmediatly))
 
-    def setUsbWatchList(self,bitlist:[]):
+    def setUsbWatchList(self, bitlist: []):
         """Set the PLC USB-BOB watch list. This command also returns with the current state of the bits updated in the
          bitList. When repeated calls using the same list occur, make an initial call to SetUsbWatchList and then
          retrieve the states using GetUsbWatchList"""
-        return self._call_interface('SetUsbWatchList',bitlist)
+        return self._call_interface('SetUsbWatchList', bitlist)

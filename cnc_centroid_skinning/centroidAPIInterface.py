@@ -13,6 +13,8 @@ from exceptions.SkinningException import ReturnCodeException
 """
 This class is used to wrap with the dll. 
 """
+
+
 class CentroidAPIInterface:
 
     def __init__(self, path_running, useVcpPipe: bool, timeout: int):
@@ -29,19 +31,17 @@ class CentroidAPIInterface:
             if rc != ReturnCode.SUCCESS:
                 raise ReturnCodeException(f"Return Code returned by {fcnt}:={str(rc)}", rc)
 
-
-
         fcnt, *params = args
         leef = self.skinning
         for obj in fcnt.split("."):
             leef = getattr(leef, obj)
         # Transform float with Double  ( python float -> .net Double)
-        params = [Double(i) if isinstance(i,float) else i  for i in params ]
+        params = [Double(i) if isinstance(i, float) else i for i in params]
         # Call the method found (pythonnet works between .net and python)
         try:
             ret_lst = leef(*params)
         except Exception as e:
-            raise ReturnCodeException("bad call parameters",ReturnCode.ERROR_UNKNOWN)
+            raise ReturnCodeException("bad call parameters", ReturnCode.ERROR_UNKNOWN)
         if not kwargs.get('wo_rc', False):  # this option is used when return code is no waited
             # first item of list is a ReturnCode value. If No success raise an Exception
             rvc = ret_lst[0] if isinstance(ret_lst, tuple) else ret_lst
@@ -53,11 +53,9 @@ class CentroidAPIInterface:
         # If only one value is in the list, give the value without items
         return ret_lst[0] if (type(ret_lst) == tuple and len(ret_lst) == 1) else ret_lst
 
-    def _getListFcntApi(self,nameClass:str):
+    def _getListFcntApi(self, nameClass: str):
         # Récupérer tous les attributs de la classe
         leef = self.skinning
         leef = getattr(leef, nameClass)
         methodes = [m for m in dir(leef) if callable(getattr(leef, m)) and not m.startswith("__")]
-        return  methodes
-
-
+        return methodes

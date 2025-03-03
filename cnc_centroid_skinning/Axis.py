@@ -48,7 +48,6 @@ class Axis(CncPipe):
         """:return: Gets the power state for a specified axis. """
         return self._call_interface('GetRate', axis)
 
-
     def getLabel(self, axis: Axes) -> str:
         """Get the label for the given axis. """
         return self._call_interface('GetLabel', axis)
@@ -118,8 +117,6 @@ class Axis(CncPipe):
         """Set a travel limit for a specified axis a specified direction. """
         return self._call_interface('SetTravelLimit', axis, direction, float(value))
 
-
-
     def getScalesCounts(self, axis: Axes) -> float:
         """Get the counts that a specified axis will scale in."""
         """Set a travel limit for a specified axis a specified direction. """
@@ -133,34 +130,30 @@ class Axis(CncPipe):
         """Get if scaling enabled a specified axis."""
         return self._call_interface('GetScalesEnable', axis)
 
-
     def getScalesInput(self, axis: Axes) -> int:
         """Get the encoder input that is scaling a specified axis."""
         return self._call_interface('GetScalesInput', axis)
-
 
     def getScalesVelocity(self, axis: Axes) -> float:
         """Get the velocity for sclaing for a specified axis."""
         return self._call_interface('GetScalesVelocity', axis)
 
-
-    def setScalesCounts(self, axis: Axes,scaling_counts:float):
+    def setScalesCounts(self, axis: Axes, scaling_counts: float):
         """"	Set the counts a specified axis will be scaled by"""
-        return self._call_interface('SetScalesCounts', axis,float(scaling_counts))
+        return self._call_interface('SetScalesCounts', axis, float(scaling_counts))
 
-
-    def setScalesDeadband(self, axis: Axes,value:int):
+    def setScalesDeadband(self, axis: Axes, value: int):
         """Set the deadband for scaling for a specified axis"""
-        return self._call_interface('SetScalesDeadband', axis,int(value))
+        return self._call_interface('SetScalesDeadband', axis, int(value))
 
-    def setScalesEnable(self, axis: Axes,enable:bool):
+    def setScalesEnable(self, axis: Axes, enable: bool):
         """Set a scaling to be enabled for a specified axis"""
-        return self._call_interface('SetScalesEnable', axis,bool(enable))
+        return self._call_interface('SetScalesEnable', axis, bool(enable))
 
-    def setScalesInput(self, axis: Axes,value:int):
+    def setScalesInput(self, axis: Axes, value: int):
         """Set a encoder input for scaling a specified axis"""
-        return self._call_interface('SetScalesInput', axis,int(value))
+        return self._call_interface('SetScalesInput', axis, int(value))
 
-    def setScalesVelocity(self, axis: Axes,value:float):
+    def setScalesVelocity(self, axis: Axes, value: float):
         """Set the velocity for scaling for a specified axis"""
-        return self._call_interface('SetScalesVelocity', axis,float(value))
+        return self._call_interface('SetScalesVelocity', axis, float(value))

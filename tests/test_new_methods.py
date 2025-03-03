@@ -14,8 +14,3 @@ class MyTestCase(unittest.TestCase):
             print(lst_new_methods)
             pass
         pass
-
-
-
-
-

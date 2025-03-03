@@ -12,7 +12,7 @@ class TestSys(TestCase):
         self.sys.getSystemIdentifier()
 
     def test_exit_software(self):
-        #self.sys.exitSoftware()
+        # self.sys.exitSoftware()
         pass
 
     def test_get_ether1616device_info(self):

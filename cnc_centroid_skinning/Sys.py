@@ -13,7 +13,7 @@ class Sys(CncPipe):
     """A class for getting system-related information """
 
     def __init__(self, interface: CentroidAPIInterface):
-        super().__init__("system",interface)
+        super().__init__("system", interface)
 
     def getSystemIdentifier(self) -> int:
 
@@ -35,11 +35,9 @@ class Sys(CncPipe):
         except SkinningException as _e:
             return tuple()
 
-    def getECAT1616NumberOfDevices(self) ->int:
+    def getECAT1616NumberOfDevices(self) -> int:
         """Gets Number of all ECAT1616 devices connected. """
         return self._call_interface('GetECAT1616NumberOfDevices')
-
-
 
     def getMachineType(self) -> MachineTypes:
         """ Get the machine type the centroid api is connected to. """
@@ -52,12 +50,12 @@ class Sys(CncPipe):
     def getUnlockVersion(self) -> UnlockVersions:
         return self._call_interface('GetUnlockVersion')
 
-    def importLicense(self,licensePath:str):
-        return self._call_interface('ImportLicense',licensePath)
+    def importLicense(self, licensePath: str):
+        return self._call_interface('ImportLicense', licensePath)
 
-    def isENCEXP12Connected(self) ->bool:
+    def isENCEXP12Connected(self) -> bool:
         return self._call_interface('IsENCEXP12Connected')
 
-    def getPLCEXP1616NumberofDevices(self)->int:
+    def getPLCEXP1616NumberofDevices(self) -> int:
         """Gets Number of all PLCEXP1616 devices connected."""
         return self._call_interface('GetPLCEXP1616NumberofDevices')
