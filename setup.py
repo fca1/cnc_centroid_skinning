@@ -1,5 +1,4 @@
 import pathlib
-
 from setuptools import setup, find_packages
 
 # The directory containing this file
@@ -27,11 +26,12 @@ setup(
         "Development Status :: 2 - Pre-Alpha",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.12",
         "Operating System :: Microsoft :: Windows :: Windows 11",
         "Topic :: Software Development :: Libraries",
     ],
-    packages=find_packages(exclude=("tests",)),
+    packages=find_packages(exclude=("tests","examples")),
     include_package_data=True,
     install_requires=["pythonnet", "pycparser"],
     entry_points={

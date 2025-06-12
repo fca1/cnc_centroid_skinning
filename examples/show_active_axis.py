@@ -5,7 +5,7 @@ import sys
 from cnc_centroid_skinning import PATH_CNC12
 from cnc_centroid_skinning.Axis import Axes
 from cnc_centroid_skinning.centroidAPI import CentroidAPI
-from cnc_centroid_skinning.enums import UnitsOfMeasure
+from cnc_centroid_skinning.cncenums import UnitsOfMeasure
 
 
 def initializeApi(file_path_of_prg: str):

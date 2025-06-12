@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from cnc_centroid_skinning import PATH_CNC12
 from centroidAPI import CentroidAPI
-from enums import Value
+from cncenums import Value
 
 
 class TestState(TestCase):
@@ -55,7 +55,9 @@ class TestState(TestCase):
         self.sta.getSpindleSpeed()
 
     def test_get_current_machine_position(self):
-        self.sta.getCurrentMachinePosition()
+        position = self.sta.getCurrentMachinePosition()
+        assert len(position) >=2
+
 
     def test_get_feedrate_override(self):
         self.sta.getFeedrateOverride()

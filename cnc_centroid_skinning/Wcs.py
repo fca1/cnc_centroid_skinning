@@ -1,6 +1,6 @@
 from CncPipe import CncPipe
 from centroidAPIInterface import CentroidAPIInterface
-from enums import WCS, Axes
+from cncenums import WCS, Axes
 
 
 class Wcs(CncPipe):

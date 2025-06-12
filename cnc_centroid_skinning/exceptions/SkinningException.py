@@ -1,4 +1,4 @@
-from enums import ReturnCode
+from cncenums import ReturnCode
 
 
 class SkinningException(Exception):

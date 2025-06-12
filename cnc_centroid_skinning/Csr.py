@@ -27,6 +27,15 @@ class Csr(CncPipe):
         # TODO strange, why a int for the parameter wcs ?
         return self._call_interface('SetAngle', *(1 + int(wcs), float(angle)) if wcs is not None else (float(angle),))
 
+    def disableCSR (self):
+        """Disables the active CSR. CSR will reenable either when a job concludes or when ReenableCSR is called."""
+        return self.interface('csr.DisableCSR')
+
+    def ReenableCSR (self):
+        """Enables a previously disabled CSR. Will return error if DisableCSR was never called or if CSR was reenabled via the conclusion of a job."""
+        return self.interface('csr.ReenableCSR')
+
+
     def __getitem__(self, item):
         """
         :param item: specified WCS or currently active wcs if 0

@@ -1,8 +1,10 @@
 from unittest import TestCase
 
-from centroidAPI import CentroidAPI
+
 from cnc_centroid_skinning import PATH_CNC12
-from enums import IOMBit, BitType, ForceState, InversionState
+
+from centroidAPI import CentroidAPI
+from cncenums import IOMBit, BitType, ForceState, InversionState
 
 
 class TestPLc(TestCase):
@@ -18,7 +20,7 @@ class TestPLc(TestCase):
         pass
 
     def test_set_io_force_state(self):
-        self.plc.setIoForceState(1, BitType.Input, ForceState.ForcedOff)
+        self.plc.setIoForceState(1, BitType.Output, ForceState.ForcedOff)
 
     def test_set_skinning_data_word(self):
         self.plc.setSkinningDataWord(1, 0, False)
@@ -30,7 +32,7 @@ class TestPLc(TestCase):
         self.plc.setInputIversionState(0, InversionState.Inverted)
 
     def test_set_input_force_state(self):
-        self.plc.setInputIversionState(0, InversionState.NotIverted)
+        self.plc.setInputIversionState(0, InversionState.NotInverted)
 
     def test_get_input_state(self):
         self.plc.getInputState(1)
