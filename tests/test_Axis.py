@@ -2,7 +2,7 @@ from unittest import TestCase
 
 from cnc_centroid_skinning import PATH_CNC12
 from cnc_centroid_skinning.centroidAPI import CentroidAPI
-from enums import Axes, Rate, Direction
+from cncenums import Axes, Rate, Direction
 
 
 class TestAxis(TestCase):

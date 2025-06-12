@@ -1,22 +1,8 @@
-from enum import IntEnum, unique
 from typing import List
 
 from centroidAPIInterface import CentroidAPIInterface
 
 
-@unique
-class ProbeBossOrientation(IntEnum):
-    X_PLUS = 0
-
-    """Positive x direction."""
-    Y_PLUS = 1
-
-    """Positive y direction."""
-    X_MINUS = 2
-
-    """Negative x direction."""
-    Y_MINUS = 3
-    """Negative y direction."""
 
 
 class Job:
@@ -28,6 +14,49 @@ class Job:
     def load(self, path: str):
         """Load an existing job into CNC12"""
         return self.interface('job.Load', path)
+
+    def cancelExecution(self):
+        """Cancel execution of a job."""
+        return self.interface('job.CancelExecution')
+
+    def continueExecution(self):
+        """Continue execution of a job that is waiting at an M0/M200/M201 command."""
+        return self.interface('job.ContinueExecution')
+
+    def getJobRepeatState(self) -> bool:
+        """Get if job repeat is on or not."""
+        return self.interface('job.GetJobRepeatState')
+
+    def setJobRepeatState(self,state:bool):
+        """Set the Job Repeat State to on or off."""
+        return self.interface('job.SetJobRepeatState',state)
+
+    def refreshGraph(self):
+        """Refresh the onscreen graph."""
+        return self.interface('job.RefreshGraph')
+
+    def getPartCount(self,part_count:int):
+        """Get the currently set part count."""
+        return self.interface('job.GetPartCount',part_count)
+
+    def getPartNumber(self) ->int:
+        """Get the currently set part count."""
+        return self.interface('job.GetPartNumber')
+
+    def getSystemVariable(self,variable_number:int) ->int:
+        """Gets system variable (#1 - #299, #400 - #31999)"""
+        assert 1<=variable_number<=299
+        assert 400 <= variable_number <= 31999
+        return self.interface('job.GetSystemVariable',variable_number)
+
+    def getSystemVariable(self,variable_number:int) ->str:
+        """Gets system variable (#300 - #399)"""
+        assert 300 <= variable_number <= 399
+        return self.interface('job.GetSystemVariable',variable_number)
+
+
+
+
 
     def runCommand(self, command: str, require_cycle_start: bool = True):
         """

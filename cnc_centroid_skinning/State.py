@@ -1,6 +1,6 @@
 from typing import List, Tuple
 
-from enums import MdiState, MoveMode, FeedHoldState, PositioningMode, UnitsOfMeasure, HomingType, Value
+from cncenums import MdiState, MoveMode, FeedHoldState, PositioningMode, UnitsOfMeasure, HomingType, Value
 from centroidAPIInterface import CentroidAPIInterface
 
 
@@ -79,7 +79,8 @@ class State:
 
     def getCurrentMachinePosition(self) -> Tuple[float]:
         """:return: s the current machine position. """
-        return tuple(map(float, self.interface('state.GetCurrentMachinePosition', [])))
+        machinePosition = self.interface('state.GetCurrentMachinePosition', [])
+        return tuple(map(float, machinePosition))
 
     def getFeedrateOverride(self) -> int:
         """:return:  the feedrate override as a percent between 1 and max (usually 120). """

@@ -1,14 +1,20 @@
 from unittest import TestCase
 
-from centroidAPI import CentroidAPI
 from cnc_centroid_skinning import PATH_CNC12
-from enums import ToolWearAdjustmentType, SpindleDirection, Coolant
+from centroidAPI import CentroidAPI
+from cncenums import ToolWearAdjustmentType, SpindleDirection, Coolant
 
 
 class TestTool(TestCase):
     assembly_path = PATH_CNC12
     tool = CentroidAPI(assembly_path).tool
     pass
+
+    def test_get_tool_library(self):
+        answer = self.tool.getToolLibrary()
+        pass
+
+
 
     def test_get_tool_number(self):
         self.tool.getToolNumber()
@@ -17,7 +23,8 @@ class TestTool(TestCase):
         self.tool.getCurrentHeightOffsetNumber()
 
     def test_get_tool_info(self):
-        self.tool.getToolInfo()
+        info = self.tool.getToolInfo(1)
+        pass
 
     def test_get_height_offset_amount(self):
         self.tool.getHeightOffsetAmount()
@@ -44,7 +51,7 @@ class TestTool(TestCase):
         self.tool.setBinNumber(0,0)
 
     def test_set_coolant(self):
-        self.tool.setCoolant(0,Coolant.OFF)
+        self.tool.setCoolant(1,Coolant.OFF)
 
     def test_set_tool_height_offset_amout(self):
         self.tool.setToolHeightOffsetAmout(0,5)

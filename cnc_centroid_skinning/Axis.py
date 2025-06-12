@@ -1,7 +1,7 @@
 from builtins import float
 
 
-from enums import Axes, Direction, Rate
+from cncenums import Axes, Direction, Rate
 from centroidAPIInterface import CentroidAPIInterface
 
 

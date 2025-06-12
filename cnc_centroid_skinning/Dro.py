@@ -1,6 +1,6 @@
 from typing import List
 
-from enums import DroCoordinates
+from cncenums import DroCoordinates
 from centroidAPIInterface import CentroidAPIInterface
 
 

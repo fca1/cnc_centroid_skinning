@@ -45,11 +45,11 @@ Python is easy to use and allows rapid prototyping.
 
 # Second release ( 4 years later....)  
 
-The software version of CNC12 is V5.20, pythonnet has changed with net3.0, the python engine must be
-with 64 bits platform. The DLL given by CNC CENTROID has changed of name and the platform is also to 64 bits. 
+The interface evolves with 64-bit communication, which requires having python under the same platform in order to 
+communicate with CentroidAPI.dll. .net has evolved as well, with greater security at the .net and pythonnet level.
 
-This new version seems ok, many functions are not inplemented, but the enhancement is easy. 
-
+Several interfaces have been added to CentroidAPI, and the code does not take all the evolutions, 
+but it is very simple to add them.
 
 # Warning
 

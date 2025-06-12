@@ -5,11 +5,11 @@ from System import Array, String, Char, Int32, Double, Int64, UInt64, UInt32
 # noinspection PyUnresolvedReferences
 from System.Collections.Generic import List
 
-from enums import IOMBit, BitType, ForceState, InversionState, IOState
+from cncenums import IOMBit, BitType, ForceState, InversionState, IOState
 from centroidAPIInterface import CentroidAPIInterface
 
 
-def _fill_skinning_iombit(self, insiom):
+def _fill_skinning_iombit(insiom):
     """
     :return:  CncSkinning.IOMBIT object
     """
@@ -31,7 +31,7 @@ class PLc:
         rs = List[self.interface.skinning.plc.IOMBit]()  # don't use the constructor with parameters
         for iombit in bitList:  # fills ref List< IOMBit > bitList
             insiom = self.interface.skinning.plc.IOMBit()  # CncSkinning.IOMBIT object
-            rs.Add(iombit._fill_skinning_iombit(insiom))
+            rs.Add(_fill_skinning_iombit(insiom))
         success, lst_iombit = self.interface('plc.GetWatchList', rs, wo_rc=True)
         if success:
             lst_wrap = list()
@@ -89,7 +89,7 @@ class PLc:
 
     def setInputIversionState(self, inputBit: int, state: InversionState):
         """Set whether or not a PLC inpuit bit is inverted. """
-        return self.interface('plc.SetInputIversionState', int(inputBit), state)
+        return self.interface('plc.SetInputInversionState', int(inputBit), state)
 
     def setInputForceState(self, inputBit: int, state: ForceState):
         """Set whether or not an input is forced to a given state. """
@@ -128,12 +128,16 @@ class PLc:
         """Set skin event number to a given state. """
         return self.interface('plc.SetSkinEventState', int(eventNumber), int(state))
 
+    # TODO GetPlcSystemVariableBit unknow enum
     def getPcSystemVariableBit(self, bit: int) -> IOState:
+        return  # TO suppress
         """:return:  the state of a "PC" system variable bit. A "PC" system varaible bit is, in most cases, set by the CNC
         softare running on the PC and used to communicate status to the MPU hardware, in particular the PLC system. """
         return IOState(self.interface('plc.GetPcSystemVariableBit', int(bit), 0))
 
+    # TODO getPlcSystemVariableBit unknow enum
     def getPlcSystemVariableBit(self, bit: int) -> IOState:
+        return  # TO suppress
         """:return:  the state of a "PLC" system variable bit. A "PLC" system varaible bit is, in most cases, set by the PLC
          program running on the MPU hardware and used to communicate status to the CNC software. """
         return self.interface('plc.GetPlcSystemVariableBit', int(bit), 0)

@@ -1,4 +1,4 @@
-from enums import Viewport
+from cncenums import Viewport
 from centroidAPIInterface import CentroidAPIInterface
 
 

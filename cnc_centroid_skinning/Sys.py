@@ -3,7 +3,7 @@ import typing
 # noinspection PyUnresolvedReferences
 from System.Collections.Generic import List
 
-from enums import Ether1616Device
+from cncenums import Ether1616Device
 from exceptions.SkinningException import SkinningException
 from centroidAPIInterface import CentroidAPIInterface
 

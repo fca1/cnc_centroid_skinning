@@ -8,7 +8,7 @@ from System import String, Char, Int32, Double,Decimal
 
 
 from cnc_centroid_skinning import CNCPipe
-from enums import ReturnCode
+from cncenums import ReturnCode
 from exceptions.SkinningException import ReturnCodeException
 
 """
@@ -29,17 +29,19 @@ class CentroidAPIInterface:
             rc = ReturnCode(int(_rvc))
             if rc != ReturnCode.SUCCESS:
                 raise ReturnCodeException(f"Return Code returned by {fcnt}:={str(rc)}", rc)
+            pass
 
         fcnt, *params = args
         leef = self.skinning
         for obj in fcnt.split("."):
             leef = getattr(leef, obj)
+            assert leef is not None
         # Transform float with Double  ( python float -> .net Double)
         params = [Double(i) if isinstance(i,float) else i  for i in params ]
         # Call the method found (pythonnet works between .net and python)
         ret_lst = leef(*params)
         if not kwargs.get('wo_rc', False):  # this option is used when return code is no waited
-            # first item of list is a ReturnCode value. If No success raise an Exception
+            # first item of list is a ReturnCode value. If No success, raise an Exception
             rvc = ret_lst[0] if isinstance(ret_lst, tuple) else ret_lst
             test_return_code(rvc)
             if type(ret_lst) == int:

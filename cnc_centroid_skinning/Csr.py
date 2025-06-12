@@ -23,6 +23,15 @@ class Csr:
         else:
             return self.interface('csr.SetAngle', float(angle))
 
+    def disableCSR (self):
+        """Disables the active CSR. CSR will reenable either when a job concludes or when ReenableCSR is called."""
+        return self.interface('csr.DisableCSR')
+
+    def ReenableCSR (self):
+        """Enables a previously disabled CSR. Will return error if DisableCSR was never called or if CSR was reenabled via the conclusion of a job."""
+        return self.interface('csr.ReenableCSR')
+
+
     def __getitem__(self, item):
         """
         :param item: specified WCS or currently active wcs if 0

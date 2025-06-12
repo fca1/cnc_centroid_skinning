@@ -1,9 +1,12 @@
-from enums import Coolant, SpindleDirection, ToolWearAdjustmentType
+
+
+
+from cncenums import Coolant, SpindleDirection, ToolWearAdjustmentType
 from centroidAPIInterface import CentroidAPIInterface
 
 
-class Tinfo:
 
+class Tinfo:
     def __init__(self, obj=None):
         self.coolant = None
         """This field specifies a default coolant aType to use with each tool. Possible values are FLOOD, MIST, or OFF. Intercon uses this information to automatically insert M7 or M8 after a tool change. """
@@ -37,6 +40,9 @@ class Tool:
     def __init__(self, interface: CentroidAPIInterface):
         self.interface = interface
 
+    def getToolLibrary(self):
+        return self.interface('tool.GetToolLibrary')
+
     def getToolNumber(self) -> int:
         """:return: s the current tool number. """
         return self.interface('tool.GetToolNumber')
@@ -45,12 +51,10 @@ class Tool:
         """:return: s the current Height offset number. """
         return self.interface('tool.GetCurrentHeightOffsetNumber')
 
-    def getToolInfo(self, t: int = None) -> Tinfo:
+    def getToolInfo(self, t: int) -> Tinfo:
+        info = self.interface('tool.GetToolInfo', t, wo_rc=True)
         """:return: s tool info for the tool with specified tool number. """
-        if t is not None:
-            return Tinfo(self.interface('tool.GetToolInfo', t, wo_rc=True))
-        else:
-            return Tinfo(self.interface('tool.GetToolInfo', wo_rc=True))
+        return Tinfo(info)
 
     def getHeightOffsetAmount(self, h: int = None) -> float:
         """:return:  the height offset amount for the current H number. """
@@ -63,17 +67,17 @@ class Tool:
         """:return: s the diameter offset amount for the specified D number. """
         return self.interface('tool.GetDiameterOffsetAmount')
 
-    def getToolSpindleSpeed(self, t: int = None):
+    def getToolSpindleSpeed(self, t: int = None) ->int:
         """:return: s the spindle speed for the current tool or the specified tool number. """
         if t is not None:
             return self.interface('tool.GetToolSpindleSpeed', t )
         else:
             return self.interface('tool.GetToolSpindleSpeed', )
 
-    def getCoolant(self, tool: int = None):
+    def getCoolant(self, tool: int = None) -> Coolant:
         """:return: s the coolant info for the specified tool. """
         if tool is not None:
-            return self.interface('tool.GetCoolant', tool)
+            return self.interface('tool.GetCoolant',int(tool))
         else:
             return self.interface('tool.GetCoolant')
 
