@@ -2,8 +2,9 @@ import ctypes
 import locale
 import sys
 
-from centroidAPI import CentroidApi
 from cnc_centroid_skinning import PATH_CNC12
+
+from centroidAPI import CentroidApi
 
 """
 Ask to windows os, the locale language, and if referenced, set the language of CNC12 in accordance
@@ -61,4 +62,4 @@ lang = locale.windows_locale[windll.GetUserDefaultUILanguage()]
 # change the parameter and change (if possible) the language
 if change_language(sk, lang):
     # Exit from  CNC12 software (restart is needed)
-    sk.system.exitSoftware(sk)
+    sk.sys.exitSoftware(sk)

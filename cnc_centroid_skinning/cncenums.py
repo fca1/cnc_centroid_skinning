@@ -24,6 +24,11 @@ InversionState = CNCPipe.Plc.InversionState
 IOState = CNCPipe.Plc.IOState
 Viewport = CNCPipe.Screen.Viewport
 Ether1616Device = CNCPipe.Sys.Ether1616Device
+UnlockVersions = CNCPipe.Sys.UnlockVersions
+MachineTypes = CNCPipe.Sys.MachineTypes
+
+
+
 Coolant = CNCPipe.Tool.Coolant
 SpindleDirection = CNCPipe.Tool.SpindleDirection
 ToolWearAdjustmentType = CNCPipe.Tool.ToolWearAdjustmentType

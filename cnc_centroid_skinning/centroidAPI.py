@@ -19,7 +19,7 @@ from interface.pythonnetAPIInterface import PythonnetAPIInterface
 
 class CentroidApi:
     Axes = None
-    system = None
+    sys = None
     csr = None
     axis = None
     dro = None
@@ -49,21 +49,24 @@ class CentroidApi:
         # managment of enums
 
         self.Axes = self._interface.cls.Axes
-
-        self.system = Sys(self._interface.skinning, 'sys')
-        self.csr = Csr(self._interface.skinning, 'csr')
-        self.axis = Axis(self._interface.skinning, 'axis')
-        self.dro = Dro(self._interface.skinning, 'dro')
-        self.job = Job(self._interface.skinning, 'job')
-        self.message_window = MessageWindow(self._interface.skinning, 'message_window')
-        self.parameter = Parameter(self._interface.skinning, 'parameter')
-        self.screen = Screen(self._interface.skinning, 'screen')
-        self.state = State(self._interface.skinning, 'state')
-        self.tool = Tool(self._interface.skinning, 'tool')
-        self.wcs = Wcs(self._interface.skinning, 'wcs')
-        self.plc = PLc(self._interface.skinning, 'plc')
-        self._pipe = Pipe(self._interface.skinning, '')
+        # instance_name's relation between dll object and python
+        self.sys = Sys(self._interface, 'system')
+        self.csr = Csr(self._interface, 'csr')
+        self.axis = Axis(self._interface, 'axis')
+        self.dro = Dro(self._interface, 'dro')
+        self.job = Job(self._interface, 'job')
+        self.message_window = MessageWindow(self._interface, 'message_window')
+        self.parameter = Parameter(self._interface, 'parameter')
+        self.screen = Screen(self._interface, 'screen')
+        self.state = State(self._interface, 'state')
+        self.tool = Tool(self._interface, 'tool')
+        self.wcs = Wcs(self._interface, 'wcs')
+        self.plc = PLc(self._interface, 'plc')
+        self._pipe = Pipe(self._interface, '')
         pass
+    @property
+    def path_running(self):
+        return self._interface.path_running
 
     def isConstructed(self) -> bool:
         """

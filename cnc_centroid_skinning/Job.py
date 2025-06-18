@@ -6,6 +6,7 @@ from interface.ApiInterface import ApiInterface
 class Job(ApiInterface):
     """A class for constructing and running jobs """
 
+
     def load(self, path: str):
         """Load an existing job into CNC12"""
         return self._call('Load', path)
@@ -55,7 +56,7 @@ class Job(ApiInterface):
         .. warnings also::  If a previous runCommand is running, this call is ignored without advertizing.
         https://centroidcncforum.com/viewtopic.php?f=60&t=4607
         """
-        return self._call('RunCommand', command, self._call.path_running, bool(require_cycle_start))
+        return self._call('RunCommand', command, self.path_running, bool(require_cycle_start))
 
     @property
     def gcode(self):
