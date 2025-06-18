@@ -3,12 +3,12 @@ import time
 
 from cnc_centroid_skinning import PATH_CNC12
 from cnc_centroid_skinning.Plc import BitType, ForceState
-from cnc_centroid_skinning.centroidAPI import CentroidAPI
+from centroidAPI import CentroidApi
 from cnc_centroid_skinning.exceptions.SkinningException import ReturnCodeException
 
 
 def initializeApi(file_path_of_prg: str):
-    sk = CentroidAPI(file_path_of_prg)
+    sk = CentroidApi(file_path_of_prg)
     if not sk.isConstructed():
         # impossible to  communicate with CNC12 acorn
         print("the Acorn software is not launched")

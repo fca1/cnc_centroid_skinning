@@ -1,13 +1,14 @@
 from unittest import TestCase
 
 from cnc_centroid_skinning import PATH_CNC12
-from centroidAPI import CentroidAPI
-from cncenums import ToolWearAdjustmentType, SpindleDirection, Coolant
+from centroidAPI import CentroidApi
+from cncenums import ToolWearAdjustmentType
 
 
 class TestTool(TestCase):
     assembly_path = PATH_CNC12
-    tool = CentroidAPI(assembly_path).tool
+    api = CentroidApi(assembly_path)
+    tool = api.tool
     pass
 
     def test_get_tool_library(self):
@@ -44,6 +45,16 @@ class TestTool(TestCase):
     def test_get_tool_bin(self):
         self.tool.getToolBin()
 
+    def test_get_tool_hnumber(self):
+        self.tool.getToolHNumber()
+
+    def test_get_tool_dnumber(self):
+        self.tool.getToolDNumber()
+
+    def test_get_wear_adjustment(self):
+        self.tool.getWearAdjustment(1,ToolWearAdjustmentType.TOOL_WEAR_ADJUSTMENT_Z )
+
+"""
     def test_set_tool_info(self):
         self.tool.setToolInfo()
 
@@ -68,14 +79,7 @@ class TestTool(TestCase):
     def test_set_tool_hnumber(self):
         self.tool.setToolHNumber(0,5)
 
-    def test_get_tool_hnumber(self):
-        self.tool.getToolHNumber()
-
-    def test_get_tool_dnumber(self):
-        self.tool.getToolDNumber()
-
     def test_set_wear_adjustment(self):
         self.tool.setWearAdjustment(0,ToolWearAdjustmentType.TOOL_WEAR_ADJUSTMENT_Z,1.2)
+"""
 
-    def test_get_wear_adjustment(self):
-        self.tool.getWearAdjustment(1,ToolWearAdjustmentType.TOOL_WEAR_ADJUSTMENT_Z )

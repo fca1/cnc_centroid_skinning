@@ -1,13 +1,13 @@
 from unittest import TestCase
 
 from cnc_centroid_skinning import PATH_CNC12
-from centroidAPI import CentroidAPI
+from centroidAPI import CentroidApi
 from cncenums import Value
 
 
 class TestState(TestCase):
     assembly_path = PATH_CNC12
-    sta = CentroidAPI(assembly_path).state
+    sta = CentroidApi(assembly_path).state
 
     def test_get_screen_size(self):
         _x, _y = self.sta.getScreenSize()

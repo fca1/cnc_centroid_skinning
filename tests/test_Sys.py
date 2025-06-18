@@ -1,12 +1,12 @@
 from unittest import TestCase
 
 from cnc_centroid_skinning import PATH_CNC12
-from centroidAPI import CentroidAPI
+from centroidAPI import CentroidApi
 
 
 class TestSys(TestCase):
     assembly_path = PATH_CNC12
-    sys = CentroidAPI(assembly_path).system
+    sys = CentroidApi(assembly_path).system
 
     def test_get_system_identifier(self):
         self.sys.getSystemIdentifier()
