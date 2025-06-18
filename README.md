@@ -20,16 +20,6 @@ applied in many different ways".
 This wrapper allows to use this API in python language, with (almost) the same 
 interface than c#.  ( https://centroidcncforum.com/viewtopic.php?f=60&t=3397 )
 
-## Example of use case: a video probing   
- 
-With this wrapper, I have developed for internal use, a 'video probing'.
-A  camera is placed on the head of cnc, and detects the center on a hole( thanks to opencv library https://pypi.org/project/opencv-python/ ).
-This center is used as origin and the coordinate are sent directly to the CNC12 software. The head moves immediatly ( thanks to  *job.RunCommand()*). 
-the second step is to move  the head exactly above  the center of this hole.
-   
-Write this kind of application is quite simply in python language with help of library and the cncSkinning api. 
-
-*Image Recognition library I used with camera for assertions is not included in this library.* 
 
 # First release  
   
@@ -53,15 +43,24 @@ but it is very simple to add them.
 
 # Warning
 
-Be careful when you go to send commands, or update settings. 
+**Be careful** when you go to send commands, or update settings. 
 Keep in mind that you can move (see destroy) your material (it's not the worst...). There is no 
 protection like on the 'acorn wizard' and you can send many bad values. verify each time if the wrapper method is correct 
 and respond like described in the documentation.  
 This interface is not **really tested, don't trust it**. 
 
 
-### I disclaim any responsibility for any accident, injury or damage suffered by anyone would use this wrapper. 
 
+## Example of use case: a video probing   
+ 
+With this wrapper, I have developed for internal use, a 'video probing'.
+A  camera is placed on the head of cnc, and detects the center on a hole( thanks to opencv library https://pypi.org/project/opencv-python/ ).
+This center is used as origin and the coordinate are sent directly to the CNC12 software. The head moves immediatly ( thanks to  *job.RunCommand()*). 
+the second step is to move  the head exactly above  the center of this hole.
+   
+Write this kind of application is quite simply in python language with help of library and the cncSkinning api. 
+
+*Image Recognition library I used with camera for assertions is not included in this library.* 
 
 
 

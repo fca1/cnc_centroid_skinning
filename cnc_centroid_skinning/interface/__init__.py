@@ -48,11 +48,8 @@ from CentroidAPI import CNCPipe as SCNCPipe
 
 CNCPipe = SCNCPipe              # Main module of CNC CENTROID
 
-from centroidAPI import detect_cnc, CentroidApi
-from cncenums import Viewport
 
-
-__all__ = [ 'CNCPipe', 'CentroidApi', 'DroCoordinates', 'ProbeBossOrientation', 'BitType', 'ForceState', 'InversionState',
+__all__ = [ 'CNCPipe', 'PythonnetAPI', 'DroCoordinates', 'ProbeBossOrientation', 'BitType', 'ForceState', 'InversionState',
            'IOState', 'Rate', 'Direction',
            'IOMBit', 'ReturnCode', 'Viewport', 'CircularInterpolationPlane', 'CircularInterpolationDirection',
            'FeedHoldState',

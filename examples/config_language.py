@@ -2,7 +2,7 @@ import ctypes
 import locale
 import sys
 
-from cnc_centroid_skinning.centroidAPI import CentroidAPI
+from centroidAPI import CentroidApi
 from cnc_centroid_skinning import PATH_CNC12
 
 """
@@ -16,7 +16,7 @@ def initializeApi(file_path_of_prg: str):
     :param file_path_of_prg:  (path where cncskinning.dll
     :return:
     """
-    sk = CentroidAPI(file_path_of_prg)
+    sk = CentroidApi(file_path_of_prg)
     if not sk.isConstructed():
         # impossible to  communicate with CNC12 acorn
         print("the Acorn software is not launched")

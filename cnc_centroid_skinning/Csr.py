@@ -1,35 +1,34 @@
+from interface.ApiInterface import ApiInterface
 from Wcs import WCS
-from centroidAPIInterface import CentroidAPIInterface
 
 
-class Csr:
+class Csr(ApiInterface):
     """	Contains methods for getting and setting CSR angles"""
 
-    def __init__(self, interface: CentroidAPIInterface):
-        self.interface = interface
+
 
     def getAngle(self, wcs: WCS = None) -> float:
         """Get the CSR angle for the CURRENTLY ACTIVE WCS. """
         if wcs is not None:
-            return self.interface('csr.GetAngle', 1+int(wcs))
+            return self._call('csr.GetAngle', 1 + int(wcs))
         else:
-            return self.interface('csr.GetAngle')
+            return self._call('csr.GetAngle')
 
     def setAngle(self, angle: float, wcs: WCS = None):
         """Attempt to set the CSR angle for the specified WCS. """
         if wcs is not None:
             # TODO strange, why a int for the parameter wcs ?
-            return self.interface('csr.SetAngle', 1+int(wcs), float(angle))
+            return self._call('csr.SetAngle', 1 + int(wcs), float(angle))
         else:
-            return self.interface('csr.SetAngle', float(angle))
+            return self._call('csr.SetAngle', float(angle))
 
     def disableCSR (self):
         """Disables the active CSR. CSR will reenable either when a job concludes or when ReenableCSR is called."""
-        return self.interface('csr.DisableCSR')
+        return self._call('csr.DisableCSR')
 
     def ReenableCSR (self):
         """Enables a previously disabled CSR. Will return error if DisableCSR was never called or if CSR was reenabled via the conclusion of a job."""
-        return self.interface('csr.ReenableCSR')
+        return self._call('csr.ReenableCSR')
 
 
     def __getitem__(self, item):

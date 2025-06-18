@@ -3,13 +3,13 @@ from unittest import TestCase
 
 from cnc_centroid_skinning import PATH_CNC12
 
-from centroidAPI import CentroidAPI
+from centroidAPI import CentroidApi
 from cncenums import IOMBit, BitType, ForceState, InversionState
 
 
 class TestPLc(TestCase):
     assembly_path = PATH_CNC12
-    plc = CentroidAPI(assembly_path).plc
+    plc = CentroidApi(assembly_path).plc
 
     def test_get_watch_list(self):
         lst = [IOMBit()]

@@ -1,9 +1,5 @@
-
-
-
+from interface.ApiInterface import ApiInterface
 from cncenums import Coolant, SpindleDirection, ToolWearAdjustmentType
-from centroidAPIInterface import CentroidAPIInterface
-
 
 
 class Tinfo:
@@ -34,117 +30,117 @@ class Tinfo:
 
 
 
-class Tool:
+class Tool(ApiInterface):
     """Class to handle Mill Tool Info"""
 
-    def __init__(self, interface: CentroidAPIInterface):
-        self.interface = interface
+
+
 
     def getToolLibrary(self):
-        return self.interface('tool.GetToolLibrary')
+        return self._call('GetToolLibrary')
 
     def getToolNumber(self) -> int:
         """:return: s the current tool number. """
-        return self.interface('tool.GetToolNumber')
+        return self._call('GetToolNumber')
 
     def getCurrentHeightOffsetNumber(self) -> int:
         """:return: s the current Height offset number. """
-        return self.interface('tool.GetCurrentHeightOffsetNumber')
+        return self._call('GetCurrentHeightOffsetNumber')
 
     def getToolInfo(self, t: int) -> Tinfo:
-        info = self.interface('tool.GetToolInfo', t, wo_rc=True)
+        info = self._call('GetToolInfo', t, wo_rc=True)
         """:return: s tool info for the tool with specified tool number. """
         return Tinfo(info)
 
     def getHeightOffsetAmount(self, h: int = None) -> float:
         """:return:  the height offset amount for the current H number. """
         if h is not None:
-            return self.interface('tool.GetHeightOffsetAmount', h)
+            return self._call('GetHeightOffsetAmount', h)
         else:
-            return self.interface('tool.GetHeightOffsetAmount', )
+            return self._call('GetHeightOffsetAmount', )
 
     def getDiameterOffsetAmount(self) -> float:
         """:return: s the diameter offset amount for the specified D number. """
-        return self.interface('tool.GetDiameterOffsetAmount')
+        return self._call('GetDiameterOffsetAmount')
 
     def getToolSpindleSpeed(self, t: int = None) ->int:
         """:return: s the spindle speed for the current tool or the specified tool number. """
         if t is not None:
-            return self.interface('tool.GetToolSpindleSpeed', t )
+            return self._call('GetToolSpindleSpeed', t)
         else:
-            return self.interface('tool.GetToolSpindleSpeed', )
+            return self._call('GetToolSpindleSpeed', )
 
     def getCoolant(self, tool: int = None) -> Coolant:
         """:return: s the coolant info for the specified tool. """
         if tool is not None:
-            return self.interface('tool.GetCoolant',int(tool))
+            return self._call('GetCoolant', int(tool))
         else:
-            return self.interface('tool.GetCoolant')
+            return self._call('GetCoolant')
 
     def getToolSpindleDirection(self, tool: int = None) -> SpindleDirection:
         """:return: s the spindle direction for the current tool. """
         if tool is not None:
-            return self.interface('tool.GetToolSpindleDirection', tool)
+            return self._call('GetToolSpindleDirection', tool)
         else:
-            return self.interface('tool.GetToolSpindleDirection')
+            return self._call('GetToolSpindleDirection')
 
     def getToolBin(self, tool: int = None) -> int:
         """:return: s the bin number for the specified tool. """
         if tool is not None:
-            return self.interface('tool.GetToolBin', tool, 0)
+            return self._call('GetToolBin', tool, 0)
         else:
-            return self.interface('tool.GetToolBin', 0)
+            return self._call('GetToolBin', 0)
 
     def setToolInfo(self, tool: int, tinfo: Tinfo):
         """Specifies the information for tool """
-        return self.interface('tool.SetToolInfo', tool, tinfo)
+        return self._call('SetToolInfo', tool, tinfo)
 
     def setBinNumber(self, tool: int, value: int):
         """Specifies the information for tool """
-        return self.interface('tool.SetBinNumber', tool, value)
+        return self._call('SetBinNumber', tool, value)
 
     def setCoolant(self, tool: int, aType: Coolant):
         """Set the coolant method """
-        return self.interface('tool.SetCoolant', tool, aType)
+        return self._call('SetCoolant', tool, aType)
 
     def setToolHeightOffsetAmout(self, tool: int, value: float):
         """Set the tool diameter offset Amount """
-        return self.interface('tool.SetToolHeightOffsetAmout', tool, float(value))
+        return self._call('SetToolHeightOffsetAmout', tool, float(value))
 
     def setSpindleDirection(self, tool: int, adir: SpindleDirection):
         """Set the tool spindle direction """
-        return self.interface('tool.SetSpindleDirection', tool, adir)
+        return self._call('SetSpindleDirection', tool, adir)
 
     def setSpindleSpeed(self, tool: int, speed: int):
         """Set the tool spindle speed """
-        return self.interface('tool.SetSpindleSpeed', tool, int(speed))
+        return self._call('SetSpindleSpeed', tool, int(speed))
 
     def setToolDNumber(self, tool: int, dia: int):
         """Set the Tool Diameter Number """
-        return self.interface('tool.SetToolDNumber', tool, int(dia))
+        return self._call('SetToolDNumber', tool, int(dia))
 
     def setToolHNumber(self, tool: int, height: int):
         """Set the Tool Height Number """
-        return self.interface('tool.SetToolHNumber', tool, int(height))
+        return self._call('SetToolHNumber', tool, int(height))
 
     def getToolHNumber(self, tool: int = None) -> int:
         """:return: s the H number for the active tool. """
         if tool is None:
-            return self.interface('tool.GetToolHNumber', 0)
+            return self._call('GetToolHNumber', 0)
         else:
-            return self.interface('tool.GetToolHNumber', tool, 0)
+            return self._call('GetToolHNumber', tool, 0)
 
     def getToolDNumber(self, tool: int = None) -> int:
         """:return: s the D number for the active tool. """
         if tool is None:
-            return self.interface('tool.GetToolDNumber', 0)
+            return self._call('GetToolDNumber', 0)
         else:
-            return self.interface('tool.GetToolDNumber', tool, 0)
+            return self._call('GetToolDNumber', tool, 0)
 
     def setWearAdjustment(self, tool: int, aType: ToolWearAdjustmentType, value: float):
         """Set the tool wear adjustment for a lathe tool. """
-        return self.interface('tool.SetWearAdjustment', tool, aType, float(value))
+        return self._call('SetWearAdjustment', tool, aType, float(value))
 
     def getWearAdjustment(self, tool: int, aType: ToolWearAdjustmentType) -> float:
         """:return:  the tool wear adjustment for a lathe tool. """
-        return self.interface('tool.GetWearAdjustment', tool, aType)
+        return self._call('GetWearAdjustment', tool, aType)
