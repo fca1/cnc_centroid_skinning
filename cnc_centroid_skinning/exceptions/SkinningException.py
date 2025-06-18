@@ -1,6 +1,5 @@
 
 
-
 class SkinningException(Exception):
     pass
 
