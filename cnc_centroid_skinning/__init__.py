@@ -8,10 +8,8 @@
 
 __version__ = "0.0.5"
 
-
-
 import sys
-from pathlib import  Path
+from pathlib import Path
 
 # load Python.NET
 import clr
@@ -30,29 +28,25 @@ clr.AddReference('System.Collections')
 # noinspection PyUnresolvedReferences,PyPackageRequirements
 from System.Collections.Generic import Dictionary
 
-
-
 # refresh path of sys (for centroidAPI.dll's path)
-sys.argv = *sys.argv,r"c:\\cncm"
+sys.argv = *sys.argv, r"c:\\cncm"
 if len(sys.argv) < 2:
     sys.stderr.write("please, give as parameter, the path of cncn/cnmt program (ex:c:\cncm)")
     sys.exit(1)
 PATH_CNC12 = str(Path(sys.argv[1]))
 sys.path.append(PATH_CNC12)
 
-
 # noinspection PyUnresolvedReferences
 clr.AddReference("CentroidAPI")
 # noinspection PyUnresolvedReferences
 from CentroidAPI import CNCPipe as SCNCPipe
 
-CNCPipe = SCNCPipe              # Main module of CNC CENTROID
+CNCPipe = SCNCPipe  # Main module of CNC CENTROID
 
 from centroidAPI import detect_cnc, CentroidApi
-from cncenums import Viewport
 
-
-__all__ = [ 'CNCPipe', 'CentroidApi', 'DroCoordinates', 'ProbeBossOrientation', 'BitType', 'ForceState', 'InversionState',
+__all__ = ['CNCPipe', 'CentroidApi', 'DroCoordinates', 'ProbeBossOrientation', 'BitType', 'ForceState',
+           'InversionState',
            'IOState', 'Rate', 'Direction',
            'IOMBit', 'ReturnCode', 'Viewport', 'CircularInterpolationPlane', 'CircularInterpolationDirection',
            'FeedHoldState',
@@ -60,6 +54,3 @@ __all__ = [ 'CNCPipe', 'CentroidApi', 'DroCoordinates', 'ProbeBossOrientation', 
            'Coolant', 'SpindleDirection', 'ToolWearAdjustmentType', 'Tinfo', 'WCS',
            'Axis', 'Csr', 'Dro', 'Job', 'MessageWindow', 'Parameter', 'Plc', 'Screen', 'State', 'Sys', 'Tool', 'Wcs',
            'detect_cnc']
-
-
-

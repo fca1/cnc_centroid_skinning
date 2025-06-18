@@ -1,4 +1,3 @@
-from cncenums import ReturnCode
 
 
 class SkinningException(Exception):
@@ -6,6 +5,7 @@ class SkinningException(Exception):
 
 
 class ReturnCodeException(SkinningException):
+    from cncenums import ReturnCode
     def __init__(self, message, value: ReturnCode):
         super().__init__(message)
         self.value = value

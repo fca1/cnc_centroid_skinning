@@ -1,7 +1,7 @@
 from cnc_centroid_skinning import CNCPipe
 
 Axes = CNCPipe.Axes
-Axes.values = lambda: iter(Axes.GetValues(Axes)) # iterable
+Axes.values = lambda: iter(Axes.GetValues(Axes))  # iterable
 
 Rate = CNCPipe.Axis.Rate
 WCS = CNCPipe.Wcs.WCS

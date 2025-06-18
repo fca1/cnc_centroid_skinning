@@ -28,16 +28,15 @@ class Tinfo:
             self.spindle_direction = obj.spindle_direction
 
 
-
-
 class Tool(ApiInterface):
     """Class to handle Mill Tool Info"""
 
+    def getToolLibrary(self) -> [Tinfo]:
+        """:return: Gets tool info for all tools with in the tool library.  """
 
-
-
-    def getToolLibrary(self):
-        return self._call('GetToolLibrary')
+        answer = tuple( Tinfo(i) for i in  self._call('GetToolLibrary'))
+        assert len(answer) > 1
+        pass
 
     def getToolNumber(self) -> int:
         """:return: s the current tool number. """
@@ -63,7 +62,7 @@ class Tool(ApiInterface):
         """:return: s the diameter offset amount for the specified D number. """
         return self._call('GetDiameterOffsetAmount')
 
-    def getToolSpindleSpeed(self, t: int = None) ->int:
+    def getToolSpindleSpeed(self, t: int = None) -> int:
         """:return: s the spindle speed for the current tool or the specified tool number. """
         if t is not None:
             return self._call('GetToolSpindleSpeed', t)
