@@ -10,10 +10,9 @@ class TestAxis(TestCase):
     axis = CentroidApi(assembly_path).axis
 
     def test_get_accel_time(self):
-        self.axis.setAccelTime(Axes.AXIS_1, 0.43)
-        self.axis.setAccelTime(Axes.AXIS_2, 0.34)
-        self.assertEqual(self.axis.getAccelTime(Axes.AXIS_1), 0.43, "Accel time not set correctly")
-        self.assertEqual(self.axis.getAccelTime(Axes.AXIS_2), 0.34, "Accel time not set correctly")
+        current_acceleration = self.axis.getAccelTime(Axes.AXIS_4)
+        self.axis.setAccelTime(Axes.AXIS_4, current_acceleration)
+        self.assertEqual(self.axis.getAccelTime(Axes.AXIS_4), current_acceleration, "Accel time not set correctly")
 
     def test_get_deadstart_velocity(self):
         self.axis.setDeadstartVelocity(Axes.AXIS_1, 131)

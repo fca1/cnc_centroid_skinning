@@ -10,5 +10,5 @@ class TestCsr(TestCase):
     csr = CentroidApi(assembly_path).csr
 
     def test_get_angle(self):
-        self.csr.setAngle(1.23, WCS.WCS_1)
-        self.assertEqual(self.csr.getAngle(WCS.WCS_1), 1.23)
+        self.csr.setAngle(12.3)
+        self.assertEqual(self.csr.getAngle(WCS.WCS_1), 12.3)

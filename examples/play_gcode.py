@@ -40,7 +40,7 @@ high_limit_x = sk.axis.getTravelLimit(x_axe, Direction.PLUS)
 # advertize inside message window of CNC12
 sk.message_window.message = 'try to start moving'
 
-distanceX  = (high_limit_x-low_limit_x)/10
+distanceX = (high_limit_x - low_limit_x) / 10
 
 try:
     # by this way, gcodes are immediatly taken by the CNC12
