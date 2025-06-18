@@ -29,7 +29,6 @@ clr.AddReference('System.Collections')
 from System.Collections.Generic import Dictionary
 
 # refresh path of sys (for centroidAPI.dll's path)
-sys.argv = *sys.argv, r"c:\\cncm"
 if len(sys.argv) < 2:
     sys.stderr.write("please, give as parameter, the path of cncn/cnmt program (ex:c:\cncm)")
     sys.exit(1)
@@ -44,8 +43,13 @@ from CentroidAPI import CNCPipe as SCNCPipe
 CNCPipe = SCNCPipe  # Main module of CNC CENTROID
 
 from centroidAPI import detect_cnc, CentroidApi
+from cncenums import *
+from Tool import Tinfo
 
-__all__ = ['CNCPipe', 'CentroidApi', 'DroCoordinates', 'ProbeBossOrientation', 'BitType', 'ForceState',
+__all__ = [
+
+            'PATH_CNC12',
+           'CNCPipe', 'CentroidApi', 'DroCoordinates', 'ProbeBossOrientation', 'BitType', 'ForceState',
            'InversionState',
            'IOState', 'Rate', 'Direction',
            'IOMBit', 'ReturnCode', 'Viewport', 'CircularInterpolationPlane', 'CircularInterpolationDirection',
@@ -53,4 +57,5 @@ __all__ = ['CNCPipe', 'CentroidApi', 'DroCoordinates', 'ProbeBossOrientation', '
            'MdiState', 'MoveMode', 'PositioningMode', 'UnitsOfMeasure', 'Value', 'HomingType', 'Ether1616Device',
            'Coolant', 'SpindleDirection', 'ToolWearAdjustmentType', 'Tinfo', 'WCS',
            'Axis', 'Csr', 'Dro', 'Job', 'MessageWindow', 'Parameter', 'Plc', 'Screen', 'State', 'Sys', 'Tool', 'Wcs',
+            'UnlockVersions', 'MachineTypes',
            'detect_cnc']

@@ -9,9 +9,11 @@ from System import String, Char, Int32, Double, Decimal, Int64
 
 
 class ApiInterface:
-    def __init__(self, skinning, instance_name: str):
-        self._skinning = skinning
+    from interface.pythonnetAPIInterface import PythonnetAPIInterface
+    def __init__(self, interface:PythonnetAPIInterface, instance_name: str):
+        self._skinning = interface.skinning
         self._root_leef = instance_name
+        self.path_running = interface.path_running
         pass
 
     def _call(self, *args, **kwargs) -> [Tuple, None]:

@@ -19,10 +19,13 @@ def hardware(sk):
     :return:
     """
     sk.message_window.message = "*** hardware ***"
-    sk.message_window.addMessage(f"System identifier :\t{sk.system.getSystemIdentifier()}",
-                                 backgroundColor=0x000040)  # TODO colors doesn't change
+    sk.message_window.addMessage(f"System identifier :\t{sk.sys.getSystemIdentifier()}",
+                                 backgroundColor=0xFFFFFF)
+    sk.message_window.addMessage(f"unlockVersion :\t{sk.sys.getUnlockVersion()}")
+    sk.message_window.message = f"Machine type      :\t{sk.sys.getMachineType()}"
+    sk.message_window.message = f"Serial nber       :\t{sk.sys.getSerialNumber()}"
     sk.message_window.message = f"Board revision    :\t{sk.state.getAcornBoardRevision()}"
-    sk.message_window.message = f"Nber of Ether1616 :\t{len(sk.system.getEther1616DeviceInfo())}"
+    sk.message_window.message = f"Nber of Ether1616 :\t{len(sk.sys.getEther1616DeviceInfo())}"
 
 
 sk = initializeApi(PATH_CNC12)  # Path file of CNC12 software.
