@@ -18,7 +18,6 @@ from interface.pythonnetAPIInterface import PythonnetAPIInterface
 
 
 class CentroidApi:
-
     Axes = None
     system = None
     csr = None
@@ -32,7 +31,7 @@ class CentroidApi:
     tool = None
     wcs = None
     plc = None
-    _pipe = None # used for CncPipe
+    _pipe = None  # used for CncPipe
 
     """
     Class for getting and setting different system variables.
@@ -49,22 +48,21 @@ class CentroidApi:
         self._interface = PythonnetAPIInterface(path_running, useVcpPipe, timeout)
         # managment of enums
 
-
         self.Axes = self._interface.cls.Axes
 
-        self.system = Sys(self._interface.skinning,'Sys')
-        self.csr = Csr(self._interface.skinning,'Csr')
-        self.axis = Axis(self._interface.skinning,'Axis')
-        self.dro = Dro(self._interface.skinning,'Dro')
-        self.job = Job(self._interface.skinning,'Job')
-        self.message_window = MessageWindow(self._interface.skinning,'MessageWindow')
-        self.parameter = Parameter(self._interface.skinning,'Parameter')
-        self.screen = Screen(self._interface.skinning,'Screen')
-        self.state = State(self._interface.skinning,'State')
-        self.tool = Tool(self._interface.skinning,'Tool')
-        self.wcs = Wcs(self._interface.skinning,'Wcs')
-        self.plc = PLc(self._interface.skinning,'Plc')
-        self._pipe = Pipe(self._interface.skinning,'')
+        self.system = Sys(self._interface.skinning, 'sys')
+        self.csr = Csr(self._interface.skinning, 'csr')
+        self.axis = Axis(self._interface.skinning, 'axis')
+        self.dro = Dro(self._interface.skinning, 'dro')
+        self.job = Job(self._interface.skinning, 'job')
+        self.message_window = MessageWindow(self._interface.skinning, 'message_window')
+        self.parameter = Parameter(self._interface.skinning, 'parameter')
+        self.screen = Screen(self._interface.skinning, 'screen')
+        self.state = State(self._interface.skinning, 'state')
+        self.tool = Tool(self._interface.skinning, 'tool')
+        self.wcs = Wcs(self._interface.skinning, 'wcs')
+        self.plc = PLc(self._interface.skinning, 'plc')
+        self._pipe = Pipe(self._interface.skinning, '')
         pass
 
     def isConstructed(self) -> bool:
@@ -72,6 +70,18 @@ class CentroidApi:
  	    Tells if the class instance was successfully constructed.
         """
         return self._pipe.isConstructed()
+
+    @property
+    def burst_mode(self)->bool:
+        """ Sets if the skinning app is saving after every command or not. """
+        return self._pipe.burst_mode
+
+    @burst_mode.setter
+    def burst_mode(self,enable:bool):
+        """ Sets if the skinning app is saving after every command or not.  """
+        self._pipe.burst_mode = enable
+
+
 
     @property
     def burstMode(self):
@@ -92,14 +102,9 @@ def detect_cnc(file_path_of_prg: str, *kargs):
     :return:
     """
     sk = CentroidApi(file_path_of_prg, *kargs)
-
-    sk.state.getScreenSize()
-
     if sk.isConstructed():
         sys.stdout.write("cnc_centroid_skinning communicates... OK\n")
         return True
     else:
         sys.stderr.write(f"is CNC12 is launched ? given path is correct ? \n")
         return False
-
-

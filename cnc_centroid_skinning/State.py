@@ -1,14 +1,11 @@
 from typing import List, Tuple
 
-from interface.ApiInterface import ApiInterface
 from cncenums import MdiState, MoveMode, FeedHoldState, PositioningMode, UnitsOfMeasure, HomingType, Value
+from interface.ApiInterface import ApiInterface
 
 
 class State(ApiInterface):
     """Holds info relating to system state, e.g. move mode, position mode, feedrate, spindle speed, etc """
-
-
-
 
     def getScreenSize(self) -> tuple:
         """:return: the screen size of the CNC application. """

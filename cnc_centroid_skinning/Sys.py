@@ -3,14 +3,13 @@ import typing
 # noinspection PyUnresolvedReferences
 from System.Collections.Generic import List
 
-from interface.ApiInterface import ApiInterface
 from cncenums import Ether1616Device
 from exceptions.SkinningException import SkinningException
+from interface.ApiInterface import ApiInterface
 
 
 class Sys(ApiInterface):
     """A class for getting system-related information """
-
 
     def getSystemIdentifier(self) -> int:
 

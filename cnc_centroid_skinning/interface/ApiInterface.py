@@ -4,24 +4,19 @@ from typing import Tuple
 # noinspection PyUnresolvedReferences
 from System import Array
 # noinspection PyUnresolvedReferences
-from System import String, Char, Int32, Double,Decimal
-
-
-from cncenums import ReturnCode
-from exceptions.SkinningException import ReturnCodeException
+from System import String, Char, Int32, Double, Decimal, Int64
 
 
 
 class ApiInterface:
-    def __init__(self,skinning,root:str):
+    def __init__(self, skinning, instance_name: str):
         self._skinning = skinning
-        self.root = root
+        self._root_leef = instance_name
         pass
 
-
-
-
     def _call(self, *args, **kwargs) -> [Tuple, None]:
+        from cncenums import ReturnCode
+        from exceptions.SkinningException import ReturnCodeException
         def test_return_code(_rvc):
             rc = ReturnCode(int(_rvc))
             if rc != ReturnCode.SUCCESS:
@@ -29,13 +24,13 @@ class ApiInterface:
             pass
 
         fcnt, *params = args
-        fcnt = self.root + "." + fcnt  if self.root else fcnt             # The root leef is same for object
+        fcnt = self._root_leef + "." + fcnt if self._root_leef else fcnt  # The root leef is same for object
         leef = self._skinning
         for obj in fcnt.split("."):
             leef = getattr(leef, obj)
             assert leef is not None
         # Transform float with Double  ( python float -> .net Double)
-        params = [Double(i) if isinstance(i,float) else i  for i in params ]
+        params = [Double(i) if isinstance(i, float) else i for i in params]
         # Call the method found (pythonnet works between .net and python)
         ret_lst = leef(*params)
         if not kwargs.get('wo_rc', False):  # this option is used when return code is no waited
