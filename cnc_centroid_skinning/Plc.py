@@ -9,18 +9,31 @@ from cncenums import IOMBit, BitType, ForceState, InversionState, IOState
 from interface.ApiInterface import ApiInterface
 
 
-def _fill_skinning_iombit(insiom):
-    """
-    :return:  CncSkinning.IOMBIT object
-    """
+class TIOMBit:
+    def __init__(self, obj=None):
 
+        self.type = None
+        self.number = None
+        # The state of the bit, used when returning a watch list.
+        self.state = None
+        self.vcpButton = None
+        if obj and isinstance(obj, IOMBit):
+            self.type = obj.type
+            self.number = obj.number
+            self.state = obj.state
+            self.vcpButton = obj.vcpButton
+
+
+
+
+def _fill_skinning_iombit(src:IOMBit):
     """
-    insiom.type = self.type  # copy all fields
-    insiom.number = self.number
-    insiom.state = self.state
-    insiom.vcpButton = self.vcpButton
+    :return:  TIOMBit
     """
-    return insiom
+    return TIOMBit(src)
+
+
+
 
 
 class PLc(ApiInterface):
@@ -28,10 +41,9 @@ class PLc(ApiInterface):
 
     def getWatchList(self, bitList: typing.List[IOMBit]) -> [typing.List[IOMBit], None]:
         """:return:  the states of watched bits previosuly set by SetPlcWatchList """
-        rs = List[self._call._skinning.plc.IOMBit]()  # don't use the constructor with parameters
+        rs = List[IOMBit]()  # don't use the constructor with parameters
         for iombit in bitList:  # fills ref List< IOMBit > bitList
-            insiom = self._call._skinning.plc.IOMBit()  # CncSkinning.IOMBIT object
-            rs.Add(_fill_skinning_iombit(insiom))
+            rs.Add(_fill_skinning_iombit(iombit))
         success, lst_iombit = self._call('GetWatchList', rs, wo_rc=True)
         if success:
             lst_wrap = list()
@@ -46,9 +58,9 @@ class PLc(ApiInterface):
         """Set the PLC watch list. This command also returns with the current state of the bits updated in the bitList.
         When repeated calls using the same list occur, make an initial call to SetWatchList and then retrieve the states
         using GetWatchList. """
-        rs = List[self._call._skinning.plc.IOMBit]()  # don't use the constructor with parameters
+        rs = List[IOMBit]()  # don't use the constructor with parameters
         for iombit in bitList:  # fills ref List< IOMBit > bitList
-            insiom = self._call._skinning.plc.IOMBit()  # CncSkinning.IOMBIT object
+            insiom = IOMBit()  # CncSkinning.IOMBIT object
             rs.Add(iombit._fill_skinning_iombit(insiom))
         success, lst_iombit = self._call('SetWatchList', rs, wo_rc=True)
         if success:
@@ -130,14 +142,14 @@ class PLc(ApiInterface):
 
     # TODO GetPlcSystemVariableBit unknow enum  ( not declared inside the dll)
     def getPcSystemVariableBit(self, bit: int) -> IOState:
-        return  # TO suppress
+        raise RuntimeError("This method is not implemented")
         """:return:  the state of a "PC" system variable bit. A "PC" system varaible bit is, in most cases, set by the CNC
         softare running on the PC and used to communicate status to the MPU hardware, in particular the PLC system. """
         return IOState(self._call('GetPcSystemVariableBit', int(bit), 0))
 
-    # TODO getPlcSystemVariableBit ( not declared inside the dll)
+    # TODO getPlcSystemVariableBit (unknow enum not declared inside the dll)
     def getPlcSystemVariableBit(self, bit: int) -> IOState:
-        return  # TO suppress
+        raise RuntimeError("This method is not implemented")
         """:return:  the state of a "PLC" system variable bit. A "PLC" system varaible bit is, in most cases, set by the PLC
          program running on the MPU hardware and used to communicate status to the CNC software. """
         return self._call('GetPlcSystemVariableBit', int(bit), 0)

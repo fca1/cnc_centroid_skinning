@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import List
 
 from cncenums import MdiState, MoveMode, FeedHoldState, PositioningMode, UnitsOfMeasure, HomingType, Value
 from interface.ApiInterface import ApiInterface
@@ -74,7 +74,7 @@ class State(ApiInterface):
         """:return:  the current spindle speed. """
         return self._call('GetSpindleSpeed')
 
-    def getCurrentMachinePosition(self) -> Tuple[float]:
+    def getCurrentMachinePosition(self) -> [float,...]:
         """:return: s the current machine position. """
         machinePosition = self._call('GetCurrentMachinePosition', [])
         return tuple(map(float, machinePosition))
@@ -83,7 +83,7 @@ class State(ApiInterface):
         """:return:  the feedrate override as a percent between 1 and max (usually 120). """
         return self._call('GetFeedrateOverride')
 
-    def getCurrentLocalPosition(self) -> Tuple[float]:
+    def getCurrentLocalPosition(self) -> [float]:
         """:return:  the current wcs position. """
         return tuple(map(float, self._call('GetCurrentLocalPosition', [])))
 

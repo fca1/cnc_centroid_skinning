@@ -7,8 +7,9 @@ Rate = CNCPipe.Axis.Rate
 WCS = CNCPipe.Wcs.WCS
 Direction = CNCPipe.Axis.Direction
 ReturnCode = CNCPipe.ReturnCode
-CircularInterpolationPlane = CNCPipe.State.CircularInterpolationPlane
+
 CircularInterpolationDirection = CNCPipe.State.CircularInterpolationDirection
+CircularInterpolationPlane = CNCPipe.State.CircularInterpolationPlane
 FeedHoldState = CNCPipe.State.FeedHoldState
 MdiState = CNCPipe.State.MdiState
 MoveMode = CNCPipe.State.MoveMode
@@ -18,6 +19,7 @@ Value = CNCPipe.State.Value
 HomingType = CNCPipe.State.HomingType
 DroCoordinates = CNCPipe.Dro.DroCoordinates
 IOMBit = CNCPipe.Plc.IOMBit
+
 BitType = CNCPipe.Plc.BitType
 ForceState = CNCPipe.Plc.ForceState
 InversionState = CNCPipe.Plc.InversionState

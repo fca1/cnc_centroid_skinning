@@ -5,12 +5,12 @@ from centroidAPI import CentroidApi
 
 
 def initializeApi(file_path_of_prg: str):
-    sk = CentroidApi(file_path_of_prg)
-    if not sk.isConstructed():
+    _sk = CentroidApi(file_path_of_prg)
+    if not _sk.isConstructed():
         # impossible to  communicate with CNC12 acorn
         print("the Acorn software is not launched")
         sys.exit()
-    return sk
+    return _sk
 
 
 def send_active_code(sk):

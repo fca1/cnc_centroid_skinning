@@ -39,13 +39,13 @@ class Job(ApiInterface):
         """Get the currently set part count."""
         return self._call('GetPartNumber')
 
-    def getSystemVariable(self, variable_number: int) -> int:
+    def getSystemVariableInt(self, variable_number: int) -> int:
         """Gets system variable (#1 - #299, #400 - #31999)"""
         assert 1 <= variable_number <= 299
         assert 400 <= variable_number <= 31999
         return self._call('GetSystemVariable', variable_number)
 
-    def getSystemVariable(self, variable_number: int) -> str:
+    def getSystemVariableStr(self, variable_number: int) -> str:
         """Gets system variable (#300 - #399)"""
         assert 300 <= variable_number <= 399
         return self._call('GetSystemVariable', variable_number)
@@ -53,7 +53,7 @@ class Job(ApiInterface):
     def runCommand(self, command: str, require_cycle_start: bool = True):
         """
         Run a command now. If we require cycle start, it will post as an actual job
-        .. warnings also::  If a previous runCommand is running, this call is ignored without advertizing.
+         warnings also::  If a previous runCommand is running, this call is ignored without advertizing.
         https://centroidcncforum.com/viewtopic.php?f=60&t=4607
         """
         return self._call('RunCommand', command, self.path_running, bool(require_cycle_start))

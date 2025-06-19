@@ -1,11 +1,11 @@
-from centroidAPIInterface import CentroidAPIInterface
+from interface.ApiInterface import ApiInterface
 
 
 class CncPipe:
     # knows all referenced classes from CNCPipe
     _list_cncPipe = set()
 
-    def __init__(self, name_class: str, interface: CentroidAPIInterface):
+    def __init__(self, name_class: str, interface: ApiInterface):
         self.name_class = name_class
         self.interface = interface
         self._list_cncPipe.add(self)

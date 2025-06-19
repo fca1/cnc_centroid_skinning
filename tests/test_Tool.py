@@ -1,8 +1,8 @@
 from unittest import TestCase
 
-from cnc_centroid_skinning import PATH_CNC12
+from cnc_centroid_skinning import PATH_CNC12, Tinfo
 from centroidAPI import CentroidApi
-from cncenums import ToolWearAdjustmentType, SpindleDirection
+from cncenums import ToolWearAdjustmentType, SpindleDirection, Coolant
 
 
 class TestTool(TestCase):
@@ -13,7 +13,7 @@ class TestTool(TestCase):
 
     def test_get_tool_library(self):
         answer = self.tool.getToolLibrary()
-        pass
+        assert isinstance(answer, list)
 
 
 
@@ -25,6 +25,7 @@ class TestTool(TestCase):
 
     def test_get_tool_info(self):
         info = self.tool.getToolInfo(1)
+        assert isinstance(info, Tinfo)
         pass
 
     def test_get_height_offset_amount(self):

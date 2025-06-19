@@ -1,12 +1,11 @@
 import unittest
 
-from cnc_centroid_skinning import PATH_CNC12
-from centroidAPI import CentroidAPI
+from cnc_centroid_skinning import PATH_CNC12, CentroidApi
 
 
 class MyTestCase(unittest.TestCase):
     def test_methods(self):
-        sk = CentroidAPI(PATH_CNC12)
+        sk = CentroidApi(PATH_CNC12)
         from CncPipe import CncPipe
         for cncp in CncPipe.childs():
             print(f"class {cncp.name_class}")

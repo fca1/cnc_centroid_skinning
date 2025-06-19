@@ -1,4 +1,3 @@
-import typing
 
 # noinspection PyUnresolvedReferences
 from System.Collections.Generic import List
@@ -21,7 +20,7 @@ class Sys(ApiInterface):
         return self._call('ExitSoftware')
 
     # @TODO a card is needed to test this method, not yet verified
-    def getEther1616DeviceInfo(self) -> typing.Tuple[Ether1616Device]:
+    def getEther1616DeviceInfo(self) -> [Ether1616Device]:
         """:return: get all valid and attached Ether1616 Device information. """
         rs = List[Ether1616Device]()
         try:

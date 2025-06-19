@@ -7,12 +7,12 @@ from cnc_centroid_skinning import PATH_CNC12
 from centroidAPI import CentroidApi
 
 def initializeApi(file_path_of_prg: str):
-    sk = CentroidApi(file_path_of_prg)
-    if not sk.isConstructed():
+    _sk = CentroidApi(file_path_of_prg)
+    if not _sk.isConstructed():
         # impossible to  communicate with CNC12 acorn
         print("the Acorn software is not launched")
         sys.exit()
-    return sk
+    return _sk
 
 
 sk = initializeApi(PATH_CNC12)  # Path file of CNC12 software.

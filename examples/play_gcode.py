@@ -10,12 +10,12 @@ from cnc_centroid_skinning.exceptions.SkinningException import ReturnCodeExcepti
 
 
 def initializeApi(file_path_of_prg: str):
-    sk = CentroidApi(file_path_of_prg)
-    if not sk.isConstructed():
+    _sk = CentroidApi(file_path_of_prg)
+    if not _sk.isConstructed():
         # impossible to  communicate with CNC12 acorn
         print("the Acorn software is not launched")
         sys.exit()
-    return sk
+    return _sk
 
 
 sk = initializeApi(PATH_CNC12)  # Path file of CNC12 software.
@@ -51,7 +51,7 @@ except ReturnCodeException:
 
 print(f"move X from {low_limit_x} to {distanceX} {unit_str}")
 # Wait with the way of message_window than this RunCommand is Terminated
-# it's not a good method, because an other message can be delivered after than the job is finished....
+# it's not a good method, because another message can be delivered after than the job is finished....
 while not sk.message_window.message.startswith('306'): time.sleep(0.3)  # job finished
 
 pass
