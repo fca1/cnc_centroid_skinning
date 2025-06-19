@@ -20,20 +20,10 @@ applied in many different ways".
 This wrapper allows to use this API in python language, with (almost) the same 
 interface than c#.  ( https://centroidcncforum.com/viewtopic.php?f=60&t=3397 )
 
-
-# First release  
-  
-This is the very first release of this wrapper, I couldn't test everything, but the main features **seem** to work. 
-The goal is to make it easy for everyone to use python to send and receive data for the CNC12 program. 
-
-
-The version of  CNC12 used for my unittest is :4.5.
-
-
 I hope this wrapper allows enthusiasts like me, to simply develop their applications with CNC12. 
 Python is easy to use and allows rapid prototyping.
 
-# Second release ( 4 years later....)  
+# Release V5.30 cnc centroid  
 
 The interface evolves with 64-bit communication, which requires having python under the same platform in order to 
 communicate with CentroidAPI.dll. .net has evolved as well, with greater security at the .net and pythonnet level.
