@@ -1,159 +1,152 @@
-unofficial cnc_centroid_skinning - A wrapper to the CNC12 API language.
+unofficial cnc_centroid_skinning - A wrapper for the CNC12 API language.
 ========================================================
 
-# Introduction. 
+# Introduction
 
-I use for my cnc activities, the products developped by  centroidcnc : https://www.centroidcnc.com/
+I use products developed by centroidcnc for my CNC activities: https://www.centroidcnc.com/
 
-centroidcnc has developped a  controller card  named ACORN : 
+centroidcnc has developed a controller card named ACORN: 
 https://www.centroidcnc.com/centroid_diy/acorn_cnc_controller.html
 
- and ACORN Mill and Lathe *CNC12* software for use with the Centroid Acorn CNC controller 
- https://www.centroidcnc.com/centroid_diy/centroid_cnc_software_downloads.html
+and ACORN Mill and Lathe *CNC12* software for use with the Centroid Acorn CNC controller 
+https://www.centroidcnc.com/centroid_diy/centroid_cnc_software_downloads.html
  
  
-# The goal: A Wrapper for python
+# The goal: A Wrapper for Python
 
 In chapter **1.11** of CNC12's documentation: "CNC12 gives the user the ability to create a custom interface that can be 
 applied in many different ways". 
 
-This wrapper allows to use this API in python language, with (almost) the same 
-interface than c#.  ( https://centroidcncforum.com/viewtopic.php?f=60&t=3397 )
+This wrapper allows you to use this API in Python, with (almost) the same 
+interface as C#. ( https://centroidcncforum.com/viewtopic.php?f=60&t=3397 )
 
 
-# First release  
-  
-This is the very first release of this wrapper, I couldn't test everything, but the main features **seem** to work. 
-The goal is to make it easy for everyone to use python to send and receive data for the CNC12 program. 
 
 
-The version of  CNC12 used for my unittest is :4.5.
+# Release for ACORN 5.30  
 
+The interface has evolved with 64-bit communication, which requires having Python on the same platform to 
+communicate with CentroidAPI.dll. .NET has evolved as well, with greater security at the .NET and pythonnet level.
 
-I hope this wrapper allows enthusiasts like me, to simply develop their applications with CNC12. 
+Several interfaces have been added to CentroidAPI, and the code doesn't incorporate all the evolutions, 
+but it's very simple to add them.
+
+I couldn't test everything, but the main features **seem** to work. 
+The goal is to make it easy for everyone to use Python to send and receive data from the CNC12 program. 
+
+I hope this wrapper allows enthusiasts like me to simply develop their applications with CNC12. 
 Python is easy to use and allows rapid prototyping.
 
-# Second release ( 4 years later....)  
+# To develop 
 
-The interface evolves with 64-bit communication, which requires having python under the same platform in order to 
-communicate with CentroidAPI.dll. .net has evolved as well, with greater security at the .net and pythonnet level.
+this method cannot be called, (enum MpuToPcSysVarBit & PcToMpuSysVarBit   are not published inside the CentroidApi.dll ):
 
-Several interfaces have been added to CentroidAPI, and the code does not take all the evolutions, 
-but it is very simple to add them.
+* getPcSystemVariableBit
+
 
 # Warning
 
-**Be careful** when you go to send commands, or update settings. 
-Keep in mind that you can move (see destroy) your material (it's not the worst...). There is no 
-protection like on the 'acorn wizard' and you can send many bad values. verify each time if the wrapper method is correct 
-and respond like described in the documentation.  
+**Be careful** when you send commands or update settings. 
+Keep in mind that you can move (or even destroy) your material (which isn't the worst case...). There is no 
+protection like in the 'acorn wizard' and you can send many bad values. Verify each time that the wrapper method is correct 
+and responds as described in the documentation.  
 This interface is not **really tested, don't trust it**. 
 
-
-
-## Example of use case: a video probing   
+## Example use case: video probing   
  
-With this wrapper, I have developed for internal use, a 'video probing'.
-A  camera is placed on the head of cnc, and detects the center on a hole( thanks to opencv library https://pypi.org/project/opencv-python/ ).
-This center is used as origin and the coordinate are sent directly to the CNC12 software. The head moves immediatly ( thanks to  *job.RunCommand()*). 
-the second step is to move  the head exactly above  the center of this hole.
+With this wrapper, I have developed a 'video probing' system for internal use.
+A camera is placed on the CNC head and detects the center of a hole (thanks to the opencv library https://pypi.org/project/opencv-python/).
+This center is used as an origin and the coordinates are sent directly to the CNC12 software. The head moves immediately (thanks to *job.RunCommand()*). 
+The second step is to move the head exactly above the center of this hole.
    
-Write this kind of application is quite simply in python language with help of library and the cncSkinning api. 
+Writing this kind of application is quite simple in Python with the help of libraries and the cncSkinning API. 
 
-*Image Recognition library I used with camera for assertions is not included in this library.* 
+*The image recognition library I used with the camera for assertions is not included in this library.* 
 
-
-
-Please, read the chapter : **'CNC Machine Tool Safety'**  in the documentation of CNC centroid.  
+Please read the chapter: **'CNC Machine Tool Safety'** in the CNC Centroid documentation.  
 
 ## Installation
 
-If you have pip, installation is straightforward
+If you have pip, installation is straightforward:
 
     pip install cnc-centroid-skinning
 
 This will automatically install dependencies as well as their dependencies.
 
-# The documentation. 
+# The documentation
 
-The /CncSkinningDocumentation given by Cnc Centroid has the same packages with the same 
+The /CncSkinningDocumentation provided by CNC Centroid has the same packages with the same 
 reference. There are some differences, however:
 
-- The methods begin with a lowercase. 
-- The return code is not given, but in case of a value different of 'SUCCESS' , an ErrorCodeException is raised.
+- The methods begin with lowercase. 
+- The return code is not provided, but in case of a value different from 'SUCCESS', an ErrorCodeException is raised.
   
 [documentation](https://htmlpreview.github.io/?https://github.com/fca1/cnc_centroid_skinning/blob/master/cnc_centroid_skinning/doc/cnc_centroid_skinning/index.html)
 
-
 ## Examples 
 
-Verify the communication betwwen this wrapper and CNC12 (Of course, your CNC12 software is already launched, else no communication is possible):
+Verify the communication between this wrapper and CNC12 (Of course, your CNC12 software must already be launched, otherwise no communication is possible):
 
-the function **detect_cnc(path_of_cnc12) ** is written for that. 
+The function **detect_cnc(path_of_cnc12)** is written for that purpose. 
 
     >>> from cnc_centroid_skinning import detect_cnc
     >>> detect_cnc("c:\cnct")  
     'cnc_centroid_skinning communicates... OK' 
     >>>
     
-### Ask configuration
+### Ask for configuration
  
-    >>> from cnc_centroid_skinning import CncSkinning
-    >>> sk = CncSkinning("c:\cnct")                     # create the instance 
+    >>> from cnc_centroid_skinning import CentroidApi
+    >>> sk = CentroidApi("c:\cnct")                     # create the instance 
     >>> sk.isConstructed()                  
     True
     >>> sk.state.getAcornBoardRevision()
     4
     >>> sk.system.getSystemIdentifier()
     115202849
-    >>> from cnc_centroid_skinning  import Axes,Direction
+    >>> from cnc_centroid_skinning import Axes, Direction
     >>> sk.axis.getLabel(Axes.AXIS_1)
     'Z'
-    >>> sk.axis.getTravelLimit(Axes.AXIS_1,Direction.PLUS)
+    >>> sk.axis.getTravelLimit(Axes.AXIS_1, Direction.PLUS)
     300
 
-### Send a string message to the window message:
-
-    
+### Send a string message to the message window:
 
     >>> sk.message_window.addMessage('move in 5 seconds...')
     >>> sk.message_window.getMessages()[-1]
     'move in 5 seconds...'
+
 or
 
     >>> sk.message_window.message = 'move in 5 seconds...'
     >>> sk.message_window.message
     'move in 5 seconds...'
 
-### Run command (more than one way is possible) with a message window given. 
+### Run command (more than one way is possible) with a message window provided
 
-
-**Verify machine is clear to move the following distance: Z0 -> +Z50**
+**Verify the machine is clear to move the following distance: Z0 -> +Z50**
     
-*Be carrefully with this order, if a command is already running, the next command is ignored
+*Be careful with this command. If a command is already running, the next command is ignored
 until the job is finished. 
-You can see below a method  to detect than the job is finished by  poll the last messagen
-'306 job finished', but it's not a real good way.*
+You can see below a method to detect that the job is finished by polling the last message
+'306 job finished', but it's not a really good way.*
  
+    >>> sk.job.RunCommand("G4 P5.0\nG53 G0 Z0\nZ50", require_cycle_start=False)
+    >>> while not sk.message_window.message.startswith('306'): time.sleep(0.3) # job finished
+    >>> sk.job.RunCommand("G53 G0 Z0", require_cycle_start=False)
 
-    >>>  sk.job.RunCommand("G4 P5.0\nG53 G0 Z0\nZ50",require_cycle_start=False)
-    >>>  while not sk.message_window.message.startswith('306'): time.sleep(0.3) # job finished
-    >>>  sk.job.RunCommand("G53 G0 Z0",require_cycle_start=False)
 or     
 
-    >>>  sk.job.gcode ="G4 P5.0", "G53 G0 Z0","Z50" 
+    >>> sk.job.gcode = "G4 P5.0", "G53 G0 Z0", "Z50" 
     >>> while not sk.message_window.message.startswith('306'): time.sleep(0.3) # job finished
     >>>
   
-    
-     
-   
-### Use the french language for menus, prompt.... 
+### Use the French language for menus, prompts, etc.
 (see 12.3.11 Parameter 9 – Display Language)
 
     >>> sk.param.getMachineParameterValue(9)   # 0 = english
     0
-    >>> sk.param.setMachineParameter(9,2)
+    >>> sk.param.setMachineParameter(9, 2)
     >>> sk.system.exitSoftware() # Restart is mandatory 
 
 or 
@@ -163,8 +156,8 @@ or
     >>> sk.parameter[9] = 2  
     >>> sk.system.exitSoftware() # Restart is mandatory
 
-### todo list
-- Vcp is not tested
-- Improve unittest's behavior
-- It's the first version of docstring, le param values are not described. 
+### TODO list
+- VCP is not tested
+- Improve unit test behavior
+- This is the first version of docstring; parameter values are not described
 - ...

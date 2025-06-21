@@ -16,7 +16,7 @@ from setuptools import setup
 # This call to setup() does all the work
 setup(
     name="cnc_centroid_skinning",
-    version="1.5.30",
+    version="1.5.31",
     description="wrapper for the CncSkinning API (C#) 64 bits",
     long_description=open('README.md').read(),
     url="https://github.com/fca1/cnc_centroid_skinning/",

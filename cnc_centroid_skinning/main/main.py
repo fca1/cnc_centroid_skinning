@@ -8,14 +8,4 @@ if __name__ == "__main__":
         sys.exit(1)
     file_path_of_prg = sys.argv[1]
     detect_cnc(file_path_of_prg)
-
-
-
-    sk = CentroidApi(file_path_of_prg)
-
-    burst_mode = sk.burst_mode
-
-
-    sk.plc.getPcSystemVariableBit(0)
-
     pass

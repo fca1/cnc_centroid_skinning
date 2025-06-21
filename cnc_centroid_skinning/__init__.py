@@ -6,7 +6,7 @@
     Name of dll has changed (V5.10 acorn)
 """
 
-__version__ = "0.0.5"
+__version__ = "0.5.31"
 
 import sys
 from pathlib import Path
@@ -28,12 +28,6 @@ clr.AddReference('System.Collections')
 # noinspection PyUnresolvedReferences,PyPackageRequirements
 from System.Collections.Generic import Dictionary
 
-# refresh path of sys (for centroidAPI.dll's path)
-if len(sys.argv) < 2:
-    sys.stderr.write("please, give as parameter, the path of cncn/cnmt program (ex:c:\cncm)")
-    sys.exit(1)
-PATH_CNC12 = str(Path(sys.argv[1]))
-sys.path.append(PATH_CNC12)
 
 # noinspection PyUnresolvedReferences
 clr.AddReference("CentroidAPI")
@@ -46,9 +40,8 @@ from centroidAPI import detect_cnc, CentroidApi
 from cncenums import *
 from Tool import Tinfo
 
-__all__ = [
 
-            'PATH_CNC12',
+__all__ = [
            'CNCPipe', 'CentroidApi', 'DroCoordinates', 'ProbeBossOrientation', 'BitType', 'ForceState',
            'InversionState',
            'IOState', 'Rate', 'Direction',

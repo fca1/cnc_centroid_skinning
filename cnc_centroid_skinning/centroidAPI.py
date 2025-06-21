@@ -96,7 +96,7 @@ class CentroidApi:
 
     @staticmethod
     def getVersion():
-        return "V2.0.30"
+        return "V0.5.30"
 
 
 def detect_cnc(file_path_of_prg: str, *kargs):
