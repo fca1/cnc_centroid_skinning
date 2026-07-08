@@ -9,23 +9,23 @@ class State(ApiInterface):
 
     def getScreenSize(self) -> tuple:
         """:return: the screen size of the CNC application. """
-        return self._call('GetScreenSize', 0, 0)
+        return self._call('GetScreenSize')
 
     def getMonitorSize(self) -> tuple:
         """:return: the monitor size of the CNC application. """
-        return self._call('GetMonitorSize', 0, 0)
+        return self._call('GetMonitorSize')
 
     def getScreenPosition(self) -> tuple:
         """:return: the position of the CNC application. """
-        return self._call('GetScreenPosition', 0, 0)
+        return self._call('GetScreenPosition')
 
     def getAcornBoardRevision(self) -> int:
         """:return:  the Acorn Board Revision """
-        return self._call('GetAcornBoardRevision', 0)
+        return self._call('GetAcornBoardRevision')
 
     def getActiveGCodes(self) -> List[str]:
         """:return:  the currently active modal G- and M- codes. """
-        return list(map(str, self._call('GetActiveGCodes', [])))
+        return list(map(str, self._call('GetActiveGCodes')))
 
     def getFeedHoldState(self) -> FeedHoldState:
         """:return:  the current feed hold state. """
@@ -33,11 +33,11 @@ class State(ApiInterface):
 
     def getGCodeDisplay(self) -> List[str]:
         """:return:  the list of g-code strings that usually displays on CNC12 when a job is running. """
-        return list(map(str, self._call('GetGCodeDisplay', [])))
+        return list(map(str, self._call('GetGCodeDisplay')))
 
     def getJobNameCurrent(self) -> str:
         """:return:  the name of the currently loaded job. """
-        return self._call('GetJobNameCurrent', '')
+        return self._call('GetJobNameCurrent')
 
     def getMdiState(self) -> MdiState:
         return self._call('GetMdiState')
@@ -76,7 +76,7 @@ class State(ApiInterface):
 
     def getCurrentMachinePosition(self) -> [float,...]:
         """:return: s the current machine position. """
-        machinePosition = self._call('GetCurrentMachinePosition', [])
+        machinePosition = self._call('GetCurrentMachinePosition')
         return tuple(map(float, machinePosition))
 
     def getFeedrateOverride(self) -> int:
@@ -85,15 +85,15 @@ class State(ApiInterface):
 
     def getCurrentLocalPosition(self) -> [float]:
         """:return:  the current wcs position. """
-        return tuple(map(float, self._call('GetCurrentLocalPosition', [])))
+        return tuple(map(float, self._call('GetCurrentLocalPosition')))
 
     def getHighRangeSpindleSpeed(self, max_or_min: Value) -> float:
         """:return:  the current Spindle Speed High Range maximum or minimum value. """
         return self._call('GetHighRangeSpindleSpeed', max_or_min)
 
-    def setHighRangeSpindleSpeed(self, max_or_min: Value) -> float:
+    def setHighRangeSpindleSpeed(self, max_or_min: Value, value: float):
         """Set the current Spindle Speed High Range maximum or minimum value. """
-        return self._call('SetHighRangeSpindleSpeed', max_or_min)
+        return self._call('SetHighRangeSpindleSpeed', max_or_min, float(value))
 
     def getMachineHomeAtPowerUp(self) -> HomingType:
         """:return:  the currently set machine homing type at power up. """

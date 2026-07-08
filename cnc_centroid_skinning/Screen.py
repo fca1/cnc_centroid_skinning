@@ -7,4 +7,4 @@ class Screen(ApiInterface):
 
     def getViewportInfo(self, viewport: Viewport) -> tuple:
         """:return: info from the  specified viewport """
-        return self._call("GetViewportInfo", viewport, 0, 0)
+        return self._call("GetViewportInfo", viewport)

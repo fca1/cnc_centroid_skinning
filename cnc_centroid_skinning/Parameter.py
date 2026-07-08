@@ -6,7 +6,7 @@ class Parameter(ApiInterface):
 
     def getMachineParameterValue(self, parameter_num: int) -> int:
         """:return:  the value of a machine parameter. """
-        return self._call('GetMachineParameterValue', int(parameter_num), 0)
+        return self._call('GetMachineParameterValue', int(parameter_num))
 
     def setMachineParameter(self, addr: int, value: float):
         """Sets machine parameter to a given value. """

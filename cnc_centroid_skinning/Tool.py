@@ -86,9 +86,9 @@ class Tool(ApiInterface):
     def getToolBin(self, tool: int = None) -> int:
         """:return: s the bin number for the specified tool. """
         if tool is not None:
-            return self._call('GetToolBin', tool, 0)
+            return self._call('GetToolBin', tool)
         else:
-            return self._call('GetToolBin', 0)
+            return self._call('GetToolBin')
 
     def setToolInfo(self, tool: int, tinfo: Tinfo):
         """Specifies the information for tool """
@@ -129,16 +129,16 @@ class Tool(ApiInterface):
     def getToolHNumber(self, tool: int = None) -> int:
         """:return: s the H number for the active tool. """
         if tool is None:
-            return self._call('GetToolHNumber', 0)
+            return self._call('GetToolHNumber')
         else:
-            return self._call('GetToolHNumber', tool, 0)
+            return self._call('GetToolHNumber', tool)
 
     def getToolDNumber(self, tool: int = None) -> int:
         """:return: s the D number for the active tool. """
         if tool is None:
-            return self._call('GetToolDNumber', 0)
+            return self._call('GetToolDNumber')
         else:
-            return self._call('GetToolDNumber', tool, 0)
+            return self._call('GetToolDNumber', tool)
 
     def setWearAdjustment(self, tool: int, aType: ToolWearAdjustmentType, value: float):
         """Set the tool wear adjustment for a lathe tool. """

@@ -88,7 +88,7 @@ class Axis(ApiInterface):
 
     def getAxisReversal(self, axis: Axes) -> bool:
         """:return: Get whether the axis is reversed or not. """
-        return self._call('GetAxisReversal', axis, False)
+        return self._call('GetAxisReversal', axis)
 
     def setAxisReversal(self, axis: Axes, is_axis_reversed: bool):
         """Set whether the axis is reversed or not. """

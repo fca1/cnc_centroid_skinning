@@ -7,7 +7,7 @@ class Wcs(ApiInterface):
 
     def getActiveWcs(self) -> int:
         """:return:  the active wcs. """
-        return self._call('GetActiveWcs', 0)
+        return self._call('GetActiveWcs')
 
     def getWorkpieceOrigin(self, axis: Axes, wcs: WCS = None):
         """:return:  Part-zero for the specified wcs and axis. """

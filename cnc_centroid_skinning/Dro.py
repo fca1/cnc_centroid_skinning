@@ -11,7 +11,7 @@ class Dro(ApiInterface):
 
     def getDro(self, dro_coordinates: DroCoordinates) -> List[str]:
         """:return: an array of strings containing the DRO readout from CNC12. """
-        ans = self._call('GetDro', dro_coordinates, [])
+        ans = self._call('GetDro', dro_coordinates)
         return list(map(str, ans))
 
     def setDroCoordinates(self, dro_coordinates: DroCoordinates):

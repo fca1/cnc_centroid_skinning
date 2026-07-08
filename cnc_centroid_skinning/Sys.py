@@ -13,7 +13,7 @@ class Sys(ApiInterface):
     def getSystemIdentifier(self) -> int:
         """
         :return: get the System ID of the machine to which this skinning app is connected. """
-        return self._call('GetSystemIdentifier', 0)
+        return self._call('GetSystemIdentifier')
 
     def exitSoftware(self):
         """Closes CNCXX software gracefully. """
@@ -22,9 +22,8 @@ class Sys(ApiInterface):
     # @TODO a card is needed to test this method, not yet verified
     def getEther1616DeviceInfo(self) -> [Ether1616Device]:
         """:return: get all valid and attached Ether1616 Device information. """
-        rs = List[self._interface.cls.Sys.Ether1616Device]()
         try:
-            lst = self._call('GetEther1616DeviceInfo', rs)
+            lst = self._call('GetEther1616DeviceInfo')
             return tuple(map(lambda ether: Ether1616Device(ether.IP, ether.DeviceNumber), lst))
         except SkinningException as _e:
             return tuple()

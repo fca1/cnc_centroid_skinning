@@ -33,9 +33,9 @@ class Job(ApiInterface):
         """Refresh the onscreen graph."""
         return self._call('RefreshGraph', bool(refresh_rtg))
 
-    def getPartCount(self, part_count: int):
+    def getPartCount(self):
         """Get the currently set part count."""
-        return self._call('GetPartCount', part_count)
+        return self._call('GetPartCount')
 
     def getPartNumber(self) -> int:
         """Get the currently set part count."""

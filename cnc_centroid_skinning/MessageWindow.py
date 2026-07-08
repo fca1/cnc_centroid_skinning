@@ -8,7 +8,7 @@ class MessageWindow(ApiInterface):
 
     def getMessages(self) -> List[str]:
         """:return: the messages from the Message Window in CNC12."""
-        return list(map(str, self._call('GetMessages', [])))
+        return list(map(str, self._call('GetMessages')))
 
     def addMessage(self, message: str, backgroundColor: int = 0x800000, textColor: int = 0x00FFFF):
         """Displays a message in the status window with the given colors. """

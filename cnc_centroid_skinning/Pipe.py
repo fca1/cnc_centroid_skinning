@@ -10,11 +10,11 @@ class Pipe(ApiInterface):
 
     @property
     def burst_mode(self)->bool:
-        return self._call("get_BurstMode", wo_rc=True)
+        return self._skinning.BurstMode
 
     @burst_mode.setter
     def burst_mode(self,enable:bool):
-        self._call("set_BurstMode",enable, wo_rc=True)
+        self._skinning.BurstMode = bool(enable)
 
     def startListening(self):
         """Start listening for inbound CNC12 messages."""

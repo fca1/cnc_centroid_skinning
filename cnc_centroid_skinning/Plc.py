@@ -95,7 +95,7 @@ class PLc(ApiInterface):
     def getSkinningDataWord(self, index: int) -> int:
         """:return: the value of a skinning data word. """
         assert 1 <= index <= 12
-        return self._call('GetSkinningDataWord', int(index), 0)
+        return self._call('GetSkinningDataWord', int(index))
 
     def setSkinningDataDoubleFloatWord(self, index: int, value: float, sendImmediately: bool = True):
         """Set a skinning data float word. A skinning data float word is a general purpose 32-bit floating point value
@@ -137,7 +137,7 @@ class PLc(ApiInterface):
     def getWordValue(self, index: int) -> int:
         """:return: s the value of the given PLC 32-bit integer W value. """
         assert 1 <= index <= 22
-        return self._call('GetDoubleWordValue', int(index), 0)
+        return self._call('GetDoubleWordValue', int(index))
 
     def getDoubleWordValue(self, index: int) -> int:
         assert 1 <= index <= 22
@@ -157,14 +157,14 @@ class PLc(ApiInterface):
         raise RuntimeError("This method is not implemented")
         """:return:  the state of a "PC" system variable bit. A "PC" system varaible bit is, in most cases, set by the CNC
         softare running on the PC and used to communicate status to the MPU hardware, in particular the PLC system. """
-        return IOState(self._call('GetPcSystemVariableBit', int(bit), 0))
+        return IOState(self._call('GetPcSystemVariableBit', int(bit)))
 
     # TODO getPlcSystemVariableBit (unknow enum not declared inside the dll)
     def getPlcSystemVariableBit(self, bit: int) -> IOState:
         raise RuntimeError("This method is not implemented")
         """:return:  the state of a "PLC" system variable bit. A "PLC" system varaible bit is, in most cases, set by the PLC
          program running on the MPU hardware and used to communicate status to the CNC software. """
-        return self._call('GetPlcSystemVariableBit', int(bit), 0)
+        return self._call('GetPlcSystemVariableBit', int(bit))
 
     def getVcpLedStates(self) -> int:
         """:return: the state of output LEDs for the VCP all at once. """
