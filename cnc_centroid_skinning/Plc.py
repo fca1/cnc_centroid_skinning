@@ -17,7 +17,7 @@ class TIOMBit:
         # The state of the bit, used when returning a watch list.
         self.state = None
         self.vcpButton = None
-        if obj and isinstance(obj, IOMBit):
+        if obj:
             self.type = obj.type
             self.number = obj.number
             self.state = obj.state
@@ -26,35 +26,40 @@ class TIOMBit:
 
 
 
-def _fill_skinning_iombit(src: IOMBit):
-    """
-    :return:  TIOMBit
-    """
-    obj = IOMBit()
-    obj.type = src.type
-    obj.number = src.number
-    obj.state = src.state
-    obj.vcpButton = src.vcpButton
-    return obj
-
-
-
-
-
 class PLc(ApiInterface):
     """	A class with functions related to PLC programming and state information"""
 
+    def _to_dotnet_iombit(self, src: IOMBit):
+        obj = self._interface.cls.Plc.IOMBit()
+        if src.type is not None:
+            obj.type = self._coerce_param(src.type)
+        if src.number is not None:
+            obj.number = src.number
+        if src.state is not None:
+            obj.state = self._coerce_param(src.state)
+        if src.vcpButton is not None:
+            obj.vcpButton = src.vcpButton
+        return obj
+
+    @staticmethod
+    def _from_dotnet_iombit(src):
+        return IOMBit(
+            type=BitType(int(src.type)),
+            number=src.number,
+            state=IOState(int(src.state)),
+            vcpButton=src.vcpButton,
+        )
+
     def getWatchList(self, bitList: typing.List[IOMBit]) -> [typing.List[IOMBit], None]:
         """:return:  the states of watched bits previosuly set by SetPlcWatchList """
-        rs = List[IOMBit]()  # don't use the constructor with parameters
+        rs = List[self._interface.cls.Plc.IOMBit]()  # don't use the constructor with parameters
         for iombit in bitList:  # fills ref List< IOMBit > bitList
-            rs.Add(_fill_skinning_iombit(iombit))
+            rs.Add(self._to_dotnet_iombit(iombit))
         success, lst_iombit = self._call('GetWatchList', rs, wo_rc=True)
         if success:
             lst_wrap = list()
             for iombit in lst_iombit:
-                obj = IOMBit(type=iombit.type, number=iombit.number, state=iombit.state, vcpButton=iombit.vcpButton)
-                lst_wrap.append(obj)
+                lst_wrap.append(self._from_dotnet_iombit(iombit))
             return lst_wrap
         else:
             return None
@@ -63,15 +68,14 @@ class PLc(ApiInterface):
         """Set the PLC watch list. This command also returns with the current state of the bits updated in the bitList.
         When repeated calls using the same list occur, make an initial call to SetWatchList and then retrieve the states
         using GetWatchList. """
-        rs = List[IOMBit]()  # don't use the constructor with parameters
+        rs = List[self._interface.cls.Plc.IOMBit]()  # don't use the constructor with parameters
         for iombit in bitList:  # fills ref List< IOMBit > bitList
-            rs.Add(_fill_skinning_iombit(iombit))
+            rs.Add(self._to_dotnet_iombit(iombit))
         success, lst_iombit = self._call('SetWatchList', rs, wo_rc=True)
         if success:
             lst_wrap = list()
             for iombit in lst_iombit:
-                obj = IOMBit(type=iombit.type, number=iombit.number, state=iombit.state, vcpButton=iombit.vcpButton)
-                lst_wrap.append(obj)
+                lst_wrap.append(self._from_dotnet_iombit(iombit))
             return lst_wrap
         else:
             return None

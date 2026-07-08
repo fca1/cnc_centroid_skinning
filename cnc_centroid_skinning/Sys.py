@@ -22,7 +22,7 @@ class Sys(ApiInterface):
     # @TODO a card is needed to test this method, not yet verified
     def getEther1616DeviceInfo(self) -> [Ether1616Device]:
         """:return: get all valid and attached Ether1616 Device information. """
-        rs = List[Ether1616Device]()
+        rs = List[self._interface.cls.Sys.Ether1616Device]()
         try:
             lst = self._call('GetEther1616DeviceInfo', rs)
             return tuple(map(lambda ether: Ether1616Device(ether.IP, ether.DeviceNumber), lst))

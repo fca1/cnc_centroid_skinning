@@ -1,18 +1,69 @@
 from typing import Tuple
+from enum import IntEnum
 
 # load Python.NET
 # noinspection PyUnresolvedReferences
 from System import Double
 
 
+_DOTNET_ENUM_PATHS = {
+    "Axes": "Axes",
+    "Rate": "Axis.Rate",
+    "WCS": "Wcs.WCS",
+    "Direction": "Axis.Direction",
+    "ReturnCode": "ReturnCode",
+    "CircularInterpolationDirection": "State.CircularInterpolationDirection",
+    "CircularInterpolationPlane": "State.CircularInterpolationPlane",
+    "FeedHoldState": "State.FeedHoldState",
+    "MdiState": "State.MdiState",
+    "MoveMode": "State.MoveMode",
+    "PositioningMode": "State.PositioningMode",
+    "UnitsOfMeasure": "State.UnitsOfMeasure",
+    "Value": "State.Value",
+    "HomingType": "State.HomingType",
+    "DroCoordinates": "Dro.DroCoordinates",
+    "BitType": "Plc.BitType",
+    "ForceState": "Plc.ForceState",
+    "InversionState": "Plc.InversionState",
+    "IOState": "Plc.IOState",
+    "Viewport": "Screen.Viewport",
+    "UnlockVersions": "Sys.UnlockVersions",
+    "MachineTypes": "Sys.MachineTypes",
+    "Coolant": "Tool.Coolant",
+    "SpindleDirection": "Tool.SpindleDirection",
+    "ToolWearAdjustmentType": "Tool.ToolWearAdjustmentType",
+    "ProbeBossOrientation": "Job.ProbeBossOrientation",
+    "CommunicationTypes": "InboundComm.CommunicationTypes",
+    "JobInfoType": "InboundComm.JobInfoType",
+}
+
 
 class ApiInterface:
     from .pythonnetAPIInterface import PythonnetAPIInterface
     def __init__(self, interface:PythonnetAPIInterface, instance_name: str):
+        self._interface = interface
         self._skinning = interface.skinning
         self._root_leef = instance_name
         self.path_running = interface.path_running
         pass
+
+    def _dotnet_enum_type(self, enum_name):
+        dotted_path = _DOTNET_ENUM_PATHS.get(enum_name)
+        if dotted_path is None:
+            return None
+        current = self._interface.cls
+        for part in dotted_path.split("."):
+            current = getattr(current, part)
+        return current
+
+    def _coerce_param(self, value):
+        if isinstance(value, IntEnum):
+            enum_type = self._dotnet_enum_type(value.__class__.__name__)
+            if enum_type is not None:
+                from System import Enum
+
+                return Enum.ToObject(enum_type, int(value))
+        return Double(value) if isinstance(value, float) else value
 
     @staticmethod
     def _normalize_result(value):
@@ -51,7 +102,7 @@ class ApiInterface:
             if leef is None:
                 raise AttributeError(f"CentroidAPI object member '{fcnt}' is None")
         # Transform float with Double  ( python float -> .net Double)
-        params = [Double(i) if isinstance(i, float) else i for i in params]
+        params = [self._coerce_param(i) for i in params]
         # Call the method found (pythonnet works between .net and python)
         ret_lst = leef(*params)
         ret_lst = self._normalize_result(ret_lst)

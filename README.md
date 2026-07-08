@@ -28,6 +28,12 @@ interface as C#. ( https://centroidcncforum.com/viewtopic.php?f=60&t=3397 )
 This wrapper targets the current CentroidAPI surface published with CNC12 V5.42.
 The V5.42 update keeps the 64-bit `CentroidAPI.dll` model introduced in CNC12 V5.x and adds newer API areas such as inbound communication and WCS reference/location helpers.
 
+Enums are kept as a generated Python snapshot so the package remains importable without CNC12 or pythonnet at import time. To refresh the snapshot from an installed CNC12 release, run:
+
+```powershell
+python tools\generate_cncenums.py C:\cncr
+```
+
 # Release for ACORN 5.30  
 
 The interface has evolved with 64-bit communication, which requires having Python on the same platform to 
