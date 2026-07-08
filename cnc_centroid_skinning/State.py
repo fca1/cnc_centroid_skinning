@@ -1,7 +1,7 @@
 from typing import List
 
-from cncenums import MdiState, MoveMode, FeedHoldState, PositioningMode, UnitsOfMeasure, HomingType, Value
-from interface.ApiInterface import ApiInterface
+from .cncenums import MdiState, MoveMode, FeedHoldState, PositioningMode, UnitsOfMeasure, HomingType, Value
+from .interface.ApiInterface import ApiInterface
 
 
 class State(ApiInterface):

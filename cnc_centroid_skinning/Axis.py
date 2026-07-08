@@ -1,8 +1,8 @@
 from builtins import float
 
-from interface.ApiInterface import ApiInterface
+from .interface.ApiInterface import ApiInterface
 
-from cncenums import Axes, Direction, Rate
+from .cncenums import Axes, Direction, Rate
 
 
 class Axis(ApiInterface):
@@ -14,7 +14,7 @@ class Axis(ApiInterface):
         :param axis: given axis
         :return: a time
         """
-        return self._call('GetAccelTime', axis)[1]
+        return self._call('GetAccelTime', axis)
 
     def setAccelTime(self, axis: Axes, time: float):
         """Set the acceleration time for the given axis. """

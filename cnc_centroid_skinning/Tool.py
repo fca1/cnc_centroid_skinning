@@ -1,5 +1,5 @@
-from interface.ApiInterface import ApiInterface
-from cncenums import Coolant, SpindleDirection, ToolWearAdjustmentType
+from .interface.ApiInterface import ApiInterface
+from .cncenums import Coolant, SpindleDirection, ToolWearAdjustmentType
 
 
 class Tinfo:
@@ -34,9 +34,9 @@ class Tool(ApiInterface):
     def getToolLibrary(self) -> [Tinfo]:
         """:return: Gets tool info for all tools with in the tool library.  """
 
-        answer = tuple( Tinfo(i) for i in  self._call('GetToolLibrary'))
+        answer = tuple(Tinfo(i) for i in self._call('GetToolLibrary'))
         assert len(answer) > 1
-        pass
+        return answer
 
     def getToolNumber(self) -> int:
         """:return: s the current tool number. """
@@ -102,9 +102,13 @@ class Tool(ApiInterface):
         """Set the coolant method """
         return self._call('SetCoolant', tool, aType)
 
+    def setToolHeightOffsetAmount(self, tool: int, value: float):
+        """Set the tool height offset amount."""
+        return self._call('SetToolHeightOffsetAmount', tool, float(value))
+
     def setToolHeightOffsetAmout(self, tool: int, value: float):
-        """Set the tool diameter offset Amount """
-        return self._call('SetToolHeightOffsetAmout', tool, float(value))
+        """Backward-compatible alias for the original misspelled method name."""
+        return self.setToolHeightOffsetAmount(tool, value)
 
     def setSpindleDirection(self, tool: int, adir: SpindleDirection):
         """Set the tool spindle direction """

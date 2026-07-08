@@ -1,54 +1,68 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""
-    Api wrapper for cnc centroid API written is c#
-    Name of dll has changed (V5.10 acorn)
-"""
+"""Python wrapper for the Centroid CNC12 CentroidAPI.dll."""
 
-__version__ = "0.5.31"
+__version__ = "0.5.42"
 
-import sys
-from pathlib import Path
+from .runtime import PATH_CNC12, get_loaded_centroid_api_path, load_centroid_api
+from .centroidAPI import CentroidApi, detect_cnc
 
-# load Python.NET
-import clr
-# noinspection PyUnresolvedReferences,PyPackageRequirements
-from System import Array
-# noinspection PyUnresolvedReferences,PyPackageRequirements
-from System import String, Char, Int32, Double
+_ENUM_NAMES = {
+    "Axes",
+    "BitType",
+    "CircularInterpolationDirection",
+    "CircularInterpolationPlane",
+    "CommunicationTypes",
+    "Coolant",
+    "Direction",
+    "DroCoordinates",
+    "Ether1616Device",
+    "FeedHoldState",
+    "ForceState",
+    "HomingType",
+    "IOMBit",
+    "IOState",
+    "InversionState",
+    "JobInfoType",
+    "MachineTypes",
+    "MdiState",
+    "MoveMode",
+    "PositioningMode",
+    "ProbeBossOrientation",
+    "Rate",
+    "ReturnCode",
+    "SpindleDirection",
+    "ToolWearAdjustmentType",
+    "UnitsOfMeasure",
+    "UnlockVersions",
+    "Value",
+    "Viewport",
+    "WCS",
+}
 
-# Verify conformity of platform (64 bits)
-if sys.maxsize <= 2 ** 32:
-    sys.stderr.write("Fatal : Python 32 bits détected")
-    sys.exit(1)
 
-# noinspection PyUnresolvedReferences
-clr.AddReference('System.Collections')
-# noinspection PyUnresolvedReferences,PyPackageRequirements
-from System.Collections.Generic import Dictionary
+def __getattr__(name):
+    if name == "CNCPipe":
+        return load_centroid_api()
+    if name == "Tinfo":
+        from .Tool import Tinfo
 
+        return Tinfo
+    if name in _ENUM_NAMES:
+        from . import cncenums
 
-# noinspection PyUnresolvedReferences
-clr.AddReference("CentroidAPI")
-# noinspection PyUnresolvedReferences
-from CentroidAPI import CNCPipe as SCNCPipe
-
-CNCPipe = SCNCPipe  # Main module of CNC CENTROID
-
-from centroidAPI import detect_cnc, CentroidApi
-from cncenums import *
-from Tool import Tinfo
+        return getattr(cncenums, name)
+    raise AttributeError(name)
 
 
 __all__ = [
-           'CNCPipe', 'CentroidApi', 'DroCoordinates', 'ProbeBossOrientation', 'BitType', 'ForceState',
-           'InversionState',
-           'IOState', 'Rate', 'Direction',
-           'IOMBit', 'ReturnCode', 'Viewport', 'CircularInterpolationPlane', 'CircularInterpolationDirection',
-           'FeedHoldState',
-           'MdiState', 'MoveMode', 'PositioningMode', 'UnitsOfMeasure', 'Value', 'HomingType', 'Ether1616Device',
-           'Coolant', 'SpindleDirection', 'ToolWearAdjustmentType', 'Tinfo', 'WCS',
-           'Axis', 'Csr', 'Dro', 'Job', 'MessageWindow', 'Parameter', 'Plc', 'Screen', 'State', 'Sys', 'Tool', 'Wcs',
-            'UnlockVersions', 'MachineTypes',
-           'detect_cnc']
+    "CNCPipe",
+    "CentroidApi",
+    "PATH_CNC12",
+    "detect_cnc",
+    "get_loaded_centroid_api_path",
+    "load_centroid_api",
+    "Tinfo",
+    *_ENUM_NAMES,
+]

@@ -1,5 +1,5 @@
-from cncenums import WCS, Axes
-from interface.ApiInterface import ApiInterface
+from .cncenums import WCS, Axes
+from .interface.ApiInterface import ApiInterface
 
 
 class Wcs(ApiInterface):
@@ -19,12 +19,28 @@ class Wcs(ApiInterface):
     def selectNextWcs(self):
         """Select the next wcs.
         """
-        return self._call('SelectNextWcs', False)
+        return self._call('SelectNextWcs')
 
     def selectPrevWcs(self):
         """Select the previous wcs.
         """
-        return self._call('SelectNextWcs', False)
+        return self._call('SelectPrevWcs')
+
+    def getWorkpieceReference(self, ret: int, axis: Axes):
+        """Get a return-menu reference point for a specified axis."""
+        assert 1 <= int(ret) <= 4
+        return self._call('GetWorkpieceReference', int(ret), axis)
+
+    def setWorkpieceReference(self, ret: int, axis: Axes, point: float):
+        """Set a return-menu reference point for a specified axis."""
+        assert 1 <= int(ret) <= 4
+        return self._call('SetWorkpieceReference', int(ret), axis, float(point))
+
+    def setWorkpieceLocation(self, axis: Axes, location: float, wcs: WCS = None):
+        """Set part location for an axis on the active or specified WCS."""
+        if wcs:
+            return self._call('SetWorkpieceLocation', wcs, axis, float(location))
+        return self._call('SetWorkpieceLocation', axis, float(location))
 
     def setWorkpieceOrigin(self, axis: Axes = None, wcs: WCS = None):
         """Attempt to set the Part-Zero for a specified axis and a specified WCS. """

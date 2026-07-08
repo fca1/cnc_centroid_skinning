@@ -2,10 +2,9 @@ import sys
 import time
 
 from cnc_centroid_skinning import PATH_CNC12
-from cnc_centroid_skinning.Axis import Direction
-from cnc_centroid_skinning.State import UnitsOfMeasure
-from centroidAPI import CentroidApi
-from cnc_centroid_skinning.cncenums import Axes
+from cnc_centroid_skinning import Direction, UnitsOfMeasure
+from cnc_centroid_skinning import CentroidApi
+from cnc_centroid_skinning import Axes
 from cnc_centroid_skinning.exceptions.SkinningException import ReturnCodeException
 
 

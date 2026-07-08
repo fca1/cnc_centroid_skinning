@@ -2,9 +2,9 @@
 # noinspection PyUnresolvedReferences
 from System.Collections.Generic import List
 
-from cncenums import Ether1616Device, UnlockVersions, MachineTypes
-from exceptions.SkinningException import SkinningException
-from interface.ApiInterface import ApiInterface
+from .cncenums import Ether1616Device, UnlockVersions, MachineTypes
+from .exceptions.SkinningException import SkinningException
+from .interface.ApiInterface import ApiInterface
 
 
 class Sys(ApiInterface):
@@ -55,6 +55,6 @@ class Sys(ApiInterface):
         return self._call('GetSerialNumber')
 
 
-def importLicense(self, licensePath: str):
-    """Import a license into cnc12."""
-    return self._call('ImportLicense', licensePath)
+    def importLicense(self, licensePath: str):
+        """Import a license into cnc12."""
+        return self._call('ImportLicense', licensePath)

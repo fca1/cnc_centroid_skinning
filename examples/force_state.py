@@ -1,10 +1,10 @@
 import sys
 import time
 
-from cnc_centroid_skinning.Plc import BitType, ForceState
+from cnc_centroid_skinning import BitType, ForceState
 from cnc_centroid_skinning.exceptions.SkinningException import ReturnCodeException
 from cnc_centroid_skinning import PATH_CNC12
-from centroidAPI import CentroidApi
+from cnc_centroid_skinning import CentroidApi
 
 def initializeApi(file_path_of_prg: str):
     _sk = CentroidApi(file_path_of_prg)

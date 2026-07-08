@@ -23,6 +23,11 @@ interface as C#. ( https://centroidcncforum.com/viewtopic.php?f=60&t=3397 )
 
 
 
+# Release for CNC12 V5.42
+
+This wrapper targets the current CentroidAPI surface published with CNC12 V5.42.
+The V5.42 update keeps the 64-bit `CentroidAPI.dll` model introduced in CNC12 V5.x and adds newer API areas such as inbound communication and WCS reference/location helpers.
+
 # Release for ACORN 5.30  
 
 The interface has evolved with 64-bit communication, which requires having Python on the same platform to 

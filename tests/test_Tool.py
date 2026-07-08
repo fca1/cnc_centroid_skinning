@@ -1,8 +1,8 @@
 from unittest import TestCase
 
 from cnc_centroid_skinning import PATH_CNC12, Tinfo
-from centroidAPI import CentroidApi
-from cncenums import ToolWearAdjustmentType, SpindleDirection, Coolant
+from cnc_centroid_skinning import CentroidApi
+from cnc_centroid_skinning import ToolWearAdjustmentType, SpindleDirection, Coolant
 
 
 class TestTool(TestCase):

@@ -5,8 +5,8 @@ from System import Array, String, Char, Int32, Double, Int64, UInt64, UInt32
 # noinspection PyUnresolvedReferences
 from System.Collections.Generic import List
 
-from cncenums import IOMBit, BitType, ForceState, InversionState, IOState
-from interface.ApiInterface import ApiInterface
+from .cncenums import IOMBit, BitType, ForceState, InversionState, IOState
+from .interface.ApiInterface import ApiInterface
 
 
 class TIOMBit:
@@ -26,11 +26,16 @@ class TIOMBit:
 
 
 
-def _fill_skinning_iombit(src:IOMBit):
+def _fill_skinning_iombit(src: IOMBit):
     """
     :return:  TIOMBit
     """
-    return TIOMBit(src)
+    obj = IOMBit()
+    obj.type = src.type
+    obj.number = src.number
+    obj.state = src.state
+    obj.vcpButton = src.vcpButton
+    return obj
 
 
 
@@ -60,8 +65,7 @@ class PLc(ApiInterface):
         using GetWatchList. """
         rs = List[IOMBit]()  # don't use the constructor with parameters
         for iombit in bitList:  # fills ref List< IOMBit > bitList
-            insiom = IOMBit()  # CncSkinning.IOMBIT object
-            rs.Add(iombit._fill_skinning_iombit(insiom))
+            rs.Add(_fill_skinning_iombit(iombit))
         success, lst_iombit = self._call('SetWatchList', rs, wo_rc=True)
         if success:
             lst_wrap = list()
@@ -99,9 +103,13 @@ class PLc(ApiInterface):
         """:return: the value of a skinning float word. """
         return self._call('GetSkinningDataDoubleFloatWord', int(index))
 
-    def setInputIversionState(self, inputBit: int, state: InversionState):
+    def setInputInversionState(self, inputBit: int, state: InversionState):
         """Set whether or not a PLC inpuit bit is inverted. """
         return self._call('SetInputInversionState', int(inputBit), state)
+
+    def setInputIversionState(self, inputBit: int, state: InversionState):
+        """Backward-compatible alias for the original misspelled method name."""
+        return self.setInputInversionState(inputBit, state)
 
     def setInputForceState(self, inputBit: int, state: ForceState):
         """Set whether or not an input is forced to a given state. """

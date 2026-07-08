@@ -35,3 +35,5 @@ Coolant = CNCPipe.Tool.Coolant
 SpindleDirection = CNCPipe.Tool.SpindleDirection
 ToolWearAdjustmentType = CNCPipe.Tool.ToolWearAdjustmentType
 ProbeBossOrientation = CNCPipe.Job.ProbeBossOrientation
+CommunicationTypes = CNCPipe.InboundComm.CommunicationTypes
+JobInfoType = CNCPipe.InboundComm.JobInfoType

@@ -1,4 +1,4 @@
-from interface.ApiInterface import ApiInterface
+from .interface.ApiInterface import ApiInterface
 
 
 class Parameter(ApiInterface):

@@ -3,8 +3,8 @@ from unittest import TestCase
 
 from cnc_centroid_skinning import PATH_CNC12
 
-from centroidAPI import CentroidApi
-from cncenums import IOMBit, BitType, ForceState, InversionState
+from cnc_centroid_skinning import CentroidApi
+from cnc_centroid_skinning import IOMBit, BitType, ForceState, InversionState
 
 
 class TestPLc(TestCase):

@@ -1,20 +1,5 @@
-# load Python.NET
 import sys
-
-from Axis import Axis
-from Csr import Csr
-from Dro import Dro
-from Job import Job
-from MessageWindow import MessageWindow
-from Parameter import Parameter
-from Pipe import Pipe
-from Plc import PLc
-from Screen import Screen
-from State import State
-from Sys import Sys
-from Tool import Tool
-from Wcs import Wcs
-from interface.pythonnetAPIInterface import PythonnetAPIInterface
+from .interface.pythonnetAPIInterface import PythonnetAPIInterface
 
 
 class CentroidApi:
@@ -25,6 +10,8 @@ class CentroidApi:
     dro = None
     job = None
     message_window = None
+    inbound_communications = None
+    inbound_comm = None
     parameter = None
     screen = None
     state = None
@@ -46,6 +33,21 @@ class CentroidApi:
         :param timeout: in sec.
         """
         self._interface = PythonnetAPIInterface(path_running, useVcpPipe, timeout)
+        from .Axis import Axis
+        from .Csr import Csr
+        from .Dro import Dro
+        from .InboundComm import InboundComm
+        from .Job import Job
+        from .MessageWindow import MessageWindow
+        from .Parameter import Parameter
+        from .Pipe import Pipe
+        from .Plc import PLc
+        from .Screen import Screen
+        from .State import State
+        from .Sys import Sys
+        from .Tool import Tool
+        from .Wcs import Wcs
+
         # managment of enums
 
         self.Axes = self._interface.cls.Axes
@@ -56,6 +58,8 @@ class CentroidApi:
         self.dro = Dro(self._interface, 'dro')
         self.job = Job(self._interface, 'job')
         self.message_window = MessageWindow(self._interface, 'message_window')
+        self.inbound_communications = InboundComm(self._interface, 'inbound_communications')
+        self.inbound_comm = self.inbound_communications
         self.parameter = Parameter(self._interface, 'parameter')
         self.screen = Screen(self._interface, 'screen')
         self.state = State(self._interface, 'state')
@@ -96,7 +100,7 @@ class CentroidApi:
 
     @staticmethod
     def getVersion():
-        return "V0.5.30"
+        return "V0.5.42"
 
 
 def detect_cnc(file_path_of_prg: str, *kargs):

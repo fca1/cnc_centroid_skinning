@@ -1,15 +1,17 @@
 from typing import List
 
-from interface.ApiInterface import ApiInterface
+from .interface.ApiInterface import ApiInterface
 
 
 class Job(ApiInterface):
     """A class for constructing and running jobs """
 
 
-    def load(self, path: str):
+    def load(self, path: str, cnc12_working_directory: str = None):
         """Load an existing job into CNC12"""
-        return self._call('Load', path)
+        if cnc12_working_directory is None:
+            return self._call('Load', path)
+        return self._call('Load', path, cnc12_working_directory)
 
     def cancelExecution(self):
         """Cancel execution of a job."""
@@ -27,9 +29,9 @@ class Job(ApiInterface):
         """Set the Job Repeat State to on or off."""
         return self._call('SetJobRepeatState', state)
 
-    def refreshGraph(self):
+    def refreshGraph(self, refresh_rtg: bool = True):
         """Refresh the onscreen graph."""
-        return self._call('RefreshGraph')
+        return self._call('RefreshGraph', bool(refresh_rtg))
 
     def getPartCount(self, part_count: int):
         """Get the currently set part count."""
@@ -41,8 +43,7 @@ class Job(ApiInterface):
 
     def getSystemVariableInt(self, variable_number: int) -> int:
         """Gets system variable (#1 - #299, #400 - #31999)"""
-        assert 1 <= variable_number <= 299
-        assert 400 <= variable_number <= 31999
+        assert 1 <= variable_number <= 299 or 400 <= variable_number <= 31999
         return self._call('GetSystemVariable', variable_number)
 
     def getSystemVariableStr(self, variable_number: int) -> str:
@@ -50,13 +51,24 @@ class Job(ApiInterface):
         assert 300 <= variable_number <= 399
         return self._call('GetSystemVariable', variable_number)
 
-    def runCommand(self, command: str, require_cycle_start: bool = True):
+    def setSystemVariable(self, variable_number: int, value):
+        """Sets a CNC12 system variable."""
+        if isinstance(value, str):
+            assert 300 <= variable_number <= 400
+        else:
+            assert 1 <= variable_number <= 299 or 401 <= variable_number <= 31999
+            value = float(value)
+        return self._call('SetSystemVariable', int(variable_number), value)
+
+    def runCommand(self, command: str, require_cycle_start: bool = True, cnc12_working_directory: str = None):
         """
         Run a command now. If we require cycle start, it will post as an actual job
          warnings also::  If a previous runCommand is running, this call is ignored without advertizing.
         https://centroidcncforum.com/viewtopic.php?f=60&t=4607
         """
-        return self._call('RunCommand', command, self.path_running, bool(require_cycle_start))
+        if cnc12_working_directory is None:
+            return self._call('RunCommand', command, bool(require_cycle_start))
+        return self._call('RunCommand', command, cnc12_working_directory, bool(require_cycle_start))
 
     @property
     def gcode(self):

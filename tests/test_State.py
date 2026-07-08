@@ -1,8 +1,8 @@
 from unittest import TestCase
 
 from cnc_centroid_skinning import PATH_CNC12
-from centroidAPI import CentroidApi
-from cncenums import Value
+from cnc_centroid_skinning import CentroidApi
+from cnc_centroid_skinning import Value
 
 
 class TestState(TestCase):

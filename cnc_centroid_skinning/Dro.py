@@ -1,7 +1,7 @@
 from typing import List
 
-from cncenums import DroCoordinates
-from interface.ApiInterface import ApiInterface
+from .cncenums import DroCoordinates
+from .interface.ApiInterface import ApiInterface
 
 
 class Dro(ApiInterface):

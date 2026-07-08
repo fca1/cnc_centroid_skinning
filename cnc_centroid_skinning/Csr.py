@@ -1,5 +1,5 @@
-from Wcs import WCS
-from interface.ApiInterface import ApiInterface
+from .cncenums import WCS
+from .interface.ApiInterface import ApiInterface
 
 
 class Csr(ApiInterface):

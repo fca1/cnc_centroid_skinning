@@ -1,8 +1,8 @@
-from interface.ApiInterface import ApiInterface
+from .interface.ApiInterface import ApiInterface
 
 
 class Pipe(ApiInterface):
-    """Class to get screen and viewport info """
+    """Root CNCPipe helpers."""
 
     def isConstructed(self) -> bool:
         """:return: info from the  specified viewport """
@@ -15,4 +15,20 @@ class Pipe(ApiInterface):
     @burst_mode.setter
     def burst_mode(self,enable:bool):
         self._call("set_BurstMode",enable, wo_rc=True)
+
+    def startListening(self):
+        """Start listening for inbound CNC12 messages."""
+        return self._call("StartListening", wo_rc=True)
+
+    def stopListening(self):
+        """Stop listening for inbound CNC12 messages."""
+        return self._call("StopListening", wo_rc=True)
+
+    def clearUnhandledMessages(self):
+        """Clear queued inbound CNC12 messages that have not been handled."""
+        return self._call("ClearUnhandledMessages", wo_rc=True)
+
+    def tryPopUnhandledMessage(self):
+        """Return (has_message, packet) when an inbound message is available."""
+        return self._call("TryPopUnhandledMessage", wo_rc=True)
 

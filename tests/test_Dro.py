@@ -1,8 +1,8 @@
 from unittest import TestCase
 
 from cnc_centroid_skinning import PATH_CNC12
-from cnc_centroid_skinning.Dro import DroCoordinates
-from centroidAPI import CentroidApi
+from cnc_centroid_skinning import DroCoordinates
+from cnc_centroid_skinning import CentroidApi
 
 
 class TestDro(TestCase):

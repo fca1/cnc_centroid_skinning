@@ -1,6 +1,6 @@
 from typing import List
 
-from interface.ApiInterface import ApiInterface
+from .interface.ApiInterface import ApiInterface
 
 
 class MessageWindow(ApiInterface):

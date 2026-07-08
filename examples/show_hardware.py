@@ -1,7 +1,7 @@
 import sys
 
 from cnc_centroid_skinning import PATH_CNC12
-from centroidAPI import CentroidApi
+from cnc_centroid_skinning import CentroidApi
 
 
 def initializeApi(file_path_of_prg: str):

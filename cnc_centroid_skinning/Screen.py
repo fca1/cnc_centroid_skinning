@@ -1,5 +1,5 @@
-from cncenums import Viewport
-from interface.ApiInterface import ApiInterface
+from .cncenums import Viewport
+from .interface.ApiInterface import ApiInterface
 
 
 class Screen(ApiInterface):
