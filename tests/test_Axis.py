@@ -1,13 +1,13 @@
 from unittest import TestCase
 
-from cnc_centroid_skinning import PATH_CNC12
-from cnc_centroid_skinning import CentroidApi
 from cnc_centroid_skinning import Axes, Rate, Direction
+from tests.support import make_api_or_skip
 
 
 class TestAxis(TestCase):
-    assembly_path = PATH_CNC12
-    axis = CentroidApi(assembly_path).axis
+    @classmethod
+    def setUpClass(cls):
+        cls.axis = make_api_or_skip().axis
 
     def test_get_accel_time(self):
         current_acceleration = self.axis.getAccelTime(Axes.AXIS_4)

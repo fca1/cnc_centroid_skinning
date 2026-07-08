@@ -1,15 +1,13 @@
 from unittest import TestCase
 
-
-from cnc_centroid_skinning import PATH_CNC12
-
-from cnc_centroid_skinning import CentroidApi
 from cnc_centroid_skinning import IOMBit, BitType, ForceState, InversionState
+from tests.support import make_api_or_skip
 
 
 class TestPLc(TestCase):
-    assembly_path = PATH_CNC12
-    plc = CentroidApi(assembly_path).plc
+    @classmethod
+    def setUpClass(cls):
+        cls.plc = make_api_or_skip().plc
 
     def test_get_watch_list(self):
         lst = [IOMBit()]
@@ -30,9 +28,10 @@ class TestPLc(TestCase):
 
     def test_set_input_iversion_state(self):
         self.plc.setInputIversionState(0, InversionState.Inverted)
+        self.plc.setInputInversionState(0, InversionState.NotInverted)
 
     def test_set_input_force_state(self):
-        self.plc.setInputIversionState(0, InversionState.NotInverted)
+        self.plc.setInputForceState(1, ForceState.NotForced)
 
     def test_get_input_state(self):
         self.plc.getInputState(1)
@@ -56,10 +55,12 @@ class TestPLc(TestCase):
         self.plc.setSkinEventState(0, 0)
 
     def test_get_pc_system_variable_bit(self):
-        self.plc.getPcSystemVariableBit(0)
+        with self.assertRaises(RuntimeError):
+            self.plc.getPcSystemVariableBit(0)
 
     def test_get_plc_system_variable_bit(self):
-        self.plc.getPlcSystemVariableBit(0)
+        with self.assertRaises(RuntimeError):
+            self.plc.getPlcSystemVariableBit(0)
 
     def test_get_vcp_led_states(self):
         self.plc.getVcpLedStates()

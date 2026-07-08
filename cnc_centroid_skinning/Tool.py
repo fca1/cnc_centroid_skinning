@@ -103,7 +103,7 @@ class Tool(ApiInterface):
         return self._call('SetCoolant', tool, aType)
 
     def setToolHeightOffsetAmount(self, tool: int, value: float):
-        """Set the tool height offset amount."""
+        """Set the tool height offset amount. Requires CNC12 v5.40+."""
         return self._call('SetToolHeightOffsetAmount', tool, float(value))
 
     def setToolHeightOffsetAmout(self, tool: int, value: float):

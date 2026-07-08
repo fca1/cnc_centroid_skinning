@@ -262,8 +262,8 @@ class CommunicationTypes(_CentroidIntEnum):
     JOB_INFO = 4
     KEEP_PIPE_ALIVE = 5
     JOB_CONCLUDED = 6
-    M2XX_MESSAGE_ACTIVE = 7
-    M2XX_MESSAGE_CLEARED = 8
+    M2XX_MESSAGE_ACTIVE = 7  # CNC12 v5.42+ only.
+    M2XX_MESSAGE_CLEARED = 8  # CNC12 v5.42+ only.
 
 
 class JobInfoType(_CentroidIntEnum):

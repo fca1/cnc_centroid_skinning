@@ -17,18 +17,18 @@ class Pipe(ApiInterface):
         self._skinning.BurstMode = bool(enable)
 
     def startListening(self):
-        """Start listening for inbound CNC12 messages."""
+        """Start listening for inbound CNC12 messages. Requires CNC12 v5.40+."""
         return self._call("StartListening", wo_rc=True)
 
     def stopListening(self):
-        """Stop listening for inbound CNC12 messages."""
+        """Stop listening for inbound CNC12 messages. Requires CNC12 v5.40+."""
         return self._call("StopListening", wo_rc=True)
 
     def clearUnhandledMessages(self):
-        """Clear queued inbound CNC12 messages that have not been handled."""
+        """Clear queued inbound CNC12 messages. Requires CNC12 v5.40+."""
         return self._call("ClearUnhandledMessages", wo_rc=True)
 
     def tryPopUnhandledMessage(self):
-        """Return (has_message, packet) when an inbound message is available."""
+        """Return (has_message, packet) when an inbound message is available. Requires CNC12 v5.40+."""
         return self._call("TryPopUnhandledMessage", wo_rc=True)
 

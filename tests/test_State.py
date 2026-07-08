@@ -1,13 +1,13 @@
 from unittest import TestCase
 
-from cnc_centroid_skinning import PATH_CNC12
-from cnc_centroid_skinning import CentroidApi
 from cnc_centroid_skinning import Value
+from tests.support import make_api_or_skip
 
 
 class TestState(TestCase):
-    assembly_path = PATH_CNC12
-    sta = CentroidApi(assembly_path).state
+    @classmethod
+    def setUpClass(cls):
+        cls.sta = make_api_or_skip().state
 
     def test_get_screen_size(self):
         _x, _y = self.sta.getScreenSize()
@@ -56,7 +56,7 @@ class TestState(TestCase):
 
     def test_get_current_machine_position(self):
         position = self.sta.getCurrentMachinePosition()
-        assert len(position) >=2
+        assert len(position) >= 2
 
 
     def test_get_feedrate_override(self):

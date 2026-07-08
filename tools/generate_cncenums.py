@@ -47,6 +47,11 @@ ENUM_SPECS = [
     ("JobInfoType", "InboundComm.JobInfoType"),
 ]
 
+MEMBER_COMMENTS = {
+    ("CommunicationTypes", "M2XX_MESSAGE_ACTIVE"): "CNC12 v5.42+ only.",
+    ("CommunicationTypes", "M2XX_MESSAGE_CLEARED"): "CNC12 v5.42+ only.",
+}
+
 HEADER = '''r"""Generated CentroidAPI enum snapshot.
 
 This file is intentionally importable without pythonnet or CentroidAPI.dll.
@@ -96,7 +101,9 @@ def render_enum(name, enum_type, enum_module):
         lines.append("    pass")
     for member_name in names:
         value = int(enum_module.Parse(enum_type, member_name))
-        lines.append(f"    {member_name} = {value}")
+        comment = MEMBER_COMMENTS.get((name, member_name))
+        suffix = f"  # {comment}" if comment else ""
+        lines.append(f"    {member_name} = {value}{suffix}")
     return "\n".join(lines)
 
 

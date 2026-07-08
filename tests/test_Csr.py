@@ -1,13 +1,13 @@
 from unittest import TestCase
 
-from cnc_centroid_skinning import PATH_CNC12
-from cnc_centroid_skinning import CentroidApi
 from cnc_centroid_skinning import WCS
+from tests.support import make_api_or_skip
 
 
 class TestCsr(TestCase):
-    assembly_path = PATH_CNC12
-    csr = CentroidApi(assembly_path).csr
+    @classmethod
+    def setUpClass(cls):
+        cls.csr = make_api_or_skip().csr
 
     def test_get_angle(self):
         self.csr.setAngle(12.3)

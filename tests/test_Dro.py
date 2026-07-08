@@ -1,13 +1,13 @@
 from unittest import TestCase
 
-from cnc_centroid_skinning import PATH_CNC12
 from cnc_centroid_skinning import DroCoordinates
-from cnc_centroid_skinning import CentroidApi
+from tests.support import make_api_or_skip
 
 
 class TestDro(TestCase):
-    assembly_path = PATH_CNC12
-    dro = CentroidApi(assembly_path).dro
+    @classmethod
+    def setUpClass(cls):
+        cls.dro = make_api_or_skip().dro
 
     def test_get_dro(self):
         self.dro.getDro(DroCoordinates.DRO_LOCAL)

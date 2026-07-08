@@ -1,12 +1,12 @@
 from unittest import TestCase
 
-from cnc_centroid_skinning import PATH_CNC12
-from cnc_centroid_skinning import CentroidApi
+from tests.support import make_api_or_skip
 
 
 class TestMessageWindow(TestCase):
-    assembly_path = PATH_CNC12
-    msg = CentroidApi(assembly_path).message_window
+    @classmethod
+    def setUpClass(cls):
+        cls.msg = make_api_or_skip().message_window
 
     def test_get_messages(self):
         self.msg.addMessage('tag string')

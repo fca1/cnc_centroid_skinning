@@ -1,12 +1,12 @@
 from unittest import TestCase
 
-from cnc_centroid_skinning import PATH_CNC12
-from cnc_centroid_skinning import CentroidApi
+from tests.support import make_api_or_skip
 
 
 class TestSys(TestCase):
-    assembly_path = PATH_CNC12
-    sys = CentroidApi(assembly_path).sys
+    @classmethod
+    def setUpClass(cls):
+        cls.sys = make_api_or_skip().sys
 
     def test_get_system_identifier(self):
         self.sys.getSystemIdentifier()
