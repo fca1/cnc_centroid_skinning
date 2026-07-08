@@ -14,12 +14,12 @@ Ask to windows os, the locale language, and if referenced, set the language of C
 def initializeApi(file_path_of_prg: str):
     """
 
-    :param file_path_of_prg:  (path where cncskinning.dll
+    :param file_path_of_prg: CNC12 installation path.
     :return:
     """
     _sk = CentroidApi(file_path_of_prg)
     if not _sk.isConstructed():
-        # impossible to  communicate with CNC12 acorn
+        # Unable to communicate with CNC12.
         print("the Acorn software is not launched")
         sys.exit()
     return _sk

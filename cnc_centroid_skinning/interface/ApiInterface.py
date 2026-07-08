@@ -92,7 +92,7 @@ class ApiInterface:
             raise TypeError("_call requires at least a method name")
 
         fcnt, *params = args
-        fcnt = self._root_leef + "." + fcnt if self._root_leef else fcnt  # The root leef is same for object
+        fcnt = self._root_leef + "." + fcnt if self._root_leef else fcnt  # Prefix with the CNCPipe child object.
         leef = self._skinning
         for obj in fcnt.split("."):
             try:
@@ -106,8 +106,8 @@ class ApiInterface:
         # Call the method found (pythonnet works between .net and python)
         ret_lst = leef(*params)
         ret_lst = self._normalize_result(ret_lst)
-        if not kwargs.get('wo_rc', False):  # this option is used when return code is no waited
-            # first item of list is a ReturnCode value. If No success, raise an Exception
+        if not kwargs.get('wo_rc', False):  # Used when the API method does not return a ReturnCode.
+            # First tuple item is a ReturnCode; raise on non-success.
             rvc = ret_lst[0] if isinstance(ret_lst, tuple) else ret_lst
             test_return_code(rvc)
             if isinstance(ret_lst, int):

@@ -1,14 +1,14 @@
-unofficial cnc_centroid_skinning - A wrapper for the CNC12 API language.
+unofficial cnc_centroid_skinning - A wrapper for the CNC12 API.
 ========================================================
 
 # Introduction
 
-I use products developed by centroidcnc for my CNC activities: https://www.centroidcnc.com/
+I use products developed by Centroid CNC for my CNC activities: https://www.centroidcnc.com/
 
-centroidcnc has developed a controller card named ACORN: 
+Centroid CNC has developed a controller card named ACORN:
 https://www.centroidcnc.com/centroid_diy/acorn_cnc_controller.html
 
-and ACORN Mill and Lathe *CNC12* software for use with the Centroid Acorn CNC controller 
+and ACORN Mill and Lathe *CNC12* software for use with the Centroid Acorn CNC controller:
 https://www.centroidcnc.com/centroid_diy/centroid_cnc_software_downloads.html
  
  
@@ -50,7 +50,7 @@ Python is easy to use and allows rapid prototyping.
 
 # To develop 
 
-this method cannot be called, (enum MpuToPcSysVarBit & PcToMpuSysVarBit   are not published inside the CentroidApi.dll ):
+This method cannot be called because the MpuToPcSysVarBit and PcToMpuSysVarBit enums are not published in CentroidAPI.dll:
 
 * getPcSystemVariableBit
 
@@ -70,11 +70,11 @@ A camera is placed on the CNC head and detects the center of a hole (thanks to t
 This center is used as an origin and the coordinates are sent directly to the CNC12 software. The head moves immediately (thanks to *job.RunCommand()*). 
 The second step is to move the head exactly above the center of this hole.
    
-Writing this kind of application is quite simple in Python with the help of libraries and the cncSkinning API. 
+Writing this kind of application is quite simple in Python with the help of libraries and the CentroidAPI.
 
 *The image recognition library I used with the camera for assertions is not included in this library.* 
 
-Please read the chapter: **'CNC Machine Tool Safety'** in the CNC Centroid documentation.  
+Please read the **'CNC Machine Tool Safety'** chapter in the Centroid CNC documentation.
 
 ## Installation
 
@@ -82,21 +82,20 @@ If you have pip, installation is straightforward:
 
     pip install cnc-centroid-skinning
 
-This will automatically install dependencies as well as their dependencies.
+This will automatically install the required dependencies.
 
 # The documentation
 
-The /CncSkinningDocumentation provided by CNC Centroid has the same packages with the same 
-reference. There are some differences, however:
+The /CncSkinningDocumentation provided by Centroid CNC has the same packages and references. There are some differences, however:
 
-- The methods begin with lowercase. 
-- The return code is not provided, but in case of a value different from 'SUCCESS', an ErrorCodeException is raised.
+- The methods begin with a lowercase letter.
+- The return code is not provided, but an ErrorCodeException is raised for any value other than 'SUCCESS'.
   
 [documentation](https://htmlpreview.github.io/?https://github.com/fca1/cnc_centroid_skinning/blob/master/cnc_centroid_skinning/doc/cnc_centroid_skinning/index.html)
 
 ## Examples 
 
-Verify the communication between this wrapper and CNC12 (Of course, your CNC12 software must already be launched, otherwise no communication is possible):
+Verify the communication between this wrapper and CNC12. CNC12 must already be running; otherwise, no communication is possible.
 
 The function **detect_cnc(path_of_cnc12)** is written for that purpose. 
 
@@ -170,5 +169,5 @@ or
 ### TODO list
 - VCP is not tested
 - Improve unit test behavior
-- This is the first version of docstring; parameter values are not described
+- Docstrings are still preliminary; parameter values are not fully described.
 - ...

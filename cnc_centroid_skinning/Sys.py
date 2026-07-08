@@ -1,27 +1,24 @@
 
 # noinspection PyUnresolvedReferences
-from System.Collections.Generic import List
-
 from .cncenums import Ether1616Device, UnlockVersions, MachineTypes
 from .exceptions.SkinningException import SkinningException
 from .interface.ApiInterface import ApiInterface
 
 
 class Sys(ApiInterface):
-    """A class for getting system-related information """
+    """Class for system-related information."""
 
     def getSystemIdentifier(self) -> int:
-        """
-        :return: get the System ID of the machine to which this skinning app is connected. """
+        """Get the system ID of the connected machine."""
         return self._call('GetSystemIdentifier')
 
     def exitSoftware(self):
-        """Closes CNCXX software gracefully. """
+        """Close CNC12 software gracefully."""
         return self._call('ExitSoftware')
 
-    # @TODO a card is needed to test this method, not yet verified
+    # TODO Needs hardware to verify.
     def getEther1616DeviceInfo(self) -> [Ether1616Device]:
-        """:return: get all valid and attached Ether1616 Device information. """
+        """Get attached Ether1616 device information."""
         try:
             lst = self._call('GetEther1616DeviceInfo')
             return tuple(map(lambda ether: Ether1616Device(ether.IP, ether.DeviceNumber), lst))
@@ -29,31 +26,31 @@ class Sys(ApiInterface):
             return tuple()
 
     def getUnlockVersion(self) -> UnlockVersions:
-        """:return: get the unlock version of machine connected to."""
+        """Get the unlock version of the connected machine."""
         return self._call('GetUnlockVersion')
 
     def getMachineType(self) -> MachineTypes:
-        """get the machine type the centroid api is connected to."""
+        """Get the machine type connected to the CentroidAPI."""
         return self._call('GetMachineType')
 
     def getPLCEXP1616NumberofDevices(self) -> int:
-        """gets Number of all PLCEXP1616 devices connected."""
+        """Get the number of connected PLCEXP1616 devices."""
         return self._call('GetPLCEXP1616NumberofDevices')
 
     def getECAT1616NumberOfDevices(self) -> int:
-        """gets Number of all ECAT1616 devices connected."""
+        """Get the number of connected ECAT1616 devices."""
         return self._call('GetECAT1616NumberOfDevices')
 
 
     def isENCEXP12Connected(self) -> bool:
-        """If ENCEXP12 connected to the AcornSix Board."""
+        """Return whether ENCEXP12 is connected to the AcornSix board."""
         return self._call('IsENCEXP12Connected')
 
     def getSerialNumber(self) -> str:
-        """get the serial number of the connected board."""
+        """Get the serial number of the connected board."""
         return self._call('GetSerialNumber')
 
 
     def importLicense(self, licensePath: str):
-        """Import a license into cnc12."""
+        """Import a license into CNC12."""
         return self._call('ImportLicense', licensePath)

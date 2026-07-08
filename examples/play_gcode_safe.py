@@ -7,7 +7,7 @@ from cnc_centroid_skinning import CentroidApi
 def initializeApi(file_path_of_prg: str):
     _sk = CentroidApi(file_path_of_prg)
     if not _sk.isConstructed():
-        # impossible to  communicate with CNC12 acorn
+        # Unable to communicate with CNC12.
         print("the Acorn software is not launched")
         sys.exit()
     return _sk

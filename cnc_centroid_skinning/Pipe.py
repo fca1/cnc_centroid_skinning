@@ -5,7 +5,7 @@ class Pipe(ApiInterface):
     """Root CNCPipe helpers."""
 
     def isConstructed(self) -> bool:
-        """:return: info from the  specified viewport """
+        """Return whether the CNCPipe instance was constructed successfully."""
         return self._call("IsConstructed", wo_rc=True)
 
     @property

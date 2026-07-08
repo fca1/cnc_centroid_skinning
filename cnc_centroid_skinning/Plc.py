@@ -27,7 +27,7 @@ class TIOMBit:
 
 
 class PLc(ApiInterface):
-    """	A class with functions related to PLC programming and state information"""
+    """Class for PLC programming and state information."""
 
     def _to_dotnet_iombit(self, src: IOMBit):
         obj = self._interface.cls.Plc.IOMBit()
@@ -51,7 +51,7 @@ class PLc(ApiInterface):
         )
 
     def getWatchList(self, bitList: typing.List[IOMBit]) -> [typing.List[IOMBit], None]:
-        """:return:  the states of watched bits previosuly set by SetPlcWatchList """
+        """Get the states of watched bits previously set by SetWatchList."""
         rs = List[self._interface.cls.Plc.IOMBit]()  # don't use the constructor with parameters
         for iombit in bitList:  # fills ref List< IOMBit > bitList
             rs.Add(self._to_dotnet_iombit(iombit))
@@ -65,9 +65,7 @@ class PLc(ApiInterface):
             return None
 
     def setWatchList(self, bitList: typing.List[IOMBit]) -> [typing.List[IOMBit], None]:
-        """Set the PLC watch list. This command also returns with the current state of the bits updated in the bitList.
-        When repeated calls using the same list occur, make an initial call to SetWatchList and then retrieve the states
-        using GetWatchList. """
+        """Set the PLC watch list and return the current states."""
         rs = List[self._interface.cls.Plc.IOMBit]()  # don't use the constructor with parameters
         for iombit in bitList:  # fills ref List< IOMBit > bitList
             rs.Add(self._to_dotnet_iombit(iombit))
@@ -81,34 +79,29 @@ class PLc(ApiInterface):
             return None
 
     def setIoForceState(self, ioBit: int, bitType: BitType, state: ForceState):
-        """Set the state of output or memory bit forcing. Note that for memory bit types, the forcing occurs at the
-        beginning of a PLC program IOMpass only, i.e., PLC code can still change the state of the memory bit if desired. """
+        """Set the force state of an output or memory bit."""
         return self._call('SetIoForceState', int(ioBit), bitType, state)
 
     def setSkinningDataWord(self, index: int, value: int, sendImmediately: bool = True):
-        """Set a skinning data word. A skinning data word is a general purpose 32-bit integer value used to communicate
-         with a PLC program. A PLC program can reference this value using the SV_SKINNING_DATA_W_1 -
-         SV_SKINNING_DATA_W_12 system variables. """
+        """Set a skinning data word used to communicate with a PLC program."""
         assert 1 <= index <= 12
         return self._call('SetSkinningDataWord', int(index), int(value), bool(sendImmediately))
 
     def getSkinningDataWord(self, index: int) -> int:
-        """:return: the value of a skinning data word. """
+        """Get the value of a skinning data word."""
         assert 1 <= index <= 12
         return self._call('GetSkinningDataWord', int(index))
 
     def setSkinningDataDoubleFloatWord(self, index: int, value: float, sendImmediately: bool = True):
-        """Set a skinning data float word. A skinning data float word is a general purpose 32-bit floating point value
-        used to communicate with a PLC program. A PLC program can reference this value using the SV_SKINNING_DATA_FW_1
-        - SV_SKINNING_DATA_FW_11 system variables. """
+        """Set a skinning floating-point data word."""
         return self._call('SetSkinningDataDoubleFloatWord', int(index), float(value), bool(sendImmediately))
 
     def getSkinningDataDoubleFloatWord(self, index: int) -> float:
-        """:return: the value of a skinning float word. """
+        """Get the value of a skinning floating-point data word."""
         return self._call('GetSkinningDataDoubleFloatWord', int(index))
 
     def setInputInversionState(self, inputBit: int, state: InversionState):
-        """Set whether or not a PLC inpuit bit is inverted. """
+        """Set whether a PLC input bit is inverted."""
         return self._call('SetInputInversionState', int(inputBit), state)
 
     def setInputIversionState(self, inputBit: int, state: InversionState):
@@ -116,26 +109,26 @@ class PLc(ApiInterface):
         return self.setInputInversionState(inputBit, state)
 
     def setInputForceState(self, inputBit: int, state: ForceState):
-        """Set whether or not an input is forced to a given state. """
+        """Set whether an input is forced to a given state."""
         return self._call('SetInputForceState', int(inputBit), state)
 
     def getInputState(self, bitNumber: int) -> bool:
         assert 1 <= bitNumber <= 1312
-        """:return: the state of the PLC input """
+        """Get the state of a PLC input."""
         return self._call('GetInputState', int(bitNumber), wo_rc=True)
 
     def getOutputState(self, bitNumber: int) -> bool:
-        """:return:  the state (On or Off) of a PLC output. """
+        """Get the state of a PLC output."""
         assert 1 <= bitNumber <= 1312
         return self._call('GetOutputState', int(bitNumber), wo_rc=True)
 
     def getMemoryState(self, bitNumber: int) -> bool:
-        """:return:  the state of a PLC memory bit. """
+        """Get the state of a PLC memory bit."""
         assert 1 <= bitNumber <= 1024
         return self._call('GetMemoryState', int(bitNumber), wo_rc=True)
 
     def getWordValue(self, index: int) -> int:
-        """:return: s the value of the given PLC 32-bit integer W value. """
+        """Get the given PLC 32-bit integer W value."""
         assert 1 <= index <= 22
         return self._call('GetDoubleWordValue', int(index))
 
@@ -144,28 +137,26 @@ class PLc(ApiInterface):
         return self.getWordValue(index)
 
     def getFloatWordValue(self, index: int) -> float:
-        """:return: s the value of the given PLC 32-bit floating point FW value. """
+        """Get the given PLC 32-bit floating point FW value."""
         assert 1 <= index <= 44
         return self._call('GetDoubleFloatWordValue', int(index))
 
     def setSkinEventState(self, eventNumber: int, state: int):
-        """Set skin event number to a given state. """
+        """Set a skin event number to a given state."""
         return self._call('SetSkinEventState', int(eventNumber), int(state))
 
-    # TODO GetPlcSystemVariableBit unknow enum  ( not declared inside the dll)
+    # TODO Missing public enum mapping for PcToMpuSysVarBit.
     def getPcSystemVariableBit(self, bit: int) -> IOState:
         raise RuntimeError("This method is not implemented")
-        """:return:  the state of a "PC" system variable bit. A "PC" system varaible bit is, in most cases, set by the CNC
-        softare running on the PC and used to communicate status to the MPU hardware, in particular the PLC system. """
+        """Get the state of a PC-to-MPU system variable bit."""
         return IOState(self._call('GetPcSystemVariableBit', int(bit)))
 
-    # TODO getPlcSystemVariableBit (unknow enum not declared inside the dll)
+    # TODO Missing public enum mapping for MpuToPcSysVarBit.
     def getPlcSystemVariableBit(self, bit: int) -> IOState:
         raise RuntimeError("This method is not implemented")
-        """:return:  the state of a "PLC" system variable bit. A "PLC" system varaible bit is, in most cases, set by the PLC
-         program running on the MPU hardware and used to communicate status to the CNC software. """
+        """Get the state of an MPU-to-PC system variable bit."""
         return self._call('GetPlcSystemVariableBit', int(bit))
 
     def getVcpLedStates(self) -> int:
-        """:return: the state of output LEDs for the VCP all at once. """
+        """Get all VCP output LED states."""
         return self._call('GetVcpLedStates', wo_rc=True)

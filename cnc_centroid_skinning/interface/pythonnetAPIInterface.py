@@ -1,6 +1,4 @@
-"""
-This class is used to wrap with the dll. 
-"""
+"""pythonnet bridge to CentroidAPI.dll."""
 
 
 class PythonnetAPIInterface:

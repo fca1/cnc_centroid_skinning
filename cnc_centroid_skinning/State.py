@@ -5,100 +5,100 @@ from .interface.ApiInterface import ApiInterface
 
 
 class State(ApiInterface):
-    """Holds info relating to system state, e.g. move mode, position mode, feedrate, spindle speed, etc """
+    """Holds CNC12 state info such as move mode, position mode, feedrate, and spindle speed."""
 
     def getScreenSize(self) -> tuple:
-        """:return: the screen size of the CNC application. """
+        """Get the CNC application screen size."""
         return self._call('GetScreenSize')
 
     def getMonitorSize(self) -> tuple:
-        """:return: the monitor size of the CNC application. """
+        """Get the CNC application monitor size."""
         return self._call('GetMonitorSize')
 
     def getScreenPosition(self) -> tuple:
-        """:return: the position of the CNC application. """
+        """Get the CNC application screen position."""
         return self._call('GetScreenPosition')
 
     def getAcornBoardRevision(self) -> int:
-        """:return:  the Acorn Board Revision """
+        """Get the Acorn board revision."""
         return self._call('GetAcornBoardRevision')
 
     def getActiveGCodes(self) -> List[str]:
-        """:return:  the currently active modal G- and M- codes. """
+        """Get the currently active modal G- and M-codes."""
         return list(map(str, self._call('GetActiveGCodes')))
 
     def getFeedHoldState(self) -> FeedHoldState:
-        """:return:  the current feed hold state. """
+        """Get the current feed hold state."""
         return self._call('GetFeedHoldState')
 
     def getGCodeDisplay(self) -> List[str]:
-        """:return:  the list of g-code strings that usually displays on CNC12 when a job is running. """
+        """Get the G-code display lines shown while a job is running."""
         return list(map(str, self._call('GetGCodeDisplay')))
 
     def getJobNameCurrent(self) -> str:
-        """:return:  the name of the currently loaded job. """
+        """Get the name of the currently loaded job."""
         return self._call('GetJobNameCurrent')
 
     def getMdiState(self) -> MdiState:
         return self._call('GetMdiState')
 
     def getMoveMode(self) -> MoveMode:
-        """:return:  the current move mode (rapid, linear, clockwise arc, counterclockwise arc) """
+        """Get the current move mode."""
         return self._call('GetMoveMode')
 
     def getPositioningMode(self) -> PositioningMode:
-        """:return:  the positioning mode of the machine currently. """
+        """Get the current positioning mode."""
         return self._call('GetPositioningMode')
 
     def getUnitsOfMeasureDefault(self) -> UnitsOfMeasure:
-        """:return: s the default units of measure from CNC12 (Imperial or Metric) """
+        """Get the default units of measure from CNC12."""
         return UnitsOfMeasure(int(self._call('GetUnitsOfMeasureDefault')))
 
     def setImperialUnits(self):
-        """Set the default uniot of measure to inch units. """
+        """Set the default unit of measure to inch."""
         return self._call('SetImperialUnits')
 
     def setMetricUnits(self):
-        """Set the default unit of measure to metric units """
+        """Set the default unit of measure to metric."""
         return self._call('SetMetricUnits')
 
     def getUnitsOfMeasureDro(self) -> UnitsOfMeasure:
-        """:return: s the dro units of measure from CNC12 (Imperial or Metric) """
+        """Get the DRO units of measure from CNC12."""
         return self._call('GetUnitsOfMeasureDro')
 
     def getFeedrate(self) -> float:
-        """:return: the measured feedrate (accounts for feedrate override knob). """
+        """Get the measured feedrate, including feedrate override."""
         return self._call('GetFeedrate')
 
     def getSpindleSpeed(self) -> float:
-        """:return:  the current spindle speed. """
+        """Get the current spindle speed."""
         return self._call('GetSpindleSpeed')
 
     def getCurrentMachinePosition(self) -> [float,...]:
-        """:return: s the current machine position. """
+        """Get the current machine position."""
         machinePosition = self._call('GetCurrentMachinePosition')
         return tuple(map(float, machinePosition))
 
     def getFeedrateOverride(self) -> int:
-        """:return:  the feedrate override as a percent between 1 and max (usually 120). """
+        """Get the feedrate override percentage."""
         return self._call('GetFeedrateOverride')
 
     def getCurrentLocalPosition(self) -> [float]:
-        """:return:  the current wcs position. """
+        """Get the current local WCS position."""
         return tuple(map(float, self._call('GetCurrentLocalPosition')))
 
     def getHighRangeSpindleSpeed(self, max_or_min: Value) -> float:
-        """:return:  the current Spindle Speed High Range maximum or minimum value. """
+        """Get the high-range spindle speed maximum or minimum."""
         return self._call('GetHighRangeSpindleSpeed', max_or_min)
 
     def setHighRangeSpindleSpeed(self, max_or_min: Value, value: float):
-        """Set the current Spindle Speed High Range maximum or minimum value. """
+        """Set the high-range spindle speed maximum or minimum."""
         return self._call('SetHighRangeSpindleSpeed', max_or_min, float(value))
 
     def getMachineHomeAtPowerUp(self) -> HomingType:
-        """:return:  the currently set machine homing type at power up. """
+        """Get the machine homing type used at power up."""
         return self._call('GetMachineHomeAtPowerUp')
 
     def setMachineHomeAtPowerUp(self, homing_type: HomingType):
-        """Set the machine homing type at power up. """
+        """Set the machine homing type used at power up."""
         return self._call('SetMachineHomeAtPowerUp', homing_type)

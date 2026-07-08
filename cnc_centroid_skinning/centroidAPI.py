@@ -20,18 +20,10 @@ class CentroidApi:
     plc = None
     _pipe = None  # used for CncPipe
 
-    """
-    Class for getting and setting different system variables.
-    Class for getting DRO data from CNC12.
-    """
+    """Top-level wrapper around CentroidAPI.CNCPipe."""
 
     def __init__(self, path_running, useVcpPipe: bool = False, timeout: int = 1):
-        """
-
-        :param path_running: path of CNC12 program.
-        :param useVcpPipe: False by default.
-        :param timeout: in sec.
-        """
+        """Create a wrapper for the CNC12 installation path."""
         self._interface = PythonnetAPIInterface(path_running, useVcpPipe, timeout)
         from .Axis import Axis
         from .Csr import Csr
@@ -48,10 +40,10 @@ class CentroidApi:
         from .Tool import Tool
         from .Wcs import Wcs
 
-        # managment of enums
+        # Expose root enum access for compatibility.
 
         self.Axes = self._interface.cls.Axes
-        # instance_name's relation between dll object and python
+        # Map Python wrappers to CNCPipe child objects.
         self.sys = Sys(self._interface, 'system')
         self.csr = Csr(self._interface, 'csr')
         self.axis = Axis(self._interface, 'axis')
@@ -73,19 +65,17 @@ class CentroidApi:
         return self._interface.path_running
 
     def isConstructed(self) -> bool:
-        """
- 	    Tells if the class instance was successfully constructed.
-        """
+        """Return whether the CNCPipe instance was constructed successfully."""
         return self._pipe.isConstructed()
 
     @property
     def burst_mode(self)->bool:
-        """ Sets if the skinning app is saving after every command or not. """
+        """Return whether burst mode is enabled."""
         return self._pipe.burst_mode
 
     @burst_mode.setter
     def burst_mode(self,enable:bool):
-        """ Sets if the skinning app is saving after every command or not.  """
+        """Set whether burst mode is enabled."""
         self._pipe.burst_mode = enable
 
 
@@ -104,14 +94,11 @@ class CentroidApi:
 
 
 def detect_cnc(file_path_of_prg: str, *kargs):
-    """
-    :param file_path_of_prg:  (path where cncskinning.dll
-    :return:
-    """
+    """Return whether cnc_centroid_skinning can communicate with CNC12."""
     sk = CentroidApi(file_path_of_prg, *kargs)
     if sk.isConstructed():
         sys.stdout.write("cnc_centroid_skinning communicates... OK\n")
         return True
     else:
-        sys.stderr.write(f"is CNC12 is launched ? given path is correct ? \n")
+        sys.stderr.write("Is CNC12 running? Is the given path correct?\n")
         return False

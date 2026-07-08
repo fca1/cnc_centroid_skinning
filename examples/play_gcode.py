@@ -11,7 +11,7 @@ from cnc_centroid_skinning.exceptions.SkinningException import ReturnCodeExcepti
 def initializeApi(file_path_of_prg: str):
     _sk = CentroidApi(file_path_of_prg)
     if not _sk.isConstructed():
-        # impossible to  communicate with CNC12 acorn
+        # Unable to communicate with CNC12.
         print("the Acorn software is not launched")
         sys.exit()
     return _sk
@@ -19,7 +19,7 @@ def initializeApi(file_path_of_prg: str):
 
 sk = initializeApi(PATH_CNC12)  # Path file of CNC12 software.
 
-# search what is the axis with the label 'X':
+# Search for the axis with the label 'X':
 x_axe = None
 for axe in Axes.values():
     if sk.axis.getLabel(axe) == 'X':

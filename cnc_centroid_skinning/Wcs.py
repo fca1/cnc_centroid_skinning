@@ -3,27 +3,25 @@ from .interface.ApiInterface import ApiInterface
 
 
 class Wcs(ApiInterface):
-    """	Class for getting and setting values involving work coordinate system"""
+    """Class for work coordinate system values."""
 
     def getActiveWcs(self) -> int:
-        """:return:  the active wcs. """
+        """Get the active WCS."""
         return self._call('GetActiveWcs')
 
     def getWorkpieceOrigin(self, axis: Axes, wcs: WCS = None):
-        """:return:  Part-zero for the specified wcs and axis. """
+        """Get part zero for the active or specified WCS and axis."""
         if wcs:
             return self._call('GetWorkpieceOrigin', wcs, axis)
         else:
             return self._call('GetWorkpieceOrigin', axis)
 
     def selectNextWcs(self):
-        """Select the next wcs.
-        """
+        """Select the next WCS."""
         return self._call('SelectNextWcs')
 
     def selectPrevWcs(self):
-        """Select the previous wcs.
-        """
+        """Select the previous WCS."""
         return self._call('SelectPrevWcs')
 
     def getWorkpieceReference(self, ret: int, axis: Axes):
@@ -43,7 +41,7 @@ class Wcs(ApiInterface):
         return self._call('SetWorkpieceLocation', axis, float(location))
 
     def setWorkpieceOrigin(self, axis: Axes = None, wcs: WCS = None):
-        """Attempt to set the Part-Zero for a specified axis and a specified WCS. """
+        """Set part zero for the active or specified WCS and axis."""
         if wcs:
             if axis:
                 return self._call('SetWorkpieceOrigin', wcs, axis)

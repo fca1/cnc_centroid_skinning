@@ -2,14 +2,14 @@ from .interface.ApiInterface import ApiInterface
 
 
 class Parameter(ApiInterface):
-    """Handles getting and setting of machine parameters"""
+    """Handles getting and setting machine parameters."""
 
     def getMachineParameterValue(self, parameter_num: int) -> int:
-        """:return:  the value of a machine parameter. """
+        """Get the value of a machine parameter."""
         return self._call('GetMachineParameterValue', int(parameter_num))
 
     def setMachineParameter(self, addr: int, value: float):
-        """Sets machine parameter to a given value. """
+        """Set a machine parameter to the given value."""
         return self._call('SetMachineParameter', int(addr), float(value))
 
     def __getitem__(self, item):

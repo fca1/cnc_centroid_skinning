@@ -7,7 +7,7 @@ from cnc_centroid_skinning import CentroidApi
 def initializeApi(file_path_of_prg: str):
     _sk = CentroidApi(file_path_of_prg)
     if not _sk.isConstructed():
-        # impossible to  communicate with CNC12 acorn
+        # Unable to communicate with CNC12.
         print("the Acorn software is not launched")
         sys.exit()
     return _sk
@@ -25,7 +25,7 @@ def hardware(sk):
     sk.message_window.message = f"Machine type      :\t{sk.sys.getMachineType()}"
     sk.message_window.message = f"Serial nber       :\t{sk.sys.getSerialNumber()}"
     sk.message_window.message = f"Board revision    :\t{sk.state.getAcornBoardRevision()}"
-    sk.message_window.message = f"Nber of Ether1616 :\t{len(sk.sys.getEther1616DeviceInfo())}"
+    sk.message_window.message = f"Number of Ether1616 devices:\t{len(sk.sys.getEther1616DeviceInfo())}"
 
 
 sk = initializeApi(PATH_CNC12)  # Path file of CNC12 software.
