@@ -12,10 +12,33 @@ DEFAULT_CNC12_PATHS = (
     r"C:\Centroid_Lathe_Intercon_Offline",
 )
 
-PATH_CNC12 = os.environ.get("CENTROID_CNC12_PATH") or os.environ.get("CNC12_PATH") or next(
-    (path for path in DEFAULT_CNC12_PATHS if Path(path, "CentroidAPI.dll").exists()),
-    DEFAULT_CNC12_PATHS[0],
-)
+def _find_best_cnc_path():
+    env_path = os.environ.get("CENTROID_CNC12_PATH") or os.environ.get("CNC12_PATH")
+    if env_path:
+        return env_path
+
+    candidates = [Path(p) for p in DEFAULT_CNC12_PATHS if Path(p, "CentroidAPI.dll").exists()]
+    if not candidates:
+        return DEFAULT_CNC12_PATHS[0]
+
+    if len(candidates) > 1:
+        # Try to find which one is running to avoid cross-version communication issues
+        import subprocess
+        try:
+            # list running processes
+            output = subprocess.check_output('tasklist /FI "STATUS eq RUNNING" /NH /FO CSV', shell=True).decode('cp1252', errors='ignore')
+            for cand in candidates:
+                # The executable name is usually the same as the directory name (e.g., cncr.exe in C:\cncr)
+                exe_name = cand.name.lower() + ".exe"
+                if exe_name in output.lower():
+                    return str(cand)
+        except Exception:
+            pass
+
+    return str(candidates[0])
+
+
+PATH_CNC12 = _find_best_cnc_path()
 
 _CNCPipe = None
 _loaded_from = None
