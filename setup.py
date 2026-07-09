@@ -21,14 +21,17 @@ setup(
     license="MIT",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Operating System :: Microsoft :: Windows :: Windows 11",
         "Topic :: Software Development :: Libraries",
     ],
     packages=find_packages(exclude=("tests", "examples")),
-    python_requires=">=3.10",
+    python_requires=">=3.10,<3.14",
     include_package_data=True,
-    install_requires=["pythonnet", "pycparser"],
+    install_requires=["pythonnet~=3.0.5", "pycparser"],
     entry_points={
         "console_scripts": [
             "detect-cnc=cnc_centroid_skinning.main.main:main",

@@ -83,6 +83,7 @@ If you have pip, installation is straightforward:
     python -m pip install cnc_centroid_skinning
 
 This will automatically install the required dependencies.
+Python 3.10 to 3.13 is supported; Python 3.14 or later is not supported.
 
 To install the current V5.42 branch directly from GitHub:
 
